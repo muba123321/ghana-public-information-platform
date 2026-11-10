@@ -1,6 +1,10 @@
 import {
   type AdministrationSeed,
   AdministrationSeedSchema,
+  type ContextEventSeed,
+  ContextEventSeedSchema,
+  type IndicatorSeed,
+  IndicatorSeedSchema,
   type LeaderSeed,
   LeaderSeedSchema,
   type PartySeed,
@@ -16,12 +20,16 @@ import type { Db } from '../client.ts';
 import {
   administrationLeaders,
   administrations,
+  contextEvents,
+  indicators,
   parties,
   persons,
   sectors,
   sources,
 } from '../schema/index.ts';
 import { administrationSeeds } from './data/administrations.ts';
+import { contextEventSeeds } from './data/contextEvents.ts';
+import { indicatorSeeds } from './data/indicators.ts';
 import { leaderSeeds } from './data/leaders.ts';
 import { partySeeds } from './data/parties.ts';
 import { personSeeds } from './data/persons.ts';
@@ -36,6 +44,8 @@ export interface SeedData {
   sectors: SectorSeed[];
   administrations: AdministrationSeed[];
   leaders: LeaderSeed[];
+  indicators: IndicatorSeed[];
+  contextEvents: ContextEventSeed[];
 }
 
 export const defaultSeedData: SeedData = {
@@ -45,6 +55,8 @@ export const defaultSeedData: SeedData = {
   sectors: sectorSeeds,
   administrations: administrationSeeds,
   leaders: leaderSeeds,
+  indicators: indicatorSeeds,
+  contextEvents: contextEventSeeds,
 };
 
 /** Idempotently loads the verified reference data. Safe to run on every deploy. */
@@ -133,6 +145,40 @@ export async function seed(db: Db, data: SeedData = defaultSeedData): Promise<Sy
           label: label ?? null,
           sourceId: sourceId(sourceKey),
         })),
+        { prune: true },
+      ),
+    );
+    add(
+      await syncRows(
+        tx,
+        indicators,
+        'indicators',
+        ['code'],
+        data.indicators
+          .map((i) => IndicatorSeedSchema.parse(i))
+          .map(({ methodology, ...i }) => ({
+            ...i,
+            methodology: methodology ?? null,
+            sourceId: sourceId(i.sourceKey),
+            reviewStatus: 'published',
+            provenance: 'manual',
+          })),
+      ),
+    );
+    add(
+      await syncRows(
+        tx,
+        contextEvents,
+        'context_events',
+        ['date', 'title'],
+        data.contextEvents
+          .map((e) => ContextEventSeedSchema.parse(e))
+          .map(({ sourceKey, ...e }) => ({
+            ...e,
+            sourceId: sourceId(sourceKey),
+            reviewStatus: 'published',
+            provenance: 'manual',
+          })),
         { prune: true },
       ),
     );

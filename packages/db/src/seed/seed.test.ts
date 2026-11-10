@@ -2,7 +2,8 @@ import { eq } from 'drizzle-orm';
 import { beforeEach, describe, expect, it } from 'vitest';
 import type { Db } from '../client.ts';
 import { getAdministration, listAdministrations } from '../repositories/administrations.ts';
-import { administrations, changeLog, sources } from '../schema/index.ts';
+import { listContextEvents, listIndicators } from '../repositories/indicators.ts';
+import { administrations, changeLog, indicators, sources } from '../schema/index.ts';
 import { createTestDb } from '../testing.ts';
 import { defaultSeedData, seed } from './seed.ts';
 
@@ -102,5 +103,43 @@ describe('seed corrections', () => {
     };
     await expect(seed(db, moved)).resolves.toMatchObject({ updated: 2 });
     expect((await getAdministration(db, '1966-nlc'))!.endDate).toBe('1969-10-03');
+  });
+});
+
+describe('indicator catalogue and context events', () => {
+  it('seeds 17 published indicators, each with an https source', async () => {
+    await seed(db);
+    const list = await listIndicators(db);
+    expect(list).toHaveLength(17);
+    const rows = await db
+      .select({ url: sources.url })
+      .from(indicators)
+      .innerJoin(sources, eq(indicators.sourceId, sources.id));
+    for (const r of rows) expect(r.url).toMatch(/^https:\/\//);
+  });
+
+  it('marks modelled indicators as modelled', async () => {
+    await seed(db);
+    const modelled = (await listIndicators(db))
+      .filter((i) => i.estimateType === 'modelled')
+      .map((i) => i.code)
+      .sort();
+    expect(modelled).toEqual(['maternal-mortality', 'under5-mortality', 'unemployment']);
+  });
+
+  it('seeds sourced, published context events in date order', async () => {
+    await seed(db);
+    const events = await listContextEvents(db);
+    expect(events.map((e) => e.date)).toEqual([
+      '2007-07-01',
+      '2008-09-15',
+      '2010-11-03',
+      '2015-04-03',
+      '2018-09-28',
+      '2020-03-11',
+      '2022-12-19',
+      '2023-05-17',
+    ]);
+    for (const e of events) expect(e.source.url).toMatch(/^https:\/\//);
   });
 });
