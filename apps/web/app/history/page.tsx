@@ -17,6 +17,7 @@ const AREAS: { name: string; about: string; href?: string }[] = [
   {
     name: 'Historical indicators',
     about: 'National statistics over decades, with each term marked.',
+    href: '/history/indicators',
   },
   {
     name: 'Compare administrations',

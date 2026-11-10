@@ -1,7 +1,7 @@
 import type { EstimateType, IsoDate, ObservationPoint, Period } from '@gpip/core';
 import { and, asc, desc, eq, gte, lt, max, min, sql } from 'drizzle-orm';
 import type { Db } from '../client.ts';
-import { contextEvents, indicators, observations, sources } from '../schema/index.ts';
+import { contextEvents, indicators, observations, sectors, sources } from '../schema/index.ts';
 
 export interface IndicatorSummary {
   code: string;
@@ -9,6 +9,7 @@ export interface IndicatorSummary {
   definition: string;
   unit: string;
   sectorSlug: string;
+  sectorName: string;
   estimateType: EstimateType;
   firstYear: number | null;
   lastYear: number | null;
@@ -52,14 +53,16 @@ export async function listIndicators(db: Db): Promise<IndicatorSummary[]> {
       definition: indicators.definition,
       unit: indicators.unit,
       sectorSlug: indicators.sectorSlug,
+      sectorName: sectors.name,
       estimateType: indicators.estimateType,
       first: min(observations.periodStart),
       last: max(observations.periodStart),
     })
     .from(indicators)
+    .innerJoin(sectors, eq(indicators.sectorSlug, sectors.slug))
     .leftJoin(observations, eq(observations.indicatorCode, indicators.code))
     .where(published)
-    .groupBy(indicators.code)
+    .groupBy(indicators.code, sectors.name)
     .orderBy(asc(indicators.sectorSlug), asc(indicators.name));
   return rows.map(({ first, last, ...r }) => ({
     ...r,
@@ -80,6 +83,7 @@ export async function getIndicatorSeries(
       definition: indicators.definition,
       unit: indicators.unit,
       sectorSlug: indicators.sectorSlug,
+      sectorName: sectors.name,
       estimateType: indicators.estimateType,
       methodology: indicators.methodology,
       seriesCode: indicators.seriesCode,
@@ -92,6 +96,7 @@ export async function getIndicatorSeries(
     })
     .from(indicators)
     .innerJoin(sources, eq(indicators.sourceId, sources.id))
+    .innerJoin(sectors, eq(indicators.sectorSlug, sectors.slug))
     .where(and(published, eq(indicators.code, code)));
   if (!row) return null;
 

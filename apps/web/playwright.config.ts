@@ -13,8 +13,8 @@ export default defineConfig({
   use: { baseURL: `http://localhost:${PORT}` },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
-    // Fresh, migrated, seeded database for every run; the seed process exits before the server opens it.
-    command: `rm -rf ${DB} && ${env} pnpm --filter @gpip/db db:seed && ${env} pnpm next start -p ${PORT}`,
+    // Fresh database for every run: migrate + seed, import recorded API responses, then serve.
+    command: `rm -rf ${DB} && ${env} pnpm --filter @gpip/db db:seed && ${env} pnpm --filter @gpip/ingest ingest --fixtures && ${env} pnpm next start -p ${PORT}`,
     url: `http://localhost:${PORT}/history`,
     timeout: 120_000,
     reuseExistingServer: false,
