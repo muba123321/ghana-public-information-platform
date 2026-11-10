@@ -1,3 +1,4 @@
+import { mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { PGlite } from '@electric-sql/pglite';
 import { btree_gist } from '@electric-sql/pglite/contrib/btree_gist';
@@ -13,11 +14,13 @@ export type Schema = typeof schema;
 export type Db = PgDatabase<PgQueryResultHKT, Schema>;
 
 const MIGRATIONS = fileURLToPath(new URL('../migrations', import.meta.url));
-const DEFAULT_PGLITE_DIR = '.data/pglite';
+/** Repo-root `.data/pglite`, so every package and app shares one local database. */
+export const DEFAULT_PGLITE_DIR = fileURLToPath(new URL('../../../.data/pglite', import.meta.url));
 const driverOf = new WeakMap<Db, 'pglite' | 'postgres'>();
 
 /** Opens an in-process PGlite database (dataDir undefined → in memory). */
 export async function createPgliteDb(dataDir?: string): Promise<Db> {
+  if (dataDir) mkdirSync(dataDir, { recursive: true });
   const client = await PGlite.create(dataDir, { extensions: { btree_gist } });
   const db = drizzlePglite(client, { schema }) as unknown as Db;
   driverOf.set(db, 'pglite');

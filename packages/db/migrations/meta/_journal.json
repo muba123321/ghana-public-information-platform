@@ -15,6 +15,13 @@
       "when": 1794284927760,
       "tag": "0001_constraints",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794285120607,
+      "tag": "0002_leader_natural_key",
+      "breakpoints": true
     }
   ]
 }

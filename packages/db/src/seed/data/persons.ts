@@ -1,0 +1,25 @@
+import type { PersonSeed } from '@gpip/core';
+
+export const personSeeds: PersonSeed[] = [
+  { slug: 'elizabeth-ii', fullName: 'Elizabeth II' },
+  { slug: 'kwame-nkrumah', fullName: 'Kwame Nkrumah' },
+  { slug: 'joseph-arthur-ankrah', fullName: 'Joseph Arthur Ankrah' },
+  { slug: 'akwasi-afrifa', fullName: 'Akwasi Amankwaa Afrifa' },
+  { slug: 'kofi-abrefa-busia', fullName: 'Kofi Abrefa Busia' },
+  { slug: 'nii-amaa-ollennu', fullName: 'Nii Amaa Ollennu' },
+  { slug: 'edward-akufo-addo', fullName: 'Edward Akufo-Addo' },
+  { slug: 'ignatius-kutu-acheampong', fullName: 'Ignatius Kutu Acheampong' },
+  { slug: 'fred-akuffo', fullName: 'Frederick William Kwasi Akuffo' },
+  { slug: 'jerry-john-rawlings', fullName: 'Jerry John Rawlings' },
+  { slug: 'hilla-limann', fullName: 'Hilla Limann' },
+  { slug: 'joseph-de-graft-johnson', fullName: 'Joseph W. S. de Graft-Johnson' },
+  { slug: 'kow-nkensen-arkaah', fullName: 'Kow Nkensen Arkaah' },
+  { slug: 'john-evans-atta-mills', fullName: 'John Evans Atta Mills' },
+  { slug: 'john-agyekum-kufuor', fullName: 'John Agyekum Kufuor' },
+  { slug: 'aliu-mahama', fullName: 'Aliu Mahama' },
+  { slug: 'john-dramani-mahama', fullName: 'John Dramani Mahama' },
+  { slug: 'kwesi-amissah-arthur', fullName: 'Kwesi Bekoe Amissah-Arthur' },
+  { slug: 'nana-akufo-addo', fullName: 'Nana Addo Dankwa Akufo-Addo' },
+  { slug: 'mahamudu-bawumia', fullName: 'Mahamudu Bawumia' },
+  { slug: 'jane-naana-opoku-agyemang', fullName: 'Jane Naana Opoku-Agyemang' },
+];
