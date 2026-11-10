@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { AdministrationSeedSchema, LeaderSeedSchema } from './schemas.ts';
+import {
+  AdministrationSeedSchema,
+  ContextEventSeedSchema,
+  IndicatorSeedSchema,
+  LeaderSeedSchema,
+} from './schemas.ts';
 
 const valid = {
   slug: '1993-rawlings-i',
@@ -39,5 +44,51 @@ describe('seed schemas', () => {
         sourceKey: 's',
       }),
     ).toThrow();
+  });
+});
+
+describe('indicator and context-event seeds', () => {
+  const indicator = {
+    code: 'inflation',
+    name: 'Inflation, consumer prices',
+    definition: 'How fast the prices people pay rose over the year.',
+    unit: '% per year',
+    frequency: 'annual',
+    sectorSlug: 'economy',
+    sourceKey: 'world-bank-wdi',
+    seriesCode: 'FP.CPI.TOTL.ZG',
+    estimateType: 'reported',
+  };
+
+  it('accepts a catalogue entry', () => {
+    expect(IndicatorSeedSchema.parse(indicator).code).toBe('inflation');
+  });
+
+  it('rejects an unknown estimate type', () => {
+    expect(() => IndicatorSeedSchema.parse({ ...indicator, estimateType: 'guess' })).toThrow();
+  });
+
+  const event = {
+    date: '2020-03-11',
+    title: 'COVID-19 declared a pandemic by the WHO',
+    kind: 'international',
+    sourceKey: 'who-covid',
+  };
+
+  it('accepts a neutral context event', () => {
+    expect(ContextEventSeedSchema.parse(event).title).toBe(event.title);
+  });
+
+  it.each([
+    'Economic boom begins',
+    'Failure of the cedi',
+    'Government achieves growth',
+    'Disaster year',
+  ])('rejects evaluative wording: %s', (title) => {
+    expect(() => ContextEventSeedSchema.parse({ ...event, title })).toThrow();
+  });
+
+  it('rejects titles over 90 characters', () => {
+    expect(() => ContextEventSeedSchema.parse({ ...event, title: 'x'.repeat(91) })).toThrow();
   });
 });

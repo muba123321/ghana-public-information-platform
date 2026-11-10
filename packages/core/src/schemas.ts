@@ -82,3 +82,35 @@ export type PersonSeed = z.infer<typeof PersonSeedSchema>;
 export type SectorSeed = z.infer<typeof SectorSeedSchema>;
 export type AdministrationSeed = z.infer<typeof AdministrationSeedSchema>;
 export type LeaderSeed = z.infer<typeof LeaderSeedSchema>;
+
+export const EstimateTypeSchema = z.enum(['reported', 'modelled', 'projected']);
+
+export const IndicatorSeedSchema = z.object({
+  code: slug,
+  name: z.string().min(1),
+  definition: z.string().min(1),
+  unit: z.string().min(1),
+  frequency: z.enum(['annual', 'quarterly', 'monthly']),
+  sectorSlug: slug,
+  sourceKey: slug,
+  seriesCode: z.string().min(1),
+  estimateType: EstimateTypeSchema,
+  methodology: z.string().optional(),
+});
+
+/** Words that judge rather than describe — not allowed in editorial titles. */
+const EVALUATIVE = /\b(success|fail|achiev|disaster|boom|triumph|crisis-hit|collapse)\w*/i;
+
+export const ContextEventSeedSchema = z.object({
+  date: IsoDateSchema,
+  title: z
+    .string()
+    .min(1)
+    .max(90)
+    .refine((t) => !EVALUATIVE.test(t), { message: 'title must describe, not judge' }),
+  kind: z.enum(['international', 'methodology', 'domestic', 'institutional']),
+  sourceKey: slug,
+});
+
+export type IndicatorSeed = z.infer<typeof IndicatorSeedSchema>;
+export type ContextEventSeed = z.infer<typeof ContextEventSeedSchema>;
