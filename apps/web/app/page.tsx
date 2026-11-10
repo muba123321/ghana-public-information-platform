@@ -72,13 +72,14 @@ export default async function Home() {
               <p>Manifesto and budget commitments, followed across changes of government.</p>
               <span className="pill">Coming soon</span>
             </li>
-            <li data-soon>
-              <span className="explore-link">Sixty years of national indicators</span>
+            <li>
+              <Link href="/history/indicators" className="explore-link">
+                Sixty years of national indicators
+              </Link>
               <p>
                 Growth, inflation, debt, schooling, health and more, with each government&apos;s
                 term marked.
               </p>
-              <span className="pill">Coming soon</span>
             </li>
           </ul>
         </div>

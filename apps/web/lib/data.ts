@@ -1,5 +1,11 @@
 import 'server-only';
-import { getAdministration, listAdministrations } from '@gpip/db';
+import {
+  getAdministration,
+  getIndicatorSeries,
+  listAdministrations,
+  listContextEvents,
+  listIndicators,
+} from '@gpip/db';
 import { cache } from 'react';
 import { getDb } from './db';
 import { todayIso } from './format';
@@ -19,3 +25,9 @@ export const loadRibbon = cache(async () => {
   const ticks = first && last ? ribbonTicks(first.startDate, last.endDate ?? today, 10) : [];
   return { items, today, segments: ribbonSegments(items, today), ticks };
 });
+
+export const loadIndicators = cache(async () => listIndicators(await getDb()));
+export const loadIndicatorSeries = cache(async (code: string, vintage?: string) =>
+  getIndicatorSeries(await getDb(), code, vintage ? { vintage } : {}),
+);
+export const loadContextEvents = cache(async () => listContextEvents(await getDb()));

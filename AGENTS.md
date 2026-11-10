@@ -61,3 +61,7 @@ delivered, and how national indicators moved, from 1957 to today. Design spec:
 - Prefer official Ghanaian sources (GSS, BoG, MoF, Presidency, Parliament, Electoral Commission),
   then international organisations (World Bank, IMF, AfDB, UN agencies), then reputable reference
   works. Record URL and retrieval date for every source.
+
+## CI security
+- Pin every GitHub Action to a full commit SHA with the version as a comment; never a bare tag.
+- Workflows default to `permissions: contents: read`; grant more per job only when needed.

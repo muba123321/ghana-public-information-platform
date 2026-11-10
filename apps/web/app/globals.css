@@ -838,3 +838,170 @@ a.explore-link {
 .ribbon-tip span {
   font-family: var(--font-display);
 }
+
+/* Indicators */
+:root {
+  --band-a: rgba(201, 154, 46, 0.16);
+  --band-b: rgba(201, 154, 46, 0.06);
+  --band-military: rgba(138, 106, 62, 0.22);
+  --series: var(--teal);
+  --projection: var(--umber);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --band-a: rgba(232, 211, 161, 0.14);
+    --band-b: rgba(232, 211, 161, 0.05);
+    --band-military: rgba(232, 211, 161, 0.24);
+    --series: #7cc6c5;
+    --projection: var(--gold-soft);
+  }
+}
+.indicator-group {
+  margin-top: 40px;
+}
+.indicator-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--text);
+}
+.indicator-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.indicator-link {
+  display: grid;
+  gap: 2px;
+  text-decoration: none;
+}
+.indicator-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+.indicator-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.sparkline {
+  color: var(--series);
+  flex: none;
+}
+.indicator-page {
+  display: grid;
+  gap: 28px;
+}
+.indicator-page .page-title {
+  margin-top: 0;
+}
+.chart-figure {
+  margin: 0;
+}
+.indicator-chart {
+  width: 100%;
+  height: clamp(280px, 48vw, 460px);
+}
+.chart-figure figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+.legend-item::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 0;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.legend-series::before {
+  border-top: 3px solid var(--series);
+}
+.legend-projection::before {
+  border-top: 3px dashed var(--projection);
+}
+.legend-band::before {
+  height: 12px;
+  background: var(--band-a);
+  border: 1px solid var(--line);
+}
+.legend-event::before {
+  border-top: 2px dotted var(--muted);
+}
+.how-to-read {
+  padding: 18px 20px;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+}
+.how-to-read h2 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+.how-to-read p {
+  max-width: var(--measure);
+  color: var(--muted);
+}
+.event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.event-date {
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin-right: 6px;
+}
+.table-wrap summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--link);
+}
+.series-table {
+  width: 100%;
+  max-width: 560px;
+  border-collapse: collapse;
+  margin-top: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.series-table th,
+.series-table td {
+  text-align: left;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.series-table th {
+  font-family: var(--font-display);
+}
+.series-table td:first-child {
+  font-family: var(--font-display);
+}
+.vintages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  color: var(--muted);
+}
+.vintages a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text);
+}
+.source {
+  display: grid;
+  gap: 6px;
+}
+.legend-points::before {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--series);
+}

@@ -18,6 +18,9 @@ export function SiteHeader() {
               <Link href="/history/administrations">Governments</Link>
             </li>
             <li>
+              <Link href="/history/indicators">Indicators</Link>
+            </li>
+            <li>
               <Link href="/history">Explore</Link>
             </li>
             <li>

@@ -16,7 +16,8 @@
     "format": "biome check --write .",
     "db:migrate": "pnpm --filter @gpip/db db:migrate",
     "db:seed": "pnpm --filter @gpip/db db:seed",
-    "db:generate": "pnpm --filter @gpip/db db:generate"
+    "db:generate": "pnpm --filter @gpip/db db:generate",
+    "ingest": "pnpm --filter @gpip/ingest ingest"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.6",
