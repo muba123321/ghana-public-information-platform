@@ -30,6 +30,7 @@ export async function runImport(
     .insert(importRuns)
     .values({ sourceKey: adapter.sourceKey })
     .returning({ id: importRuns.id });
+  if (!run) throw new Error('could not record import run');
   const catalogue = await db
     .select()
     .from(indicators)
@@ -88,16 +89,14 @@ export async function runImport(
             );
           if (fingerprint(stored) === fingerprint(incoming)) return false;
         }
-        await tx
-          .insert(observations)
-          .values(
-            incoming.map((p) => ({
-              ...p,
-              indicatorCode: ind.code,
-              sourceId: ind.sourceId,
-              vintage: opts.today,
-            })),
-          );
+        await tx.insert(observations).values(
+          incoming.map((p) => ({
+            ...p,
+            indicatorCode: ind.code,
+            sourceId: ind.sourceId,
+            vintage: opts.today,
+          })),
+        );
         return true;
       });
       if (written) result.vintagesWritten++;
@@ -116,6 +115,6 @@ export async function runImport(
       vintagesWritten: result.vintagesWritten,
       error: result.errors.length ? result.errors.join('\n') : null,
     })
-    .where(eq(importRuns.id, run!.id));
+    .where(eq(importRuns.id, run.id));
   return result;
 }
