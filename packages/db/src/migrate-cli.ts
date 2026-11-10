@@ -1,6 +1,5 @@
-import { createDb, migrateDb } from './client.js';
+import { migrateDb, openDb } from './node.ts';
 
-const db = await createDb(process.env.DATABASE_URL);
-await migrateDb(db);
+await migrateDb(await openDb());
 console.log('migrations applied');
 process.exit(0);

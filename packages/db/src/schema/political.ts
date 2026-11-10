@@ -1,8 +1,8 @@
 import { sql } from 'drizzle-orm';
 import { check, date, index, pgTable, serial, text, unique, uuid } from 'drizzle-orm/pg-core';
-import { editorialColumns } from './editorial.js';
-import { administrationKind, leaderRole } from './enums.js';
-import { sources } from './sources.js';
+import { editorialColumns } from './editorial.ts';
+import { administrationKind, leaderRole } from './enums.ts';
+import { sources } from './sources.ts';
 
 export const parties = pgTable('parties', {
   slug: text('slug').primaryKey(),

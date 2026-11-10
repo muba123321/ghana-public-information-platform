@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { inheritedBaseline } from './baseline.js';
-import { annualPeriod } from './period.js';
-import type { Tenure } from './tenure.js';
+import { inheritedBaseline } from './baseline.ts';
+import { annualPeriod } from './period.ts';
+import type { Tenure } from './tenure.ts';
 
 const term: Tenure = { slug: '2017-akufo-addo-i', start: '2017-01-07', end: '2021-01-07' };
 const series = [2017, 2014, 2016, 2015].map((y) => ({ period: annualPeriod(y), value: y }));

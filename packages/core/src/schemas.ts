@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { parseIsoDate } from './period.js';
+import { parseIsoDate } from './period.ts';
 
 export const IsoDateSchema = z.string().refine(
   (s) => {

@@ -1,7 +1,6 @@
-import { createDb, migrateDb } from '../client.js';
-import { seed } from './seed.js';
+import { migrateDb, openDb, seed } from '../node.ts';
 
-const db = await createDb(process.env.DATABASE_URL);
+const db = await openDb();
 await migrateDb(db);
 const result = await seed(db);
 console.log(`seed complete: inserted ${result.inserted}, updated ${result.updated}`);

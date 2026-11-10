@@ -1,5 +1,5 @@
 import { text, timestamp } from 'drizzle-orm/pg-core';
-import { provenance, reviewStatus } from './enums.js';
+import { provenance, reviewStatus } from './enums.ts';
 
 /** Columns shared by every record that passes through editorial review. */
 export const editorialColumns = {

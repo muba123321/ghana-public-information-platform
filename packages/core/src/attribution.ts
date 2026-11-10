@@ -1,6 +1,6 @@
-import type { IsoDate } from './period.js';
-import { overlapDays, type Period, toEpochDay } from './period.js';
-import { type Tenure, tenurePeriod } from './tenure.js';
+import type { IsoDate } from './period.ts';
+import { overlapDays, type Period, toEpochDay } from './period.ts';
+import { type Tenure, tenurePeriod } from './tenure.ts';
 
 export interface Association {
   /** Tenure holding the most days of the period (ties → earlier tenure); null if none. */

@@ -1,8 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import type { Db } from '../client.js';
-import { institutionLineage, institutions, institutionVersions, sources } from '../schema/index.js';
-import { createTestDb } from '../testing.js';
-import { getInstitutionHistory } from './institutions.js';
+import type { Db } from '../client.ts';
+import { institutionLineage, institutions, institutionVersions, sources } from '../schema/index.ts';
+import { createTestDb } from '../testing.ts';
+import { getInstitutionHistory } from './institutions.ts';
 
 let db: Db;
 beforeAll(async () => {

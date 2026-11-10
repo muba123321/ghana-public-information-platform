@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { annualPeriod, overlapDays, parseIsoDate, periodDays } from './period.js';
+import { annualPeriod, overlapDays, parseIsoDate, periodDays } from './period.ts';
 
 describe('period maths', () => {
   it('counts days in a leap year', () => {

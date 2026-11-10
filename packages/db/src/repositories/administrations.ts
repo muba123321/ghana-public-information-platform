@@ -1,13 +1,13 @@
 import type { AdministrationKind, IsoDate, LeaderRole, Tenure } from '@gpip/core';
 import { and, asc, eq, inArray } from 'drizzle-orm';
-import type { Db } from '../client.js';
+import type { Db } from '../client.ts';
 import {
   administrationLeaders,
   administrations,
   parties,
   persons,
   sources,
-} from '../schema/index.js';
+} from '../schema/index.ts';
 
 export interface AdministrationLeader {
   role: LeaderRole;

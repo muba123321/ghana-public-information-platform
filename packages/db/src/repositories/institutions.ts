@@ -1,7 +1,7 @@
 import type { IsoDate } from '@gpip/core';
 import { asc, eq, or } from 'drizzle-orm';
-import type { Db } from '../client.js';
-import { institutionLineage, institutions, institutionVersions } from '../schema/index.js';
+import type { Db } from '../client.ts';
+import { institutionLineage, institutions, institutionVersions } from '../schema/index.ts';
 
 export interface InstitutionHistory {
   slug: string;

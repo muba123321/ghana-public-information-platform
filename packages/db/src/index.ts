@@ -1,5 +1,5 @@
-export * from './client.js';
-export * from './repositories/administrations.js';
-export * from './repositories/institutions.js';
-export * from './schema/index.js';
-export { seed } from './seed/seed.js';
+// Web-safe entry: connection, schema and read repositories only. Scripts use '@gpip/db/node'.
+export * from './client.ts';
+export * from './repositories/administrations.ts';
+export * from './repositories/institutions.ts';
+export * from './schema/index.ts';

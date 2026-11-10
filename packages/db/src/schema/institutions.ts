@@ -1,8 +1,8 @@
 import { sql } from 'drizzle-orm';
 import { check, date, index, pgTable, serial, text, uuid } from 'drizzle-orm/pg-core';
-import { editorialColumns } from './editorial.js';
-import { lineageKind } from './enums.js';
-import { sources } from './sources.js';
+import { editorialColumns } from './editorial.ts';
+import { lineageKind } from './enums.ts';
+import { sources } from './sources.ts';
 
 export const sectors = pgTable('sectors', {
   slug: text('slug').primaryKey(),

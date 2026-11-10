@@ -6,7 +6,7 @@ import {
   SectorSeedSchema,
   SourceSeedSchema,
 } from '@gpip/core';
-import type { Db } from '../client.js';
+import type { Db } from '../client.ts';
 import {
   administrationLeaders,
   administrations,
@@ -14,14 +14,14 @@ import {
   persons,
   sectors,
   sources,
-} from '../schema/index.js';
-import { administrationSeeds } from './data/administrations.js';
-import { leaderSeeds } from './data/leaders.js';
-import { partySeeds } from './data/parties.js';
-import { personSeeds } from './data/persons.js';
-import { sectorSeeds } from './data/sectors.js';
-import { sourceSeeds } from './data/sources.js';
-import { type SyncResult, syncRows } from './sync.js';
+} from '../schema/index.ts';
+import { administrationSeeds } from './data/administrations.ts';
+import { leaderSeeds } from './data/leaders.ts';
+import { partySeeds } from './data/parties.ts';
+import { personSeeds } from './data/persons.ts';
+import { sectorSeeds } from './data/sectors.ts';
+import { sourceSeeds } from './data/sources.ts';
+import { type SyncResult, syncRows } from './sync.ts';
 
 /** Idempotently loads the verified reference data. Safe to run on every deploy. */
 export async function seed(db: Db): Promise<SyncResult> {

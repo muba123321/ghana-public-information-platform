@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { AdministrationSeedSchema, LeaderSeedSchema } from './schemas.js';
+import { AdministrationSeedSchema, LeaderSeedSchema } from './schemas.ts';
 
 const valid = {
   slug: '1993-rawlings-i',

@@ -1,5 +1,5 @@
-import { type Period, toEpochDay } from './period.js';
-import type { Tenure } from './tenure.js';
+import { type Period, toEpochDay } from './period.ts';
+import type { Tenure } from './tenure.ts';
 
 export interface PeriodValue {
   period: Period;

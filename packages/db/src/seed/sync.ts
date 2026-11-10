@@ -1,7 +1,7 @@
 import { and, eq, type SQL } from 'drizzle-orm';
 import type { PgTable } from 'drizzle-orm/pg-core';
-import type { Db } from '../client.js';
-import { changeLog } from '../schema/index.js';
+import type { Db } from '../client.ts';
+import { changeLog } from '../schema/index.ts';
 
 export type Tx = Parameters<Parameters<Db['transaction']>[0]>[0];
 export interface SyncResult {

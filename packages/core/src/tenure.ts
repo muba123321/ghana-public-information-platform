@@ -1,4 +1,4 @@
-import type { IsoDate, Period } from './period.js';
+import type { IsoDate, Period } from './period.ts';
 
 /** An administration's time in office; `end: null` means it is the incumbent. */
 export interface Tenure {

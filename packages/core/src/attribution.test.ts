@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { associate } from './attribution.js';
-import { annualPeriod } from './period.js';
-import type { Tenure } from './tenure.js';
+import { associate } from './attribution.ts';
+import { annualPeriod } from './period.ts';
+import type { Tenure } from './tenure.ts';
 
 const TODAY = '2026-11-09';
 const t: Tenure[] = [

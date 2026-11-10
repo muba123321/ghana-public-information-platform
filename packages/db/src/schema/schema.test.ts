@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import type { Db } from '../client.js';
-import { createTestDb } from '../testing.js';
-import { administrations, institutions, institutionVersions, sources } from './index.js';
+import type { Db } from '../client.ts';
+import { createTestDb } from '../testing.ts';
+import { administrations, institutions, institutionVersions, sources } from './index.ts';
 
 let db: Db;
 let sourceId: string;

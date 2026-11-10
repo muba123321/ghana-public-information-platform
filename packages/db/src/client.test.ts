@@ -3,7 +3,8 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { sql } from 'drizzle-orm';
 import { expect, it } from 'vitest';
-import { createDb, DEFAULT_PGLITE_DIR } from './client.js';
+import { createDb } from './client.ts';
+import { DEFAULT_PGLITE_DIR } from './node.ts';
 
 it('creates missing parent directories for an on-disk PGlite database', async () => {
   const dir = join(mkdtempSync(join(tmpdir(), 'gpip-')), 'nested', 'db');

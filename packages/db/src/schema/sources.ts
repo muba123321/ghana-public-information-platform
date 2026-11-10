@@ -1,5 +1,5 @@
 import { date, pgTable, text, unique, uuid } from 'drizzle-orm/pg-core';
-import { sourceType } from './enums.js';
+import { sourceType } from './enums.ts';
 
 export const sources = pgTable(
   'sources',

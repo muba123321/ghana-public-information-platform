@@ -1,10 +1,10 @@
 import { eq } from 'drizzle-orm';
 import { beforeAll, describe, expect, it } from 'vitest';
-import type { Db } from '../client.js';
-import { administrations } from '../schema/index.js';
-import { seed } from '../seed/seed.js';
-import { createTestDb } from '../testing.js';
-import { getAdministration, listAdministrations, listPersonTenures } from './administrations.js';
+import type { Db } from '../client.ts';
+import { administrations } from '../schema/index.ts';
+import { seed } from '../seed/seed.ts';
+import { createTestDb } from '../testing.ts';
+import { getAdministration, listAdministrations, listPersonTenures } from './administrations.ts';
 
 let db: Db;
 beforeAll(async () => {

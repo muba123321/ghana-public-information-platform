@@ -19,11 +19,14 @@ delivered, and how national indicators moved, from 1957 to today. Design spec:
 ## Architecture and package boundaries
 - `packages/core` — pure domain rules and Zod schemas. **No I/O.** Highest test coverage.
 - `packages/db` — the **only** package that talks to Postgres: Drizzle schema, migrations, seed,
-  repositories.
+  repositories. Entry points: `@gpip/db` (web-safe: client, schema, read repositories),
+  `@gpip/db/node` (migrations, seed, local paths — scripts only), `@gpip/db/testing` (`createTestDb`).
 - `packages/ingest` (Plan 2+) — importers and AI extraction; writes through `db` repositories.
 - `apps/web` — Next.js App Router. Reads data only through `@gpip/db` repositories.
 - Never duplicate a type or rule: import it from `core` (or `db` for row types).
 - Dates are ISO `YYYY-MM-DD` strings; periods are half-open `[start, end)`.
+- Relative imports in packages use explicit `.ts` extensions (`./client.ts`) — works in tsc,
+  tsx, Vitest, Turbopack and Node 24.
 
 ## Code style
 - TypeScript strict, `noUncheckedIndexedAccess`; no `any` without a comment saying why.
