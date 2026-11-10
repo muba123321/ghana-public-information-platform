@@ -1,0 +1,1 @@
+ALTER TABLE "administration_leaders" ADD CONSTRAINT "leaders_natural_key" UNIQUE("administration_slug","person_slug","role","start_date");

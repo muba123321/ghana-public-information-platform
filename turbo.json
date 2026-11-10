@@ -1,0 +1,12 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "globalEnv": ["GPIP_CONTACT_EMAIL"],
+  "globalPassThroughEnv": ["DATABASE_URL", "CI"],
+  "tasks": {
+    "build": { "dependsOn": ["^build"], "outputs": [".next/**", "!.next/cache/**", "dist/**"] },
+    "typecheck": { "dependsOn": ["^typecheck"] },
+    "test": {},
+    "dev": { "cache": false, "persistent": true },
+    "e2e": { "dependsOn": ["build"], "cache": false }
+  }
+}
