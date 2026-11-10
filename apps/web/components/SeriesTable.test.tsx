@@ -51,3 +51,11 @@ it('draws nothing for an empty series', () => {
   const { container } = render(<Sparkline values={[]} label="Empty" />);
   expect(container.querySelector('path')).toBeNull();
 });
+
+it('draws sparse series as dots, not a joined line', () => {
+  const { container } = render(
+    <Sparkline values={[50, null, null, 40, null, 30]} label="Poverty" sparse />,
+  );
+  expect(container.querySelectorAll('circle')).toHaveLength(3);
+  expect(container.querySelector('path')).toBeNull();
+});

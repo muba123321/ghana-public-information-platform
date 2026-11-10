@@ -101,8 +101,10 @@ export function IndicatorChart({ model, name, unit }: Props) {
             type: model.sparse ? 'scatter' : 'line',
             data: model.actual,
             connectNulls: false,
-            showSymbol: model.sparse,
-            symbolSize: 9,
+            // Dots for survey-only series and for values with gaps on both sides (else invisible).
+            showSymbol: true,
+            symbolSize: (_v: unknown, p: { dataIndex: number }) =>
+              model.sparse ? 9 : model.isolated[p.dataIndex] ? 6 : 0,
             lineStyle: { width: 2.5, color: series },
             itemStyle: { color: series },
             markArea: {
@@ -132,7 +134,12 @@ export function IndicatorChart({ model, name, unit }: Props) {
                   type: 'line',
                   data: model.projected,
                   connectNulls: false,
-                  showSymbol: false,
+                  showSymbol: true,
+                  symbolSize: (_v: unknown, p: { dataIndex: number }) =>
+                    model.projected[p.dataIndex - 1] == null &&
+                    model.projected[p.dataIndex + 1] == null
+                      ? 5
+                      : 0,
                   lineStyle: { width: 2, type: 'dashed', color: projection },
                   itemStyle: { color: projection },
                 },

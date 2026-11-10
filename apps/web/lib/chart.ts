@@ -17,6 +17,8 @@ export interface ChartModel {
   /** Projections only, aligned to `years`; drawn dashed and labelled. */
   projected: (number | null)[];
   hasProjection: boolean;
+  /** Actual values with no neighbour on either side — drawn as dots so they never vanish. */
+  isolated: boolean[];
   bands: ChartBand[];
   events: { year: string; title: string }[];
   /** Fewer than half the years have values (e.g. survey data): draw points, not a line. */
@@ -41,6 +43,7 @@ export function buildChartModel(
       actual: [],
       projected: [],
       hasProjection: false,
+      isolated: [],
       bands: [],
       events: [],
       sparse: false,
@@ -77,6 +80,9 @@ export function buildChartModel(
     actual,
     projected,
     hasProjection: projected.some((v) => v !== null),
+    isolated: actual.map(
+      (v, i) => v !== null && (actual[i - 1] ?? null) === null && (actual[i + 1] ?? null) === null,
+    ),
     bands,
     events: events
       .filter((e) => yearOf(e.date) >= first && yearOf(e.date) <= last)

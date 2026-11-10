@@ -10,8 +10,8 @@ interface WbMeta {
   pages: number;
 }
 interface WbRow {
-  date: string;
-  value: number | null;
+  date: unknown;
+  value: unknown;
 }
 
 function parsePage(body: unknown): { meta: WbMeta; rows: WbRow[] } {
@@ -28,6 +28,17 @@ function parsePage(body: unknown): { meta: WbMeta; rows: WbRow[] } {
   };
 }
 
+/** A usable annual value, or null for missing/malformed rows (never stored, never zero). */
+export function toPoint(
+  year: unknown,
+  value: unknown,
+  estimateType: RawPoint['estimateType'],
+): RawPoint | null {
+  if (typeof year !== 'string' || !/^\d{4}$/.test(year)) return null;
+  if (typeof value !== 'number' || !Number.isFinite(value)) return null;
+  return { year, value, estimateType };
+}
+
 /** World Development Indicators for Ghana; follows pagination, omits years with no value. */
 export function createWorldBankAdapter(get: GetJson = (u) => fetchJson(u)): SourceAdapter {
   return {
@@ -42,8 +53,8 @@ export function createWorldBankAdapter(get: GetJson = (u) => fetchJson(u)): Sour
         );
         pages = parsed.meta.pages;
         for (const r of parsed.rows) {
-          if (r.value === null || r.value === undefined) continue;
-          points.push({ year: r.date, value: Number(r.value), estimateType: defaultEstimateType });
+          const point = toPoint(r.date, r.value, defaultEstimateType);
+          if (point) points.push(point);
         }
       }
       return points.sort((a, b) => a.year.localeCompare(b.year));

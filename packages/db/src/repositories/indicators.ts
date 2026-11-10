@@ -1,5 +1,5 @@
 import type { EstimateType, IsoDate, ObservationPoint, Period } from '@gpip/core';
-import { and, asc, desc, eq, gte, lt, max, min, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, gte, lt, max, min, ne, sql } from 'drizzle-orm';
 import type { Db } from '../client.ts';
 import { contextEvents, indicators, observations, sectors, sources } from '../schema/index.ts';
 
@@ -44,7 +44,51 @@ export interface ContextEvent {
 
 const published = eq(indicators.reviewStatus, 'published');
 
-/** Published indicators with the years their data covers (any vintage). */
+/**
+ * Year coverage per indicator: actual (non-projected) values in the latest vintage of the
+ * indicator's own source — forecasts and superseded releases never widen the range.
+ */
+async function coverage(
+  db: Db,
+  code?: string,
+): Promise<Map<string, { firstYear: number; lastYear: number }>> {
+  const rows = await db
+    .select({
+      code: observations.indicatorCode,
+      sourceId: observations.sourceId,
+      vintage: observations.vintage,
+      first: min(observations.periodStart),
+      last: max(observations.periodStart),
+    })
+    .from(observations)
+    .innerJoin(
+      indicators,
+      and(
+        eq(observations.indicatorCode, indicators.code),
+        eq(observations.sourceId, indicators.sourceId),
+      ),
+    )
+    .where(
+      and(
+        ne(observations.estimateType, 'projected'),
+        code ? eq(observations.indicatorCode, code) : undefined,
+      ),
+    )
+    .groupBy(observations.indicatorCode, observations.sourceId, observations.vintage);
+  const latest = new Map<string, (typeof rows)[number]>();
+  for (const r of rows) {
+    const cur = latest.get(r.code);
+    if (!cur || r.vintage > cur.vintage) latest.set(r.code, r);
+  }
+  return new Map(
+    [...latest].map(([c, r]) => [
+      c,
+      { firstYear: Number(r.first?.slice(0, 4)), lastYear: Number(r.last?.slice(0, 4)) },
+    ]),
+  );
+}
+
+/** Published indicators with the years their current data covers. */
 export async function listIndicators(db: Db): Promise<IndicatorSummary[]> {
   const rows = await db
     .select({
@@ -55,19 +99,16 @@ export async function listIndicators(db: Db): Promise<IndicatorSummary[]> {
       sectorSlug: indicators.sectorSlug,
       sectorName: sectors.name,
       estimateType: indicators.estimateType,
-      first: min(observations.periodStart),
-      last: max(observations.periodStart),
     })
     .from(indicators)
     .innerJoin(sectors, eq(indicators.sectorSlug, sectors.slug))
-    .leftJoin(observations, eq(observations.indicatorCode, indicators.code))
     .where(published)
-    .groupBy(indicators.code, sectors.name)
     .orderBy(asc(indicators.sectorSlug), asc(indicators.name));
-  return rows.map(({ first, last, ...r }) => ({
+  const cov = await coverage(db);
+  return rows.map((r) => ({
     ...r,
-    firstYear: first ? Number(first.slice(0, 4)) : null,
-    lastYear: last ? Number(last.slice(0, 4)) : null,
+    firstYear: cov.get(r.code)?.firstYear ?? null,
+    lastYear: cov.get(r.code)?.lastYear ?? null,
   }));
 }
 
@@ -88,6 +129,7 @@ export async function getIndicatorSeries(
       methodology: indicators.methodology,
       seriesCode: indicators.seriesCode,
       sourceKey: indicators.sourceKey,
+      sourceId: indicators.sourceId,
       publisher: sources.publisher,
       sourceTitle: sources.title,
       url: sources.url,
@@ -104,7 +146,7 @@ export async function getIndicatorSeries(
     await db
       .selectDistinct({ vintage: observations.vintage })
       .from(observations)
-      .where(eq(observations.indicatorCode, code))
+      .where(and(eq(observations.indicatorCode, code), eq(observations.sourceId, row.sourceId)))
       .orderBy(desc(observations.vintage))
   ).map((v) => v.vintage);
   const vintage =
@@ -115,7 +157,13 @@ export async function getIndicatorSeries(
         await db
           .select()
           .from(observations)
-          .where(and(eq(observations.indicatorCode, code), eq(observations.vintage, vintage)))
+          .where(
+            and(
+              eq(observations.indicatorCode, code),
+              eq(observations.sourceId, row.sourceId),
+              eq(observations.vintage, vintage),
+            ),
+          )
           .orderBy(asc(observations.periodStart))
       ).map((o) => ({
         period: { start: o.periodStart, end: o.periodEnd },
@@ -134,9 +182,12 @@ export async function getIndicatorSeries(
     methodology,
     seriesCode,
     sourceKey,
+    sourceId: _sourceId,
     ...summary
   } = row;
-  const years = points.map((p) => Number(p.period.start.slice(0, 4)));
+  const years = points
+    .filter((p) => p.estimateType !== 'projected')
+    .map((p) => Number(p.period.start.slice(0, 4)));
   return {
     indicator: {
       ...summary,

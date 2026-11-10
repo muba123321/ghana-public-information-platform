@@ -19,6 +19,7 @@ const same = (a: unknown, b: unknown) => (a ?? null) === (b ?? null);
  * seeded columns differ, leaves identical rows untouched, and appends every change to change_log.
  * With `prune`, rows absent from `rows` are deleted (and logged): use it for tables the seed owns
  * completely, where a corrected natural key would otherwise leave a stale duplicate behind.
+ * With `retire`, absent rows are instead updated with those values (e.g. unpublished).
  */
 export async function syncRows(
   tx: Tx,
@@ -26,7 +27,7 @@ export async function syncRows(
   tableName: string,
   keyCols: readonly string[],
   rows: readonly Row[],
-  { prune = false }: { prune?: boolean } = {},
+  { prune = false, retire }: { prune?: boolean; retire?: Row } = {},
 ): Promise<SyncResult> {
   // biome-ignore lint/suspicious/noExplicitAny: column lookup by name across heterogeneous tables
   const cols = table as any;
@@ -35,8 +36,24 @@ export async function syncRows(
   const result: SyncResult = { inserted: 0, updated: 0, deleted: 0 };
   const whereKey = (r: Row) => and(...keyCols.map((c) => eq(cols[c], r[c]))) as SQL;
 
+  const wanted = new Set(rows.map(keyOf));
+  if (retire) {
+    // Rows other records depend on (e.g. observations) are retired, not deleted.
+    for (const [key, before] of existing) {
+      if (wanted.has(key) || Object.keys(retire).every((c) => same(retire[c], before[c]))) continue;
+      await tx.update(table).set(retire).where(whereKey(before));
+      await tx.insert(changeLog).values({
+        entityTable: tableName,
+        entityKey: key,
+        action: 'update',
+        before,
+        after: { ...before, ...retire },
+        changedBy: 'seed',
+      });
+      result.updated++;
+    }
+  }
   if (prune) {
-    const wanted = new Set(rows.map(keyOf));
     for (const [key, before] of existing) {
       if (wanted.has(key)) continue;
       await tx.delete(table).where(whereKey(before));

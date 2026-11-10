@@ -143,3 +143,16 @@ describe('indicator catalogue and context events', () => {
     for (const e of events) expect(e.source.url).toMatch(/^https:\/\//);
   });
 });
+
+describe('catalogue changes', () => {
+  it('retires an indicator removed from the catalogue instead of leaving it published', async () => {
+    await seed(db);
+    await seed(db, {
+      ...defaultSeedData,
+      indicators: defaultSeedData.indicators.filter((i) => i.code !== 'poverty'),
+    });
+    expect((await listIndicators(db)).map((i) => i.code)).not.toContain('poverty');
+    const [row] = await db.select().from(indicators).where(eq(indicators.code, 'poverty'));
+    expect(row!.reviewStatus).toBe('rejected');
+  });
+});

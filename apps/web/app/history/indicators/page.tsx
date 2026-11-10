@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Sparkline } from '../../../components/Sparkline';
+import { buildChartModel } from '../../../lib/chart';
 import { loadIndicatorSeries, loadIndicators } from '../../../lib/data';
+import { todayIso } from '../../../lib/format';
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'National indicators' };
@@ -13,6 +15,7 @@ export default async function IndicatorsPage() {
       indicators.map(async (i) => [i.code, await loadIndicatorSeries(i.code)] as const),
     ),
   );
+  const today = todayIso();
   const sectors = [...new Map(indicators.map((i) => [i.sectorSlug, i.sectorName])).entries()];
 
   return (
@@ -31,10 +34,8 @@ export default async function IndicatorsPage() {
             {indicators
               .filter((i) => i.sectorSlug === slug)
               .map((i) => {
-                const points = series.get(i.code)?.points ?? [];
-                const values = points
-                  .filter((p) => p.estimateType !== 'projected')
-                  .map((p) => p.value);
+                // Year-aligned values: gaps stay gaps, projections are excluded.
+                const model = buildChartModel(series.get(i.code)?.points ?? [], [], [], today);
                 return (
                   <li key={i.code}>
                     <Link href={`/history/indicators/${i.code}`} className="indicator-link">
@@ -44,7 +45,11 @@ export default async function IndicatorsPage() {
                         {i.firstYear ? `, ${i.firstYear}–${i.lastYear}` : ', not yet imported'}
                       </span>
                     </Link>
-                    <Sparkline values={values} label={`${i.name} trend`} />
+                    <Sparkline
+                      values={model.actual}
+                      sparse={model.sparse}
+                      label={`${i.name} trend`}
+                    />
                   </li>
                 );
               })}

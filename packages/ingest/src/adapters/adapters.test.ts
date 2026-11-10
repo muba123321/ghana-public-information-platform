@@ -81,3 +81,43 @@ describe('fixtureGetter', () => {
     expect(await createImfAdapter('imf-weo', get).fetch('NOFIXTURE', ctx)).toEqual([]);
   });
 });
+
+describe('malformed upstream rows', () => {
+  it('skips World Bank rows with a bad year or non-numeric value', async () => {
+    const wb = createWorldBankAdapter(async () => [
+      { page: 1, pages: 1 },
+      [
+        { date: '2020', value: 1.5 },
+        { date: '2021Q1', value: 2 },
+        { date: '2022', value: 'n/a' },
+        { date: '2023', value: null },
+      ],
+    ]);
+    expect(await wb.fetch('X', ctx)).toEqual([
+      { year: '2020', value: 1.5, estimateType: 'reported' },
+    ]);
+  });
+
+  it('skips non-numeric IMF values', async () => {
+    const imf = createImfAdapter('imf-fpp', async () => ({
+      values: { rev: { GHA: { '2020': 12, '2021': 'x' } } },
+    }));
+    expect((await imf.fetch('rev', ctx)).map((p) => p.year)).toEqual(['2020']);
+  });
+});
+
+describe('WEO edition boundary', () => {
+  it('still treats last year as projected in January–April (the October edition is current)', async () => {
+    const imf = createImfAdapter('imf-weo', async () => ({
+      values: { X: { GHA: { '2025': 1, '2026': 2, '2027': 3 } } },
+    }));
+    const jan = await imf.fetch('X', { ...ctx, today: '2027-01-15' });
+    expect(jan.map((p) => [p.year, p.estimateType])).toEqual([
+      ['2025', 'reported'],
+      ['2026', 'projected'],
+      ['2027', 'projected'],
+    ]);
+    const may = await imf.fetch('X', { ...ctx, today: '2027-05-20' });
+    expect(may.find((p) => p.year === '2026')?.estimateType).toBe('reported');
+  });
+});

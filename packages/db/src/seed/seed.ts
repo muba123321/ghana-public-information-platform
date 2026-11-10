@@ -163,6 +163,7 @@ export async function seed(db: Db, data: SeedData = defaultSeedData): Promise<Sy
             reviewStatus: 'published',
             provenance: 'manual',
           })),
+        { retire: { reviewStatus: 'rejected' } },
       ),
     );
     add(

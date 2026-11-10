@@ -140,3 +140,34 @@ describe('indicator repository', () => {
     ).toEqual(['2020-03-11']);
   });
 });
+
+describe('indicator repository — source and coverage rules', () => {
+  it("only uses the indicator's current source, even when another source has a newer vintage", async () => {
+    const [other] = await db
+      .insert(sources)
+      .values({
+        publisher: 'Other',
+        title: 'Other dataset',
+        url: 'https://other.example',
+        sourceType: 'dataset',
+        retrievedOn: '2026-12-01',
+      })
+      .returning();
+    await db.insert(observations).values({ ...obs(2018, 99, '2026-12-01'), sourceId: other!.id });
+    const s = await getIndicatorSeries(db, 'inflation');
+    expect(s!.vintage).toBe('2026-11-10');
+    expect(s!.vintages).toEqual(['2026-11-10', '2026-01-01']);
+    expect(s!.points.map((p) => p.value)).toEqual([17.2, null, 12.4]);
+  });
+
+  it('reports year coverage from the latest vintage, excluding projections', async () => {
+    await db
+      .insert(observations)
+      .values([obs(2030, 5, '2026-11-10', 'projected'), obs(2010, 9, '2026-01-01')]);
+    expect((await listIndicators(db))[0]).toMatchObject({ firstYear: 2015, lastYear: 2017 });
+    expect((await getIndicatorSeries(db, 'inflation'))!.indicator).toMatchObject({
+      firstYear: 2015,
+      lastYear: 2017,
+    });
+  });
+});

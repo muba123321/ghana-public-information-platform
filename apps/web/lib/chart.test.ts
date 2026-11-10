@@ -96,3 +96,20 @@ describe('buildChartModel', () => {
     });
   });
 });
+
+describe('isolated values', () => {
+  it('marks values with gaps on both sides so they can be drawn as dots', () => {
+    const m = buildChartModel(
+      [pt(2020, 1), pt(2021, 2), pt(2022, 3), pt(2024, 5)],
+      admins,
+      [],
+      TODAY,
+    );
+    expect(m.isolated).toEqual([false, false, false, false, true]);
+  });
+
+  it('treats a series end next to a gap as isolated', () => {
+    const m = buildChartModel([pt(2020, 1), pt(2022, 3), pt(2023, 4)], admins, [], TODAY);
+    expect(m.isolated).toEqual([true, false, false, false]);
+  });
+});
