@@ -1,5 +1,12 @@
 .DS_Store
 node_modules/
+.next/
+dist/
+coverage/
+playwright-report/
+test-results/
+.turbo/
 .data/
 .env*
+!.env.example
 .superpowers/
