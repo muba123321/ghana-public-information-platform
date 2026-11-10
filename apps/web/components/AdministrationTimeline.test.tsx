@@ -81,3 +81,16 @@ it('never derives styling from the party', () => {
     expect(attrs).not.toMatch(/\b(ndc|npp)\b/);
   }
 });
+
+it('labels by kind, so a transitional government is never called military', () => {
+  const transitional: AdministrationSummary = {
+    ...items[0]!,
+    slug: 't',
+    name: 'Transitional',
+    kind: 'transitional',
+    party: null,
+  };
+  render(<AdministrationTimeline items={[transitional]} />);
+  expect(screen.getByText('Transitional government')).toBeInTheDocument();
+  expect(screen.queryByText('Military government')).toBeNull();
+});
