@@ -6,9 +6,9 @@ export const metadata: Metadata = { title: 'Data notice & disclaimer' };
 export default function DataNoticePage() {
   const contact = process.env.GPIP_CONTACT_EMAIL;
   return (
-    <>
-      <h1>Data notice &amp; disclaimer</h1>
-      <p className="lede">
+    <div className="container page prose">
+      <h1 className="page-title">Data notice &amp; disclaimer</h1>
+      <p className="page-lede">
         All information on this platform is compiled from publicly available sources. This page
         explains what that means and how to ask for a correction.
       </p>
@@ -62,6 +62,6 @@ export default function DataNoticePage() {
           <NotAvailable what="Contact address" />
         )}
       </p>
-    </>
+    </div>
   );
 }

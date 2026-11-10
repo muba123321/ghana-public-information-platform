@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SankofaMark } from './SankofaMark';
 
 /** Owner-approved wording (spec §11 item 10). Do not paraphrase. */
 export const FOOTER_NOTICE =
@@ -7,10 +8,18 @@ export const FOOTER_NOTICE =
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <p>{FOOTER_NOTICE}</p>
-      <p>
-        <Link href="/data-notice">Data notice &amp; disclaimer</Link>
-      </p>
+      <div className="container site-footer-inner">
+        <SankofaMark size={40} />
+        <div>
+          <p className="footer-notice">{FOOTER_NOTICE}</p>
+          <p className="footer-links">
+            <Link href="/data-notice">Data notice &amp; disclaimer</Link>
+            <a href="https://github.com/muba123321/ghana-public-information-platform">
+              Open source on GitHub
+            </a>
+          </p>
+        </div>
+      </div>
     </footer>
   );
 }
