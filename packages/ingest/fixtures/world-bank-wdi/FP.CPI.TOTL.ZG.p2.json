@@ -1,0 +1,272 @@
+[
+  {
+    "page": 2,
+    "pages": 2,
+    "per_page": 40,
+    "total": 66,
+    "sourceid": "2",
+    "lastupdated": "2026-10-08"
+  },
+  [
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1985",
+      "value": 10.3054406698295,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1984",
+      "value": 39.6653137947267,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1983",
+      "value": 122.874514572592,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1982",
+      "value": 22.2955664080893,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1981",
+      "value": 116.503603996541,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1980",
+      "value": 50.0701393436364,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1979",
+      "value": 54.4412883345616,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1978",
+      "value": 73.091666667343,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1977",
+      "value": 116.450216453638,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1976",
+      "value": 56.0810810829755,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1975",
+      "value": 29.8245614048168,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1974",
+      "value": 18.1347150268463,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1973",
+      "value": 17.682926823171,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1972",
+      "value": 10.0671140939594,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1971",
+      "value": 9.55882353746772,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1970",
+      "value": 3.03030303053265,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1969",
+      "value": 7.31707316260124,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1968",
+      "value": 7.89473684210539,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1967",
+      "value": -8.42248589780283,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1966",
+      "value": 13.2378854626538,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1965",
+      "value": 26.4447848490173,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1964",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1963",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1962",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1961",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": { "id": "FP.CPI.TOTL.ZG", "value": "Inflation, consumer prices (annual %)" },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1960",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    }
+  ]
+]

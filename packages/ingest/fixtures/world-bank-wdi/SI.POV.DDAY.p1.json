@@ -1,0 +1,870 @@
+[
+  {
+    "page": 1,
+    "pages": 1,
+    "per_page": 100,
+    "total": 66,
+    "sourceid": "2",
+    "lastupdated": "2026-10-08"
+  },
+  [
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2025",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2024",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2023",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2022",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2021",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2020",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2019",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2018",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2017",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2016",
+      "value": 39,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2015",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2014",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2013",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2012",
+      "value": 41.8,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2011",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2010",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2009",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2008",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2007",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2006",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2005",
+      "value": 60.9,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2004",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2003",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2002",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2001",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "2000",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1999",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1998",
+      "value": 65.3,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1997",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1996",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1995",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1994",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1993",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1992",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1991",
+      "value": 80.4,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1990",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1989",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1988",
+      "value": 77.4,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1987",
+      "value": 78.2,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1986",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1985",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1984",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1983",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1982",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1981",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1980",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1979",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1978",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1977",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1976",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1975",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1974",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1973",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1972",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1971",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1970",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1969",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1968",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1967",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1966",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1965",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1964",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1963",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1962",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1961",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SI.POV.DDAY",
+        "value": "Poverty headcount ratio at $3.00 a day (2021 PPP) (% of population)"
+      },
+      "country": { "id": "GH", "value": "Ghana" },
+      "countryiso3code": "GHA",
+      "date": "1960",
+      "value": null,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    }
+  ]
+]

@@ -77,3 +77,17 @@ describe('runImport', () => {
     expect(r).toMatchObject({ status: 'ok', vintagesWritten: 0 });
   });
 });
+
+describe('runImport with recorded World Bank data', () => {
+  it('imports the full inflation series through the real adapter', async () => {
+    const { fixtureGetter } = await import('./adapters/fixtures.ts');
+    const { createWorldBankAdapter } = await import('./adapters/worldbank.ts');
+    const dir = new URL('../fixtures', import.meta.url).pathname;
+    const r = await runImport(db, createWorldBankAdapter(fixtureGetter(dir)), {
+      today: '2026-11-10',
+    });
+    expect(r.status).toBe('ok');
+    expect(await count('inflation')).toBe(61);
+    expect(await count('poverty')).toBe(7);
+  });
+});
