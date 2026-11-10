@@ -1,10 +1,10 @@
 import { eq } from 'drizzle-orm';
 import { beforeEach, describe, expect, it } from 'vitest';
 import type { Db } from '../client.ts';
-import { listAdministrations } from '../repositories/administrations.ts';
+import { getAdministration, listAdministrations } from '../repositories/administrations.ts';
 import { administrations, changeLog, sources } from '../schema/index.ts';
 import { createTestDb } from '../testing.ts';
-import { seed } from './seed.ts';
+import { defaultSeedData, seed } from './seed.ts';
 
 let db: Db;
 beforeEach(async () => {
@@ -21,7 +21,7 @@ describe('seed', () => {
     const first = await seed(db);
     const second = await seed(db);
     expect(first.inserted).toBeGreaterThan(19);
-    expect(second).toEqual({ inserted: 0, updated: 0 });
+    expect(second).toEqual({ inserted: 0, updated: 0, deleted: 0 });
     expect(await listAdministrations(db)).toHaveLength(19);
   });
 
@@ -61,5 +61,46 @@ describe('seed', () => {
         if (a.endDate) expect((l.endDate ?? a.endDate) <= a.endDate).toBe(true);
       }
     }
+  });
+});
+
+describe('seed corrections', () => {
+  it('replaces a leader whose start date is corrected instead of duplicating it', async () => {
+    await seed(db);
+    const corrected = {
+      ...defaultSeedData,
+      leaders: defaultSeedData.leaders.map((l) =>
+        l.personSlug === 'kofi-abrefa-busia' ? { ...l, startDate: '1969-10-02' } : l,
+      ),
+    };
+    const result = await seed(db, corrected);
+    const busia = (await getAdministration(db, '1969-second-republic'))!.leaders.filter(
+      (l) => l.personSlug === 'kofi-abrefa-busia',
+    );
+    expect(busia.map((l) => l.startDate)).toEqual(['1969-10-02']);
+    expect(result).toEqual({ inserted: 1, updated: 0, deleted: 1 });
+    const deletions = await db.select().from(changeLog).where(eq(changeLog.action, 'delete'));
+    expect(deletions).toHaveLength(1);
+  });
+
+  it('can move an administration boundary later', async () => {
+    await seed(db);
+    const moved = {
+      ...defaultSeedData,
+      administrations: defaultSeedData.administrations.map((a) =>
+        a.slug === '1966-nlc'
+          ? { ...a, endDate: '1969-10-03' }
+          : a.slug === '1969-second-republic'
+            ? { ...a, startDate: '1969-10-03' }
+            : a,
+      ),
+      leaders: defaultSeedData.leaders.map((l) =>
+        l.administrationSlug === '1969-second-republic' && l.startDate === '1969-10-01'
+          ? { ...l, startDate: '1969-10-03' }
+          : l,
+      ),
+    };
+    await expect(seed(db, moved)).resolves.toMatchObject({ updated: 2 });
+    expect((await getAdministration(db, '1966-nlc'))!.endDate).toBe('1969-10-03');
   });
 });

@@ -1,9 +1,15 @@
 import {
+  type AdministrationSeed,
   AdministrationSeedSchema,
+  type LeaderSeed,
   LeaderSeedSchema,
+  type PartySeed,
   PartySeedSchema,
+  type PersonSeed,
   PersonSeedSchema,
+  type SectorSeed,
   SectorSeedSchema,
+  type SourceSeed,
   SourceSeedSchema,
 } from '@gpip/core';
 import type { Db } from '../client.ts';
@@ -23,17 +29,36 @@ import { sectorSeeds } from './data/sectors.ts';
 import { sourceSeeds } from './data/sources.ts';
 import { type SyncResult, syncRows } from './sync.ts';
 
+export interface SeedData {
+  sources: SourceSeed[];
+  parties: PartySeed[];
+  persons: PersonSeed[];
+  sectors: SectorSeed[];
+  administrations: AdministrationSeed[];
+  leaders: LeaderSeed[];
+}
+
+export const defaultSeedData: SeedData = {
+  sources: sourceSeeds,
+  parties: partySeeds,
+  persons: personSeeds,
+  sectors: sectorSeeds,
+  administrations: administrationSeeds,
+  leaders: leaderSeeds,
+};
+
 /** Idempotently loads the verified reference data. Safe to run on every deploy. */
-export async function seed(db: Db): Promise<SyncResult> {
-  const src = sourceSeeds.map((s) => SourceSeedSchema.parse(s));
-  const admins = administrationSeeds.map((a) => AdministrationSeedSchema.parse(a));
-  const leaders = leaderSeeds.map((l) => LeaderSeedSchema.parse(l));
+export async function seed(db: Db, data: SeedData = defaultSeedData): Promise<SyncResult> {
+  const src = data.sources.map((s) => SourceSeedSchema.parse(s));
+  const admins = data.administrations.map((a) => AdministrationSeedSchema.parse(a));
+  const leaders = data.leaders.map((l) => LeaderSeedSchema.parse(l));
 
   return db.transaction(async (tx) => {
-    const total: SyncResult = { inserted: 0, updated: 0 };
+    const total: SyncResult = { inserted: 0, updated: 0, deleted: 0 };
     const add = (r: SyncResult) => {
       total.inserted += r.inserted;
       total.updated += r.updated;
+      total.deleted += r.deleted;
     };
 
     add(
@@ -61,7 +86,7 @@ export async function seed(db: Db): Promise<SyncResult> {
         parties,
         'parties',
         ['slug'],
-        partySeeds.map((p) => PartySeedSchema.parse(p)),
+        data.parties.map((p) => PartySeedSchema.parse(p)),
       ),
     );
     add(
@@ -70,7 +95,7 @@ export async function seed(db: Db): Promise<SyncResult> {
         persons,
         'persons',
         ['slug'],
-        personSeeds.map((p) => PersonSeedSchema.parse(p)),
+        data.persons.map((p) => PersonSeedSchema.parse(p)),
       ),
     );
     add(
@@ -79,7 +104,7 @@ export async function seed(db: Db): Promise<SyncResult> {
         sectors,
         'sectors',
         ['slug'],
-        sectorSeeds.map((s) => SectorSeedSchema.parse(s)),
+        data.sectors.map((s) => SectorSeedSchema.parse(s)),
       ),
     );
     add(
@@ -108,6 +133,7 @@ export async function seed(db: Db): Promise<SyncResult> {
           label: label ?? null,
           sourceId: sourceId(sourceKey),
         })),
+        { prune: true },
       ),
     );
     return total;

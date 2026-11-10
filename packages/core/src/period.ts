@@ -42,3 +42,22 @@ export function overlapDays(a: Period, b: Period): number {
 export function annualPeriod(year: number): Period {
   return { start: `${year}-01-01`, end: `${year + 1}-01-01` };
 }
+
+export type Frequency = 'annual' | 'quarterly' | 'monthly';
+
+const MONTHS: Record<Frequency, number> = { annual: 12, quarterly: 3, monthly: 1 };
+const pad = (n: number) => String(n).padStart(2, '0');
+
+/** Start of the reporting period (of the given frequency) that contains `d`. */
+export function periodStartContaining(d: IsoDate, frequency: Frequency): IsoDate {
+  const step = MONTHS[frequency];
+  const month0 = Math.floor((Number(d.slice(5, 7)) - 1) / step) * step;
+  return `${d.slice(0, 4)}-${pad(month0 + 1)}-01`;
+}
+
+/** The complete reporting period of the given frequency that ends exactly at `boundary`. */
+export function periodEndingAt(boundary: IsoDate, frequency: Frequency): Period {
+  const total =
+    Number(boundary.slice(0, 4)) * 12 + Number(boundary.slice(5, 7)) - 1 - MONTHS[frequency];
+  return { start: `${Math.floor(total / 12)}-${pad((total % 12) + 1)}-01`, end: boundary };
+}

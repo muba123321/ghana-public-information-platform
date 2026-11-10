@@ -8,11 +8,11 @@ const series = [2017, 2014, 2016, 2015].map((y) => ({ period: annualPeriod(y), v
 
 describe('inheritedBaseline', () => {
   it('is the last complete period ending on the start date', () => {
-    expect(inheritedBaseline({ ...term, start: '2017-01-01' }, series)?.value).toBe(2016);
+    expect(inheritedBaseline({ ...term, start: '2017-01-01' }, series, 'annual')?.value).toBe(2016);
   });
 
   it('excludes a period still running when the tenure starts', () => {
-    expect(inheritedBaseline(term, series)?.value).toBe(2016);
+    expect(inheritedBaseline(term, series, 'annual')?.value).toBe(2016);
   });
 
   it('returns the prior period with null value rather than skipping back', () => {
@@ -20,10 +20,40 @@ describe('inheritedBaseline', () => {
       { period: annualPeriod(2015), value: 5 },
       { period: annualPeriod(2016), value: null },
     ];
-    expect(inheritedBaseline(term, s)).toEqual({ period: annualPeriod(2016), value: null });
+    expect(inheritedBaseline(term, s, 'annual')).toEqual({
+      period: annualPeriod(2016),
+      value: null,
+    });
   });
 
   it('returns null when the series starts after the tenure', () => {
-    expect(inheritedBaseline(term, [{ period: annualPeriod(2018), value: 1 }])).toBeNull();
+    expect(
+      inheritedBaseline(term, [{ period: annualPeriod(2018), value: 1 }], 'annual'),
+    ).toBeNull();
+  });
+});
+
+describe('inheritedBaseline with gaps in the series', () => {
+  it('returns the expected prior year as not available when that row is absent', () => {
+    const gappy = [2014, 2015].map((y) => ({ period: annualPeriod(y), value: y }));
+    expect(inheritedBaseline(term, gappy, 'annual')).toEqual({
+      period: annualPeriod(2016),
+      value: null,
+    });
+  });
+
+  it('uses the prior quarter for quarterly series', () => {
+    const q = (start: string, end: string, value: number) => ({ period: { start, end }, value });
+    const series = [q('2016-07-01', '2016-10-01', 1), q('2016-10-01', '2017-01-01', 2)];
+    expect(inheritedBaseline(term, series, 'quarterly')?.value).toBe(2);
+    expect(inheritedBaseline({ ...term, start: '2017-04-10' }, series, 'quarterly')).toEqual({
+      period: { start: '2017-01-01', end: '2017-04-01' },
+      value: null,
+    });
+  });
+
+  it('uses the prior month for monthly series', () => {
+    const series = [{ period: { start: '2016-12-01', end: '2017-01-01' }, value: 7 }];
+    expect(inheritedBaseline(term, series, 'monthly')?.value).toBe(7);
   });
 });
