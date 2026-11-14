@@ -139,3 +139,13 @@ export const ExtractedCommitmentSchema = z.object({
 export const ExtractionResultSchema = z.object({ commitments: z.array(ExtractedCommitmentSchema) });
 export type ExtractedCommitment = z.infer<typeof ExtractedCommitmentSchema>;
 export type ExtractionResult = z.infer<typeof ExtractionResultSchema>;
+
+export const InstitutionSeedSchema = z.object({
+  slug,
+  kind: z.enum(['ministry', 'agency', 'department']),
+  name: z.string().min(1),
+  sectorSlug: slug,
+  validFrom: IsoDateSchema,
+  sourceKey: slug,
+});
+export type InstitutionSeed = z.infer<typeof InstitutionSeedSchema>;

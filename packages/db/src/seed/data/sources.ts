@@ -132,4 +132,13 @@ export const sourceSeeds: SourceSeed[] = [
     retrievedOn: '2026-11-10',
     licence: null,
   },
+  {
+    key: 'ei-2025-1',
+    publisher: 'Government of Ghana',
+    title: 'Civil Service (Ministries) Instrument, 2025 (E.I. 1)',
+    url: 'https://lite.judy.legal/amp/legislation/akn/gh/act/ei/2025/1',
+    sourceType: 'statute',
+    retrievedOn: '2026-11-14',
+    licence: null,
+  },
 ];
