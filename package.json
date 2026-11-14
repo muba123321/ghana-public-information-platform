@@ -17,7 +17,8 @@
     "db:migrate": "pnpm --filter @gpip/db db:migrate",
     "db:seed": "pnpm --filter @gpip/db db:seed",
     "db:generate": "pnpm --filter @gpip/db db:generate",
-    "ingest": "pnpm --filter @gpip/ingest ingest"
+    "ingest": "pnpm --filter @gpip/ingest ingest",
+    "archive": "pnpm --filter @gpip/ingest archive"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.6",

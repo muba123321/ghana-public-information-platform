@@ -9,9 +9,11 @@
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
-    "ingest": "tsx src/cli.ts"
+    "ingest": "tsx src/cli.ts",
+    "archive": "tsx src/archive/cli.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "3.1167.0",
     "@gpip/core": "workspace:*",
     "@gpip/db": "workspace:*",
     "drizzle-orm": "0.45.4"
