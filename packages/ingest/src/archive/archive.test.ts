@@ -139,3 +139,27 @@ describe('archiveDocument content checks', () => {
     expect(await db.$count(documents)).toBe(0);
   });
 });
+
+describe('real downloads always use the pinned connection', () => {
+  it('never falls back to the unpinned global fetch', async () => {
+    const original = globalThis.fetch;
+    let globalCalls = 0;
+    globalThis.fetch = (async () => {
+      globalCalls++;
+      return new Response(PDF, { status: 200, headers: { 'content-type': 'application/pdf' } });
+    }) as typeof fetch;
+    try {
+      // .invalid never resolves, so the pinned path fails; the old code silently used global fetch.
+      await expect(
+        archiveDocument(db, createLocalStore(join(dir, 'pin')), {
+          ...meta,
+          url: 'https://gpip-test.invalid/m.pdf',
+          lookup: publicLookup,
+        }),
+      ).rejects.toThrow();
+      expect(globalCalls).toBe(0);
+    } finally {
+      globalThis.fetch = original;
+    }
+  });
+});

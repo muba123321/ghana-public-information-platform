@@ -71,10 +71,14 @@ export interface ArchiveInput {
 
 async function download(
   url: string,
-  fetchImpl: typeof fetch,
+  fetchImpl: typeof fetch | undefined,
   lookup?: Lookup,
 ): Promise<{ bytes: Uint8Array; mime: string }> {
-  const res = await safeDownload(url, { fetchImpl, ...(lookup ? { lookup } : {}) });
+  // No fetchImpl → safeDownload's pinned fetch. Never substitute the global fetch here.
+  const res = await safeDownload(url, {
+    ...(fetchImpl ? { fetchImpl } : {}),
+    ...(lookup ? { lookup } : {}),
+  });
   if (!res.ok) throw new Error(`GET ${url} failed: HTTP ${res.status}`);
   const mime =
     (res.headers.get('content-type') ?? '').split(';')[0]?.trim() ||
@@ -93,7 +97,7 @@ export async function archiveDocument(
   if (given !== 1) throw new Error('Give exactly one of url, file or upload');
   const mimeOf = (name: string) => MIME[extname(name).toLowerCase()] ?? 'application/octet-stream';
   const { bytes, mime } = input.url
-    ? await download(input.url, input.fetchImpl ?? fetch, input.lookup)
+    ? await download(input.url, input.fetchImpl, input.lookup)
     : input.upload
       ? { bytes: input.upload.bytes, mime: mimeOf(input.upload.filename) }
       : {
