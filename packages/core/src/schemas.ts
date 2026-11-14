@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { COMMITMENT_KINDS, CURRENCIES } from './commitment.ts';
 import { parseIsoDate } from './period.ts';
 
 export const IsoDateSchema = z.string().refine(
@@ -114,3 +115,27 @@ export const ContextEventSeedSchema = z.object({
 
 export type IndicatorSeed = z.infer<typeof IndicatorSeedSchema>;
 export type ContextEventSeed = z.infer<typeof ContextEventSeedSchema>;
+
+/** What an extractor (the Claude API or a Claude Code session) must return for one document. */
+export const ExtractedCommitmentSchema = z.object({
+  /** Verbatim text from the document. */
+  wording: z.string().trim().min(1).max(2000),
+  /** PDF page index (1-based) where the wording appears. */
+  page: z.number().int().min(1),
+  kind: z.enum(COMMITMENT_KINDS),
+  sectorSlug: z.string().nullable().optional(),
+  responsibleInstitution: z.string().nullable().optional(),
+  target: z.string().nullable().optional(),
+  deadline: z.string().nullable().optional(),
+  budget: z
+    .object({
+      amount: z.number().positive(),
+      currency: z.enum(CURRENCIES),
+      note: z.string().nullable(),
+    })
+    .nullable()
+    .optional(),
+});
+export const ExtractionResultSchema = z.object({ commitments: z.array(ExtractedCommitmentSchema) });
+export type ExtractedCommitment = z.infer<typeof ExtractedCommitmentSchema>;
+export type ExtractionResult = z.infer<typeof ExtractionResultSchema>;
