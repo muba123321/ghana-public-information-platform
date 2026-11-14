@@ -152,6 +152,12 @@ importers:
       '@gpip/db':
         specifier: workspace:*
         version: link:../db
+      ipaddr.js:
+        specifier: 2.5.0
+        version: 2.5.0
+      undici:
+        specifier: 8.12.4
+        version: 8.12.4
       zod:
         specifier: 4.6.7
         version: 4.6.7
@@ -1583,6 +1589,10 @@ packages:
   indent-string@4.0.0:
     resolution: {integrity: sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==}
     engines: {node: '>=8'}
+
+  ipaddr.js@2.5.0:
+    resolution: {integrity: sha512-aq+t5NAc+cS6rZQQVWC2x98CPqGtKKTMDd4Gaodv0wShnItdKg/51djkGJ1hqH+Oy0ivDftCbSLCQob8zso01w==}
+    engines: {node: '>= 10'}
 
   is-potential-custom-element-name@1.0.1:
     resolution: {integrity: sha512-bCYeRA2rVibKZd+s2625gGnGF/t7DSqDs4dP7CrLA1m7jKWz6pps0LpYLJN8Q64HtmPKJ1hrN3nzPNKFEKOUiQ==}
@@ -3094,6 +3104,8 @@ snapshots:
       - '@noble/hashes'
 
   indent-string@4.0.0: {}
+
+  ipaddr.js@2.5.0: {}
 
   is-potential-custom-element-name@1.0.1: {}
 

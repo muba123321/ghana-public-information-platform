@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { assertPublicUrl, isPrivateAddress, safeDownload } from './safe-url.ts';
+import { assertPublicUrl, isPrivateAddress, pinnedLookup, safeDownload } from './safe-url.ts';
 
 const lookupTo = (address: string) => async () => [
   { address, family: address.includes(':') ? 6 : 4 },
@@ -89,5 +89,45 @@ describe('safeDownload', () => {
       lookup: lookupTo('93.184.216.34'),
     });
     expect(await res.text()).toBe('%PDF-1.4');
+  });
+});
+
+describe('address forms that must not slip through', () => {
+  it.each([
+    '::ffff:7f00:1', // IPv4-mapped loopback, as the URL parser normalises it
+    '::ffff:a9fe:a9fe', // mapped cloud metadata
+    '::7f00:1', // IPv4-compatible
+    '64:ff9b::a00:1', // NAT64 to 10.0.0.1
+    '2002:a00:1::', // 6to4 embedding 10.0.0.1
+    'ff02::1', // multicast
+    '224.0.0.1',
+    '255.255.255.255',
+    '198.18.0.1', // benchmarking
+    '2001:db8::1', // documentation
+  ])('blocks %s', (ip) => expect(isPrivateAddress(ip)).toBe(true));
+
+  it('refuses a bracketed mapped address in a URL', async () => {
+    await expect(assertPublicUrl('https://[::ffff:127.0.0.1]/x')).rejects.toThrow(
+      /not a public address/,
+    );
+  });
+});
+
+describe('pinned connection lookup (DNS rebinding)', () => {
+  it('refuses to connect when the address resolved at connect time is private', async () => {
+    const lookup = pinnedLookup(async () => [{ address: '10.0.0.5', family: 4 }]);
+    await expect(
+      new Promise((res, rej) =>
+        lookup('rebind.example', {}, (err, addr) => (err ? rej(err) : res(addr))),
+      ),
+    ).rejects.toThrow(/not a public address/);
+  });
+
+  it('connects to the checked public address', async () => {
+    const lookup = pinnedLookup(async () => [{ address: '93.184.216.34', family: 4 }]);
+    const addrs = await new Promise((res, rej) =>
+      lookup('ok.example', { all: true }, (err, addr) => (err ? rej(err) : res(addr))),
+    );
+    expect(addrs).toEqual([{ address: '93.184.216.34', family: 4 }]);
   });
 });
