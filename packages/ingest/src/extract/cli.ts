@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { parseArgs } from 'node:util';
 import Anthropic from '@anthropic-ai/sdk';
-import { migrateDb, openDb } from '@gpip/db/node';
+import { closeDb, migrateDb, openDb } from '@gpip/db/node';
 import { storeFromEnv } from '../archive/archive.ts';
 import { LOCAL_ARCHIVE_DIR } from '../paths.ts';
 import { extractCommitments, PROMPT_VERSION } from './extract.ts';
@@ -42,4 +42,5 @@ const r = values['from-json']
 console.log(
   `${r.status}: ${r.found} found, ${r.queued} queued for review (run ${r.runId})${r.error ? ` — ${r.error}` : ''}`,
 );
+await closeDb(db);
 process.exit(r.status === 'ok' ? 0 : 1);

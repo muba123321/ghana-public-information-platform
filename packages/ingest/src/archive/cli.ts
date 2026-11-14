@@ -1,5 +1,5 @@
 import { parseArgs } from 'node:util';
-import { migrateDb, openDb } from '@gpip/db/node';
+import { closeDb, migrateDb, openDb } from '@gpip/db/node';
 import { LOCAL_ARCHIVE_DIR } from '../paths.ts';
 import { archiveDocument, storeFromEnv } from './archive.ts';
 
@@ -34,4 +34,5 @@ const r = await archiveDocument(db, storeFromEnv(process.env, LOCAL_ARCHIVE_DIR)
 console.log(
   r.duplicate ? `Already archived: document ${r.documentId}` : `Archived: document ${r.documentId}`,
 );
+await closeDb(db);
 process.exit(0);

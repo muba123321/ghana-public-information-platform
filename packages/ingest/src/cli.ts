@@ -1,5 +1,5 @@
 import { parseArgs } from 'node:util';
-import { migrateDb, openDb } from '@gpip/db/node';
+import { closeDb, migrateDb, openDb } from '@gpip/db/node';
 import { allAdapters } from './adapters/index.ts';
 import { runImport } from './pipeline.ts';
 
@@ -15,6 +15,7 @@ const adapters = allAdapters({ fixtures: values.fixtures }).filter(
 );
 if (adapters.length === 0) {
   console.error(`Unknown source: ${values.source}`);
+  await closeDb(db);
   process.exit(2);
 }
 
@@ -27,4 +28,5 @@ for (const adapter of adapters) {
   for (const e of r.errors) console.log(`  ${e}`);
   failed ||= r.status === 'failed';
 }
+await closeDb(db);
 process.exit(failed ? 1 : 0);

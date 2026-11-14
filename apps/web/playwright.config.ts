@@ -15,7 +15,7 @@ export default defineConfig({
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
     // Fresh database for every run: migrate + seed, import recorded API responses, then serve.
-    command: `rm -rf ${DB} ${ARCHIVE} && ${env} pnpm --filter @gpip/db db:seed && ${env} pnpm --filter @gpip/ingest ingest --fixtures && ${env} pnpm exec tsx e2e/fixtures.ts && ${env} pnpm next start -p ${PORT}`,
+    command: `rm -rf ${DB} ${ARCHIVE} && ${env} pnpm --filter @gpip/db db:seed && ${env} pnpm --filter @gpip/ingest ingest --fixtures && ${env} pnpm exec tsx e2e/fixtures.ts && ${env} NEXT_MANUAL_SIG_HANDLE=true exec ./node_modules/.bin/next start -p ${PORT}`,
     // Test-only sign-in: allowed in this production build solely because GPIP_E2E=1 (see lib/editors.ts).
     env: {
       AUTH_SECRET: 'e2e-only-secret-not-used-anywhere-else-0123456789',
@@ -28,5 +28,7 @@ export default defineConfig({
     url: `http://localhost:${PORT}/history`,
     timeout: 120_000,
     reuseExistingServer: false,
+    // Stop politely so the server closes PGlite (a hard kill mid-checkpoint corrupts the data dir).
+    gracefulShutdown: { signal: 'SIGTERM', timeout: 10_000 },
   },
 });

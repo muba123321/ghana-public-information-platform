@@ -10,7 +10,7 @@ import {
   eq,
   sources,
 } from '@gpip/db';
-import { migrateDb, openDb } from '@gpip/db/node';
+import { closeDb, migrateDb, openDb } from '@gpip/db/node';
 import { archiveDocument, createLocalStore, queueExtraction } from '@gpip/ingest';
 
 const PDF = Buffer.from(
@@ -106,4 +106,5 @@ await db.insert(commitmentBudgets).values([
   },
 ]);
 console.log('e2e fixtures loaded');
+await closeDb(db);
 process.exit(0);

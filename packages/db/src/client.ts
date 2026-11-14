@@ -12,6 +12,7 @@ export type Db = PgDatabase<PgQueryResultHKT, Schema>;
 export type Driver = 'pglite' | 'postgres';
 
 const driverOf = new WeakMap<Db, Driver>();
+const closers = new WeakMap<Db, () => Promise<void>>();
 
 export function dbDriver(db: Db): Driver {
   return driverOf.get(db) ?? 'postgres';
@@ -23,6 +24,7 @@ export async function createPgliteDb(dataDir?: string): Promise<Db> {
   const client = await PGlite.create(dataDir, { extensions: { btree_gist } });
   const db = drizzlePglite(client, { schema }) as unknown as Db;
   driverOf.set(db, 'pglite');
+  closers.set(db, () => client.close());
   return db;
 }
 
@@ -32,7 +34,21 @@ export async function createPgliteDb(dataDir?: string): Promise<Db> {
  */
 export async function createDb(url: string): Promise<Db> {
   if (url.startsWith('pglite:')) return createPgliteDb(url.slice('pglite:'.length));
-  const db = drizzlePostgres(postgres(url, { max: 5 }), { schema }) as unknown as Db;
+  const client = postgres(url, { max: 5 });
+  const db = drizzlePostgres(client, { schema }) as unknown as Db;
   driverOf.set(db, 'postgres');
+  closers.set(db, () => client.end({ timeout: 5 }));
   return db;
+}
+
+/**
+ * Closes the connection. For on-disk PGlite this is essential: a process that exits mid-checkpoint
+ * leaves a database PostgreSQL cannot recover ("could not locate a valid checkpoint record").
+ * Every CLI calls this before exiting; the web server calls it on SIGINT/SIGTERM. Idempotent.
+ */
+export async function closeDb(db: Db): Promise<void> {
+  const close = closers.get(db);
+  if (!close) return;
+  closers.delete(db);
+  await close();
 }
