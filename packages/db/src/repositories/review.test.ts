@@ -12,7 +12,7 @@ import {
 } from '../schema/index.ts';
 import { seed } from '../seed/seed.ts';
 import { createTestDb } from '../testing.ts';
-import { getCommitment, listCommitments } from './commitments.ts';
+import { getCommitment, listChangeLog, listCommitments } from './commitments.ts';
 import {
   approveCommitment,
   getReviewItem,
@@ -24,6 +24,7 @@ import {
   reviewCounts,
   saveStewardships,
   setCorrectionStatus,
+  submitCorrection,
 } from './review.ts';
 
 let db: Db;
@@ -218,5 +219,66 @@ describe('documents for the admin screen', () => {
       waiting: 2,
       latestRun: { status: 'ok', itemsQueued: 2, model: 'claude-code-session' },
     });
+  });
+});
+
+describe('public corrections log', () => {
+  it('shows published changes but never drafts, rejections or private error reports', async () => {
+    await approveCommitment(db, 'd1', edit, 'muba123321');
+    await rejectCommitment(db, 'd2', 'Not checkable', 'muba123321');
+    const [r] = await listCorrectionReports(db, 'new');
+    await setCorrectionStatus(db, r!.id, 'reviewed', 'muba123321');
+    const { items } = await listChangeLog(db, { page: 1, perPage: 500 });
+    const keys = items.map((i) => `${i.entityTable}:${i.entityKey}`);
+    expect(keys).toContain('commitments:d1');
+    expect(keys).not.toContain('commitments:d2');
+    expect(keys.some((k) => k.startsWith('correction_reports:'))).toBe(false);
+    expect(items.every((i) => !('changedBy' in i))).toBe(true);
+  });
+});
+
+describe('submitCorrection', () => {
+  const input = {
+    pageUrl: '/history/indicators/inflation',
+    message: 'The 2016 value differs from the GSS release.',
+    evidenceUrl: 'https://statsghana.gov.gh/x',
+    contact: null,
+  };
+  const now = new Date('2026-11-14T10:00:00Z');
+
+  it('stores a valid report as new', async () => {
+    expect(await submitCorrection(db, input, { ipHash: 'abc', now })).toEqual({ ok: true });
+    expect(
+      (await listCorrectionReports(db, 'new')).some(
+        (r) => r.message === input.message && r.ipHash === 'abc',
+      ),
+    ).toBe(true);
+  });
+
+  it.each([
+    [{ ...input, message: '   ' }, /describe/i],
+    [{ ...input, message: 'x'.repeat(4001) }, /4,000/],
+    [{ ...input, pageUrl: 'https://evil.example/' }, /page/i],
+    [{ ...input, evidenceUrl: 'javascript:alert(1)' }, /evidence/i],
+    [{ ...input, contact: 'x'.repeat(201) }, /contact/i],
+  ])('refuses invalid input (%#)', async (bad, msg) => {
+    const r = await submitCorrection(db, bad, { ipHash: 'abc', now });
+    expect(r.ok).toBe(false);
+    expect(r.ok === false && r.error).toMatch(msg);
+  });
+
+  it('allows 5 reports per hour from one sender, then refuses', async () => {
+    for (let i = 0; i < 5; i++)
+      expect((await submitCorrection(db, input, { ipHash: 'spammer', now })).ok).toBe(true);
+    const sixth = await submitCorrection(db, input, { ipHash: 'spammer', now });
+    expect(sixth).toEqual({ ok: false, error: expect.stringMatching(/too many/i) });
+    expect(
+      (
+        await submitCorrection(db, input, {
+          ipHash: 'spammer',
+          now: new Date('2026-11-14T11:01:00Z'),
+        })
+      ).ok,
+    ).toBe(true);
   });
 });

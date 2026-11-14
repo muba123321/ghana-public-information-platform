@@ -1,5 +1,5 @@
 import type { CommitmentKind, CommitmentStatus, Currency, IsoDate, Verification } from '@gpip/core';
-import { and, asc, count, desc, eq, ilike, inArray, notInArray, type SQL } from 'drizzle-orm';
+import { and, asc, count, desc, eq, ilike, inArray, notInArray, or, type SQL } from 'drizzle-orm';
 import type { Db } from '../client.ts';
 import {
   administrations,
@@ -360,12 +360,39 @@ export interface ChangeLogEntry {
   changedAt: Date;
 }
 
+const PUBLIC_LOG_TABLES = [
+  'administrations',
+  'administration_leaders',
+  'parties',
+  'persons',
+  'sectors',
+  'sources',
+  'indicators',
+  'context_events',
+  'institution_versions',
+  'commitments',
+  'commitment_stewardships',
+];
+
 /** The public corrections log. Reviewer identities are not exposed. */
 export async function listChangeLog(
   db: Db,
   opts: { page: number; perPage: number },
 ): Promise<{ items: ChangeLogEntry[]; total: number }> {
   const page = Math.max(1, Math.floor(opts.page));
+  // Only public record types; commitment entries only while that commitment is published, so a
+  // draft or rejected item's existence is never revealed. Error reports are never public.
+  const publishedCommitments = db
+    .select({ slug: commitments.slug })
+    .from(commitments)
+    .where(eq(commitments.reviewStatus, 'published'));
+  const visible = and(
+    inArray(changeLog.entityTable, PUBLIC_LOG_TABLES),
+    or(
+      notInArray(changeLog.entityTable, ['commitments', 'commitment_stewardships']),
+      inArray(changeLog.entityKey, publishedCommitments),
+    ),
+  );
   const [items, [totalRow]] = await Promise.all([
     db
       .select({
@@ -376,10 +403,11 @@ export async function listChangeLog(
         changedAt: changeLog.changedAt,
       })
       .from(changeLog)
+      .where(visible)
       .orderBy(desc(changeLog.changedAt), desc(changeLog.id))
       .limit(opts.perPage)
       .offset((page - 1) * opts.perPage),
-    db.select({ n: count() }).from(changeLog),
+    db.select({ n: count() }).from(changeLog).where(visible),
   ]);
   return { items, total: totalRow?.n ?? 0 };
 }

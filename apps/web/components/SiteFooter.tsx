@@ -14,6 +14,8 @@ export function SiteFooter() {
           <p className="footer-notice">{FOOTER_NOTICE}</p>
           <p className="footer-links">
             <Link href="/data-notice">Data notice &amp; disclaimer</Link>
+            <Link href="/report">Report an error</Link>
+            <Link href="/changes">Change log</Link>
             <a href="https://github.com/muba123321/ghana-public-information-platform">
               Open source on GitHub
             </a>

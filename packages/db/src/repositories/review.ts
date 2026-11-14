@@ -7,7 +7,7 @@ import {
   type StewardshipInput,
   validateStewardshipChain,
 } from '@gpip/core';
-import { and, asc, count, desc, eq, inArray } from 'drizzle-orm';
+import { and, asc, count, desc, eq, gte, inArray } from 'drizzle-orm';
 import type { Db } from '../client.ts';
 import {
   administrations,
@@ -357,4 +357,58 @@ export async function getDocumentFile(
     .from(documents)
     .where(eq(documents.id, id));
   return d ?? null;
+}
+
+export interface CorrectionInput {
+  pageUrl: string;
+  message: string;
+  evidenceUrl: string | null;
+  contact: string | null;
+}
+
+const MAX_REPORTS_PER_HOUR = 5;
+
+/**
+ * Stores a public "report an error" submission for editors. Validated and rate-limited per sender
+ * (salted IP hash). Never published automatically.
+ */
+export async function submitCorrection(
+  db: Db,
+  input: CorrectionInput,
+  ctx: { ipHash: string; now?: Date },
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const message = input.message.trim();
+  const contact = input.contact?.trim() || null;
+  const evidenceUrl = input.evidenceUrl?.trim() || null;
+  if (!message) return { ok: false, error: 'Please describe what looks wrong.' };
+  if (message.length > 4000)
+    return { ok: false, error: 'Please keep the description under 4,000 characters.' };
+  if (!input.pageUrl.startsWith('/') || input.pageUrl.startsWith('//'))
+    return { ok: false, error: 'Unknown page.' };
+  if (evidenceUrl && !/^https?:\/\//i.test(evidenceUrl))
+    return { ok: false, error: 'The evidence link must start with https:// or http://' };
+  if (contact && contact.length > 200)
+    return { ok: false, error: 'Please keep the contact under 200 characters.' };
+
+  const now = ctx.now ?? new Date();
+  const since = new Date(now.getTime() - 60 * 60 * 1000);
+  const [recent] = await db
+    .select({ n: count() })
+    .from(correctionReports)
+    .where(and(eq(correctionReports.ipHash, ctx.ipHash), gte(correctionReports.createdAt, since)));
+  if ((recent?.n ?? 0) >= MAX_REPORTS_PER_HOUR) {
+    return {
+      ok: false,
+      error: 'Too many reports from this connection in the last hour. Please try again later.',
+    };
+  }
+  await db.insert(correctionReports).values({
+    pageUrl: input.pageUrl.slice(0, 500),
+    message,
+    evidenceUrl: evidenceUrl?.slice(0, 1000) ?? null,
+    contact,
+    ipHash: ctx.ipHash,
+    createdAt: now,
+  });
+  return { ok: true };
 }
