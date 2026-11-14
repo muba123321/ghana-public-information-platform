@@ -161,6 +161,11 @@ extractCommitments(db, deps, documentId: string): Promise<{ runId: number; statu
   classify kind by document type (a party manifesto yields `campaign_promise`); give the printed
   page number as the PDF page index; never infer delivery or judge feasibility.
 - CLI: `pnpm extract --document <id>`; prints found/queued/cost.
+- **Session-assisted path (no API key):** `pnpm extract --document <id> --from-json <file>` takes
+  an `ExtractionResultSchema` file prepared by Claude Code reading the PDF in a session, and runs it
+  through the same validation, dedupe and queueing (`model: 'claude-code-session'`, cost 0). One
+  shared `queueExtraction(db, documentId, result, meta)` function serves both paths.
+- [ ] Tests: `--from-json` path queues the same way and records `claude-code-session`; invalid file → failed, 0 queued.
 - [ ] Tests (fake client returning recorded streamed final message): queues valid items as
   drafts; drops out-of-range page, empty, duplicate; refusal → failed, 0 queued; max_tokens →
   failed; malformed JSON → failed; usage → cost computed; request built with model
