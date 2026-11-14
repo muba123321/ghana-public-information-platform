@@ -209,17 +209,18 @@ export async function getCommitment(db: Db, slug: string): Promise<CommitmentDet
   const [steward, insts, budgets, progress, linksFrom, linksTo, notes] = await Promise.all([
     stewardshipsFor(db, [slug]),
     db
-      .select({
-        slug: institutionVersions.institutionSlug,
-        name: institutionVersions.name,
-        validTo: institutionVersions.validTo,
-      })
+      .select({ slug: institutionVersions.institutionSlug, name: institutionVersions.name })
       .from(commitmentInstitutions)
       .innerJoin(
         institutionVersions,
         eq(commitmentInstitutions.institutionSlug, institutionVersions.institutionSlug),
       )
-      .where(eq(commitmentInstitutions.commitmentSlug, slug))
+      .where(
+        and(
+          eq(commitmentInstitutions.commitmentSlug, slug),
+          eq(institutionVersions.reviewStatus, 'published'),
+        ),
+      )
       .orderBy(desc(institutionVersions.validFrom)),
     db
       .select({
@@ -256,8 +257,17 @@ export async function getCommitment(db: Db, slug: string): Promise<CommitmentDet
         ),
       )
       .orderBy(asc(progressUpdates.date)),
-    db.select().from(commitmentLinks).where(eq(commitmentLinks.fromSlug, slug)),
-    db.select().from(commitmentLinks).where(eq(commitmentLinks.toSlug, slug)),
+    // Links only where the other end is published — a draft's existence is never revealed.
+    db
+      .select({ slug: commitmentLinks.toSlug, kind: commitmentLinks.kind })
+      .from(commitmentLinks)
+      .innerJoin(commitments, eq(commitmentLinks.toSlug, commitments.slug))
+      .where(and(eq(commitmentLinks.fromSlug, slug), published)),
+    db
+      .select({ slug: commitmentLinks.fromSlug, kind: commitmentLinks.kind })
+      .from(commitmentLinks)
+      .innerJoin(commitments, eq(commitmentLinks.fromSlug, commitments.slug))
+      .where(and(eq(commitmentLinks.toSlug, slug), published)),
     db
       .select({ kind: editorialNotes.kind, body: editorialNotes.body })
       .from(editorialNotes)
@@ -270,10 +280,9 @@ export async function getCommitment(db: Db, slug: string): Promise<CommitmentDet
       ),
   ]);
 
-  // One name per institution: its current (latest) version.
-  const institutions = [
-    ...new Map(insts.map((i) => [i.slug, { slug: i.slug, name: i.name }])).values(),
-  ];
+  // One name per institution: its latest published version (rows arrive newest first).
+  const institutions: { slug: string; name: string }[] = [];
+  for (const i of insts) if (!institutions.some((x) => x.slug === i.slug)) institutions.push(i);
 
   return {
     ...summary,
@@ -292,8 +301,8 @@ export async function getCommitment(db: Db, slug: string): Promise<CommitmentDet
     stewardships: steward.get(slug) ?? [],
     progress,
     links: [
-      ...linksFrom.map((l) => ({ slug: l.toSlug, kind: l.kind, direction: 'to' as const })),
-      ...linksTo.map((l) => ({ slug: l.fromSlug, kind: l.kind, direction: 'from' as const })),
+      ...linksFrom.map((l) => ({ ...l, direction: 'to' as const })),
+      ...linksTo.map((l) => ({ ...l, direction: 'from' as const })),
     ],
     notes,
   };

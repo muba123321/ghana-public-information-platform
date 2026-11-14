@@ -3,9 +3,13 @@ import type { Db } from '../client.ts';
 import {
   changeLog,
   commitmentBudgets,
+  commitmentInstitutions,
+  commitmentLinks,
   commitmentStewardships,
   commitments,
   documents,
+  institutions,
+  institutionVersions,
   sources,
 } from '../schema/index.ts';
 import { seed } from '../seed/seed.ts';
@@ -195,5 +199,56 @@ describe('commitment repository', () => {
     const page = await listChangeLog(db, { page: 1, perPage: 50 });
     expect(page.total).toBeGreaterThan(1);
     expect(page.items[0]).toMatchObject({ entityTable: 'commitments', entityKey: 'road-a' });
+  });
+});
+
+describe('public reads never leak unpublished records', () => {
+  it('hides links to draft commitments', async () => {
+    await db.insert(commitmentLinks).values([
+      { fromSlug: 'road-a', toSlug: 'draft-c', kind: 'continues' },
+      { fromSlug: 'draft-c', toSlug: 'road-a', kind: 'duplicates' },
+      { fromSlug: 'road-a', toSlug: 'school-b', kind: 'supersedes' },
+    ]);
+    const c = await getCommitment(db, 'road-a');
+    expect(c!.links).toEqual([{ slug: 'school-b', kind: 'supersedes', direction: 'to' }]);
+  });
+
+  it('uses only published institution names', async () => {
+    const [src] = await db.select({ id: sources.id }).from(sources).limit(1);
+    await db.insert(institutions).values({ slug: 'mrh', kind: 'ministry' });
+    await db.insert(institutionVersions).values([
+      {
+        institutionSlug: 'mrh',
+        name: 'Ministry of Roads and Transport',
+        validFrom: '2001-01-07',
+        validTo: '2009-01-07',
+        sourceId: src!.id,
+        provenance: 'manual',
+        reviewStatus: 'published',
+      },
+      {
+        institutionSlug: 'mrh',
+        name: 'Ministry of Roads and Highways',
+        validFrom: '2009-01-07',
+        validTo: '2025-01-07',
+        sourceId: src!.id,
+        provenance: 'manual',
+        reviewStatus: 'published',
+      },
+      {
+        institutionSlug: 'mrh',
+        name: 'Unreviewed new name',
+        validFrom: '2025-01-07',
+        validTo: null,
+        sourceId: src!.id,
+        provenance: 'ai_extracted',
+      },
+    ]);
+    await db
+      .insert(commitmentInstitutions)
+      .values({ commitmentSlug: 'road-a', institutionSlug: 'mrh' });
+    expect((await getCommitment(db, 'road-a'))!.institutions).toEqual([
+      { slug: 'mrh', name: 'Ministry of Roads and Highways' },
+    ]);
   });
 });
