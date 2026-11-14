@@ -1,9 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { CommitmentCard } from '../../../../components/CommitmentCard';
 import { LeaderBars } from '../../../../components/LeaderBars';
 import { TimelineRibbon } from '../../../../components/TimelineRibbon';
-import { loadAdministration, loadRibbon } from '../../../../lib/data';
+import {
+  loadAdministration,
+  loadAdministrationCommitments,
+  loadRibbon,
+} from '../../../../lib/data';
 import { formatDate, formatRange, timeInOffice, todayIso } from '../../../../lib/format';
 import { KIND_LABEL } from '../../../../lib/timeline';
 
@@ -19,7 +24,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function AdministrationPage({ params }: Props) {
   const a = await loadAdministration((await params).slug);
   if (!a) notFound();
-  const { segments, ticks } = await loadRibbon();
+  const [{ segments, ticks }, commitments] = await Promise.all([
+    loadRibbon(),
+    loadAdministrationCommitments(a.slug),
+  ]);
   const today = todayIso();
 
   return (
@@ -58,11 +66,32 @@ export default async function AdministrationPage({ params }: Props) {
           {a.notes && <p className="callout">{a.notes}</p>}
         </section>
 
-        <section className="pending">
-          <h2 className="section-title">Commitments, budgets and indicators</h2>
-          <p>
-            Commitments, budgets and indicators for this administration will appear here as they are
-            verified.
+        <section className="profile-commitments">
+          <h2 className="section-title">Commitments</h2>
+          {(['originated', 'inherited', 'handedOver'] as const).map((group) => {
+            const items = commitments[group];
+            const heading = {
+              originated: 'Made by this government',
+              inherited: 'Inherited from earlier governments',
+              handedOver: 'Handed on to the next government',
+            }[group];
+            return (
+              <div key={group}>
+                <h3>{heading}</h3>
+                {items.length === 0 ? (
+                  <p className="muted">None published yet.</p>
+                ) : (
+                  <ul className="commitment-list">
+                    {items.map((c) => (
+                      <CommitmentCard key={c.slug} c={c} />
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+          <p className="muted">
+            Budgets and indicators for this government are on each commitment and indicator page.
           </p>
         </section>
 

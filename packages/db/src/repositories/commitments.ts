@@ -76,6 +76,8 @@ export interface CommitmentFilters {
   sector?: string;
   kind?: CommitmentKind;
   status?: CommitmentStatus;
+  /** Institution slug: commitments it is responsible for. */
+  institution?: string;
   q?: string;
 }
 
@@ -146,6 +148,13 @@ export async function listCommitments(
   if (f.status) conds.push(eq(commitments.finalStatus, f.status));
   if (f.q?.trim())
     conds.push(ilike(commitments.wording, `%${f.q.trim().replace(/[%_\\]/g, (c) => `\\${c}`)}%`));
+  if (f.institution) {
+    const owned = db
+      .select({ slug: commitmentInstitutions.commitmentSlug })
+      .from(commitmentInstitutions)
+      .where(eq(commitmentInstitutions.institutionSlug, f.institution));
+    conds.push(inArray(commitments.slug, owned));
+  }
   if (f.administration) {
     const held = db
       .select({ slug: commitmentStewardships.commitmentSlug })

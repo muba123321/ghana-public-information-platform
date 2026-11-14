@@ -252,3 +252,12 @@ describe('public reads never leak unpublished records', () => {
     ]);
   });
 });
+
+describe('commitments by institution', () => {
+  it('filters to commitments a ministry is responsible for', async () => {
+    expect((await listCommitments(db, { institution: 'mrh' })).map((c) => c.slug)).toEqual([
+      'road-a',
+    ]);
+    expect(await listCommitments(db, { institution: 'nobody' })).toEqual([]);
+  });
+});

@@ -2,7 +2,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import type { Db } from '../client.ts';
 import { institutionLineage, institutions, institutionVersions, sources } from '../schema/index.ts';
 import { createTestDb } from '../testing.ts';
-import { getInstitutionHistory } from './institutions.ts';
+import { getInstitutionHistory, listInstitutions } from './institutions.ts';
 
 let db: Db;
 beforeAll(async () => {
@@ -61,5 +61,14 @@ describe('institution repository', () => {
 
   it('returns null for an unknown institution', async () => {
     expect(await getInstitutionHistory(db, 'nope')).toBeNull();
+  });
+});
+
+describe('listInstitutions', () => {
+  it('lists each institution once under its latest published name', async () => {
+    const list = await listInstitutions(db);
+    expect(list).toEqual([
+      expect.objectContaining({ slug: 'roads', name: 'Ministry of Roads and Highways' }),
+    ]);
   });
 });

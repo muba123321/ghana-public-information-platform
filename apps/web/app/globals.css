@@ -1174,3 +1174,205 @@ a.explore-link {
   white-space: pre-wrap;
   margin: 6px 0;
 }
+
+/* Commitments */
+.filters-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  align-items: end;
+  padding: 18px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  margin: 24px 0 12px;
+}
+.filters-form label {
+  display: grid;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.filters-form input,
+.filters-form select {
+  font: inherit;
+  font-weight: 400;
+  padding: 9px 11px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+}
+.filters-form .button {
+  border: 0;
+  cursor: pointer;
+}
+.results-count {
+  margin-bottom: 8px;
+}
+.commitment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--text);
+}
+.commitment-card {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.commitment-link {
+  /* Block, so the whole multi-line quote is one click target. */
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+}
+.commitment-quote {
+  font-size: 1.08rem;
+  quotes: "“" "”";
+}
+.commitment-link:hover .commitment-quote {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+.commitment-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: center;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.status-label {
+  font-weight: 600;
+  color: var(--text);
+}
+.commitment-page {
+  display: grid;
+  gap: 28px;
+}
+.commitment-figure {
+  margin: 0;
+  padding: 24px 28px;
+  border-left: 6px solid var(--gold);
+  background: var(--surface);
+  border-radius: 0 var(--r-lg) var(--r-lg) 0;
+}
+.commitment-quote-large {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  quotes: "“" "”";
+}
+.commitment-quote-large::before {
+  content: open-quote;
+}
+.commitment-quote-large::after {
+  content: close-quote;
+}
+.commitment-figure figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+}
+.measure {
+  max-width: var(--measure);
+  margin-bottom: 14px;
+}
+.stewardship {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+.steward-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
+}
+.steward-head strong {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.steward-track {
+  position: relative;
+  height: 14px;
+  margin: 8px 0 6px;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.steward-track span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 999px;
+  background: var(--gold);
+}
+.steward-track span[data-tone="b"] {
+  background: var(--umber);
+}
+.steward-progress {
+  margin: 0;
+}
+.money {
+  display: grid;
+  gap: 10px 32px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin: 0;
+}
+.money dt {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+.money dd {
+  margin: 2px 0 0;
+}
+.money-amount {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+.verification {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+.verification[data-v="disputed"] {
+  border-color: var(--umber);
+}
+.inline-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 0;
+}
+.profile-commitments {
+  display: grid;
+  gap: 20px;
+}
+
+/* Fixes from screenshot review */
+.filters-form label {
+  min-width: 0;
+}
+.filters-form input,
+.filters-form select {
+  width: 100%;
+  min-width: 0;
+}
+.kind-badge[data-kind="funded_project"],
+.kind-badge[data-kind="approved_programme"] {
+  border-color: var(--link);
+  color: var(--link);
+}
+.steward-progress,
+.commitment-meta {
+  font-family: var(--font-display);
+}
