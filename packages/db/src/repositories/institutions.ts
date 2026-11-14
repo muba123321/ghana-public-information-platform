@@ -1,5 +1,5 @@
 import type { IsoDate } from '@gpip/core';
-import { asc, desc, eq, or } from 'drizzle-orm';
+import { and, asc, desc, eq, inArray, or } from 'drizzle-orm';
 import type { Db } from '../client.ts';
 import { institutionLineage, institutions, institutionVersions } from '../schema/index.ts';
 
@@ -14,6 +14,14 @@ export interface InstitutionHistory {
     validTo: IsoDate | null;
   }[];
   lineage: { fromSlug: string; toSlug: string; kind: string; effectiveOn: IsoDate }[];
+}
+
+/** Institutions with at least one published version (subquery). */
+function publishedInstitutions(db: Db) {
+  return db
+    .selectDistinct({ slug: institutionVersions.institutionSlug })
+    .from(institutionVersions)
+    .where(eq(institutionVersions.reviewStatus, 'published'));
 }
 
 /** Every published name/mandate an institution has had, plus renames/mergers/splits. */
@@ -47,7 +55,14 @@ export async function getInstitutionHistory(
       effectiveOn: institutionLineage.effectiveOn,
     })
     .from(institutionLineage)
-    .where(or(eq(institutionLineage.fromSlug, slug), eq(institutionLineage.toSlug, slug)))
+    .where(
+      and(
+        or(eq(institutionLineage.fromSlug, slug), eq(institutionLineage.toSlug, slug)),
+        // Both ends must be public, or the edge would reveal an unpublished institution.
+        inArray(institutionLineage.fromSlug, publishedInstitutions(db)),
+        inArray(institutionLineage.toSlug, publishedInstitutions(db)),
+      ),
+    )
     .orderBy(asc(institutionLineage.effectiveOn));
   return { slug: inst.slug, kind: inst.kind, versions, lineage };
 }

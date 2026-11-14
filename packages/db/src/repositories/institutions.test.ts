@@ -25,6 +25,13 @@ beforeAll(async () => {
   await db.insert(institutionVersions).values([
     {
       ...v,
+      institutionSlug: 'roads-old',
+      name: 'Ministry of Transport and Communications',
+      validFrom: '1993-01-07',
+      validTo: '2001-01-07',
+    },
+    {
+      ...v,
       institutionSlug: 'roads',
       name: 'Ministry of Roads and Transport',
       validFrom: '2001-01-07',
@@ -67,8 +74,33 @@ describe('institution repository', () => {
 describe('listInstitutions', () => {
   it('lists each institution once under its latest published name', async () => {
     const list = await listInstitutions(db);
-    expect(list).toEqual([
-      expect.objectContaining({ slug: 'roads', name: 'Ministry of Roads and Highways' }),
+    expect(list.map((i) => [i.slug, i.name])).toEqual([
+      ['roads', 'Ministry of Roads and Highways'],
+      ['roads-old', 'Ministry of Transport and Communications'],
     ]);
+  });
+});
+
+describe('institution lineage never reveals unpublished institutions', () => {
+  it('hides reorganisations whose other end has no published version', async () => {
+    const [s] = await db.select({ id: sources.id }).from(sources).limit(1);
+    await db.insert(institutions).values({ slug: 'secret-unit', kind: 'agency' });
+    await db.insert(institutionVersions).values({
+      institutionSlug: 'secret-unit',
+      name: 'Draft-only unit',
+      validFrom: '2020-01-01',
+      validTo: null,
+      sourceId: s!.id,
+      provenance: 'ai_extracted',
+    });
+    await db.insert(institutionLineage).values({
+      fromSlug: 'roads',
+      toSlug: 'secret-unit',
+      kind: 'split_from',
+      effectiveOn: '2020-01-01',
+      sourceId: s!.id,
+    });
+    const h = await getInstitutionHistory(db, 'roads');
+    expect(h!.lineage.map((l) => l.toSlug)).not.toContain('secret-unit');
   });
 });

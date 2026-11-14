@@ -30,7 +30,8 @@ export default async function MinistryPage({ params }: Props) {
     loadCommitments({ institution: slug }),
   ]);
   if (!history || history.versions.length === 0) notFound();
-  const nameOf = (s: string) => all.find((i) => i.slug === s)?.name ?? s;
+  // Never fall back to the raw identifier: it could name an unpublished institution.
+  const nameOf = (s: string) => all.find((i) => i.slug === s)?.name ?? 'another institution';
 
   return (
     <div className="container page">
