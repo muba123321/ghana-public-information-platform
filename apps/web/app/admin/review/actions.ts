@@ -11,6 +11,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { requireEditor } from '../../../lib/admin';
 import { getDb } from '../../../lib/db';
+import { setFlash } from '../../../lib/flash';
 
 const text = (f: FormData, k: string) => String(f.get(k) ?? '').trim();
 const optional = (f: FormData, k: string) => text(f, k) || null;
@@ -37,8 +38,11 @@ export async function approveAction(form: FormData) {
   try {
     await approveCommitment(await getDb(), slug, edit, editor);
   } catch (e) {
-    if (e instanceof ReviewError)
-      redirect(`/admin/review/${encodeURIComponent(slug)}?error=${encodeURIComponent(e.message)}`);
+    if (e instanceof ReviewError) {
+      const path = `/admin/review/${encodeURIComponent(slug)}`;
+      await setFlash(path, { kind: 'error', text: e.message });
+      redirect(path);
+    }
     throw e;
   }
   await next(slug);

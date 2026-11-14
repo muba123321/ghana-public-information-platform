@@ -1,3 +1,4 @@
+import { safeLocalPath } from '@gpip/core';
 import { listCorrectionReports } from '@gpip/db';
 import { getDb } from '../../../lib/db';
 import { formatDate } from '../../../lib/format';
@@ -13,8 +14,12 @@ export default async function CorrectionsPage() {
         {reports.map((r) => (
           <li key={r.id} className="report" data-status={r.status}>
             <p>
-              <a href={r.pageUrl}>{r.pageUrl}</a> ·{' '}
-              {formatDate(r.createdAt.toISOString().slice(0, 10))} · <strong>{r.status}</strong>
+              {safeLocalPath(r.pageUrl) ? (
+                <a href={safeLocalPath(r.pageUrl) ?? '/'}>{r.pageUrl}</a>
+              ) : (
+                <span>{r.pageUrl}</span>
+              )}{' '}
+              · {formatDate(r.createdAt.toISOString().slice(0, 10))} · <strong>{r.status}</strong>
             </p>
             <p className="report-message">{r.message}</p>
             {r.evidenceUrl && (

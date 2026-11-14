@@ -1,20 +1,19 @@
 import { listDocumentsForAdmin } from '@gpip/db';
 import Link from 'next/link';
 import { getDb } from '../../../lib/db';
+import { readFlash } from '../../../lib/flash';
 import { archiveAction, extractAction } from './actions';
 
-type Props = { searchParams: Promise<{ message?: string; error?: string }> };
-
-export default async function DocumentsPage({ searchParams }: Props) {
+export default async function DocumentsPage() {
   const docs = await listDocumentsForAdmin(await getDb());
-  const { message, error } = await searchParams;
+  const flash = await readFlash();
   return (
     <>
       <h1 className="page-title">Documents</h1>
-      {message && <p className="form-note">{message}</p>}
-      {error && (
+      {flash?.kind === 'note' && <p className="form-note">{flash.text}</p>}
+      {flash?.kind === 'error' && (
         <p className="form-error" role="alert">
-          {error}
+          {flash.text}
         </p>
       )}
 

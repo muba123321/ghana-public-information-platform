@@ -13,9 +13,27 @@ describe('senderHash', () => {
 });
 
 describe('clientIp', () => {
-  it('takes the first address from x-forwarded-for, else x-real-ip, else unknown', () => {
-    expect(clientIp(new Headers({ 'x-forwarded-for': '41.66.1.2, 10.0.0.1' }))).toBe('41.66.1.2');
-    expect(clientIp(new Headers({ 'x-real-ip': '41.66.9.9' }))).toBe('41.66.9.9');
+  it('prefers the address the hosting platform sets, which visitors cannot spoof', () => {
+    expect(
+      clientIp(
+        new Headers({
+          'x-vercel-forwarded-for': '41.66.1.2',
+          'x-forwarded-for': '6.6.6.6, 41.66.1.2',
+        }),
+      ),
+    ).toBe('41.66.1.2');
+    expect(clientIp(new Headers({ 'x-real-ip': '41.66.9.9', 'x-forwarded-for': '6.6.6.6' }))).toBe(
+      '41.66.9.9',
+    );
+  });
+
+  it('otherwise takes the right-most x-forwarded-for entry (added by our proxy), not a spoofed first one', () => {
+    expect(clientIp(new Headers({ 'x-forwarded-for': 'spoofed-1, spoofed-2, 41.66.1.2' }))).toBe(
+      '41.66.1.2',
+    );
+  });
+
+  it('falls back to unknown', () => {
     expect(clientIp(new Headers())).toBe('unknown');
   });
 });

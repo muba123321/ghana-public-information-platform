@@ -1,13 +1,16 @@
+import { safeLocalPath } from '@gpip/core';
 import type { Metadata } from 'next';
+import { readFlash } from '../../lib/flash';
 import { submitReportAction } from './actions';
 
 export const metadata: Metadata = { title: 'Report an error', robots: { index: false } };
 
-type Props = { searchParams: Promise<{ from?: string; error?: string }> };
+type Props = { searchParams: Promise<{ from?: string }> };
 
 export default async function ReportPage({ searchParams }: Props) {
-  const { from, error } = await searchParams;
-  const page = from?.startsWith('/') && !from.startsWith('//') ? from : '/';
+  const { from } = await searchParams;
+  const page = safeLocalPath(from ?? '/') ?? '/';
+  const flash = await readFlash();
   return (
     <div className="container page prose">
       <h1 className="page-title">Report an error</h1>
@@ -16,9 +19,9 @@ export default async function ReportPage({ searchParams }: Props) {
         information. An editor checks every report. Accepted corrections appear in the public change
         log.
       </p>
-      {error && (
+      {flash?.kind === 'error' && (
         <p className="form-error" role="alert">
-          {error}
+          {flash.text}
         </p>
       )}
       <form action={submitReportAction} className="stack card-form">

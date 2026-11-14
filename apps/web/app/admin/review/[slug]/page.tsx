@@ -2,9 +2,10 @@ import { administrations, asc, getReviewItem, sectors } from '@gpip/db';
 import { notFound } from 'next/navigation';
 import { KIND_LABELS } from '../../../../components/KindBadge';
 import { getDb } from '../../../../lib/db';
+import { readFlash } from '../../../../lib/flash';
 import { approveAction, rejectAction } from '../actions';
 
-type Props = { params: Promise<{ slug: string }>; searchParams: Promise<{ error?: string }> };
+type Props = { params: Promise<{ slug: string }> };
 
 const STATUSES = [
   'not_started',
@@ -17,11 +18,11 @@ const STATUSES = [
   'insufficient_evidence',
 ] as const;
 
-export default async function ReviewItemPage({ params, searchParams }: Props) {
+export default async function ReviewItemPage({ params }: Props) {
   const db = await getDb();
   const item = await getReviewItem(db, (await params).slug);
   if (!item) notFound();
-  const { error } = await searchParams;
+  const flash = await readFlash();
   const [admins, sectorRows] = await Promise.all([
     db
       .select({ slug: administrations.slug, name: administrations.name })
@@ -45,9 +46,9 @@ export default async function ReviewItemPage({ params, searchParams }: Props) {
 
       <section className="review-form" aria-label="Check and correct">
         <h1 className="section-title">Check against the page, then approve</h1>
-        {error && (
+        {flash?.kind === 'error' && (
           <p className="form-error" role="alert">
-            {error}
+            {flash.text}
           </p>
         )}
         <form action={approveAction} className="stack">

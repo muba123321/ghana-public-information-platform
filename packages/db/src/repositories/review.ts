@@ -5,6 +5,7 @@ import {
   type CommitmentStatus,
   type IsoDate,
   type StewardshipInput,
+  safeLocalPath,
   validateStewardshipChain,
 } from '@gpip/core';
 import { and, asc, count, desc, eq, gte, inArray } from 'drizzle-orm';
@@ -383,8 +384,8 @@ export async function submitCorrection(
   if (!message) return { ok: false, error: 'Please describe what looks wrong.' };
   if (message.length > 4000)
     return { ok: false, error: 'Please keep the description under 4,000 characters.' };
-  if (!input.pageUrl.startsWith('/') || input.pageUrl.startsWith('//'))
-    return { ok: false, error: 'Unknown page.' };
+  const pageUrl = safeLocalPath(input.pageUrl);
+  if (!pageUrl) return { ok: false, error: 'Unknown page.' };
   if (evidenceUrl && !/^https?:\/\//i.test(evidenceUrl))
     return { ok: false, error: 'The evidence link must start with https:// or http://' };
   if (contact && contact.length > 200)
@@ -403,7 +404,7 @@ export async function submitCorrection(
     };
   }
   await db.insert(correctionReports).values({
-    pageUrl: input.pageUrl.slice(0, 500),
+    pageUrl: pageUrl.slice(0, 500),
     message,
     evidenceUrl: evidenceUrl?.slice(0, 1000) ?? null,
     contact,

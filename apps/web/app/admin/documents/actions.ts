@@ -5,18 +5,23 @@ import { archiveDocument, extractCommitments } from '@gpip/ingest/web';
 import { redirect } from 'next/navigation';
 import { archiveStore, requireEditor } from '../../../lib/admin';
 import { getDb } from '../../../lib/db';
+import { setFlash } from '../../../lib/flash';
 
 const MAX_UPLOAD = 40 * 1024 * 1024;
-const back = (q: string): never => redirect(`/admin/documents?${q}`);
+const PATH = '/admin/documents';
+async function back(kind: 'error' | 'note', text: string): Promise<never> {
+  await setFlash(PATH, { kind, text });
+  redirect(PATH);
+}
 
 export async function archiveAction(form: FormData) {
   await requireEditor();
   const file = form.get('file');
   const url = String(form.get('url') ?? '').trim();
   const upload = file instanceof File && file.size > 0 ? file : null;
-  if (!upload === !url) back('error=Choose a PDF file or give a URL (not both).');
-  if (upload && upload.size > MAX_UPLOAD) back('error=File is larger than 40 MB.');
-  if (url && !/^https:\/\//.test(url)) back('error=URL must start with https://');
+  if (!upload === !url) await back('error', 'Choose a PDF file or give a URL (not both).');
+  if (upload && upload.size > MAX_UPLOAD) await back('error', 'File is larger than 40 MB.');
+  if (url && !/^https:\/\//.test(url)) await back('error', 'URL must start with https://');
 
   let message: string;
   try {
@@ -34,10 +39,10 @@ export async function archiveAction(form: FormData) {
     });
     message = r.duplicate ? 'Already archived — same file.' : 'Archived.';
   } catch (e) {
-    back(`error=${encodeURIComponent(e instanceof Error ? e.message : 'Archive failed')}`);
+    await back('error', e instanceof Error ? e.message : 'Archive failed');
     return;
   }
-  back(`message=${encodeURIComponent(message)}`);
+  await back('note', message);
 }
 
 export async function extractAction(form: FormData) {
@@ -48,9 +53,10 @@ export async function extractAction(form: FormData) {
     { client: new Anthropic(), store: archiveStore() },
     documentId,
   );
-  back(
+  await back(
+    r.status === 'ok' ? 'note' : 'error',
     r.status === 'ok'
-      ? `message=${encodeURIComponent(`${r.queued} of ${r.found} queued for review.`)}`
-      : `error=${encodeURIComponent(r.error ?? 'Extraction failed')}`,
+      ? `${r.queued} of ${r.found} queued for review.`
+      : (r.error ?? 'Extraction failed'),
   );
 }

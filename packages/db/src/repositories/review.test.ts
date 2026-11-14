@@ -259,6 +259,7 @@ describe('submitCorrection', () => {
     [{ ...input, message: '   ' }, /describe/i],
     [{ ...input, message: 'x'.repeat(4001) }, /4,000/],
     [{ ...input, pageUrl: 'https://evil.example/' }, /page/i],
+    [{ ...input, pageUrl: '/\\evil.example' }, /page/i],
     [{ ...input, evidenceUrl: 'javascript:alert(1)' }, /evidence/i],
     [{ ...input, contact: 'x'.repeat(201) }, /contact/i],
   ])('refuses invalid input (%#)', async (bad, msg) => {
