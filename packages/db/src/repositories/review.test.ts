@@ -7,6 +7,7 @@ import {
   commitments,
   correctionReports,
   documents,
+  extractionRuns,
   sources,
 } from '../schema/index.ts';
 import { seed } from '../seed/seed.ts';
@@ -16,6 +17,7 @@ import {
   approveCommitment,
   getReviewItem,
   listCorrectionReports,
+  listDocumentsForAdmin,
   listReviewQueue,
   ReviewError,
   rejectCommitment,
@@ -195,5 +197,26 @@ describe('review queue', () => {
     await setCorrectionStatus(db, r!.id, 'actioned', 'muba123321');
     expect(await listCorrectionReports(db, 'new')).toHaveLength(0);
     expect(await reviewCounts(db)).toMatchObject({ corrections: 0 });
+  });
+});
+
+describe('documents for the admin screen', () => {
+  it('lists every archived document with its queue size and latest extraction run', async () => {
+    await db.insert(extractionRuns).values({
+      documentId: docId,
+      model: 'claude-code-session',
+      promptVersion: 'v1',
+      status: 'ok',
+      itemsFound: 2,
+      itemsQueued: 2,
+    });
+    const [d] = await listDocumentsForAdmin(db);
+    expect(d).toMatchObject({
+      id: docId,
+      title: 'Manifesto 2016',
+      pages: 50,
+      waiting: 2,
+      latestRun: { status: 'ok', itemsQueued: 2, model: 'claude-code-session' },
+    });
   });
 });

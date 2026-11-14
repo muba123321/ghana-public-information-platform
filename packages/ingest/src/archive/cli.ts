@@ -1,5 +1,6 @@
 import { parseArgs } from 'node:util';
 import { migrateDb, openDb } from '@gpip/db/node';
+import { LOCAL_ARCHIVE_DIR } from '../paths.ts';
 import { archiveDocument, storeFromEnv } from './archive.ts';
 
 const { values } = parseArgs({
@@ -22,7 +23,7 @@ if (!values.title || !values.publisher || !values.url === !values.file) {
 
 const db = await openDb();
 await migrateDb(db);
-const r = await archiveDocument(db, storeFromEnv(), {
+const r = await archiveDocument(db, storeFromEnv(process.env, LOCAL_ARCHIVE_DIR), {
   ...(values.url ? { url: values.url } : { file: values.file as string }),
   title: values.title,
   docType: values.type ?? 'manifesto',

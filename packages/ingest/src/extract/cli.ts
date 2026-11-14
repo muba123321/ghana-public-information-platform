@@ -3,6 +3,7 @@ import { parseArgs } from 'node:util';
 import Anthropic from '@anthropic-ai/sdk';
 import { migrateDb, openDb } from '@gpip/db/node';
 import { storeFromEnv } from '../archive/archive.ts';
+import { LOCAL_ARCHIVE_DIR } from '../paths.ts';
 import { extractCommitments, PROMPT_VERSION } from './extract.ts';
 import { queueExtraction } from './queue.ts';
 
@@ -34,7 +35,7 @@ const r = values['from-json']
     )
   : await extractCommitments(
       db,
-      { client: new Anthropic(), store: storeFromEnv() },
+      { client: new Anthropic(), store: storeFromEnv(process.env, LOCAL_ARCHIVE_DIR) },
       values.document,
     );
 

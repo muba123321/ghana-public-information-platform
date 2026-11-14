@@ -6,8 +6,15 @@ import { createLocalStore } from './local.ts';
 import { createR2Store } from './r2.ts';
 import type { DocumentStore } from './store.ts';
 
-/** R2 when configured (production), otherwise the local archive under .data/archive. */
-export function storeFromEnv(env: NodeJS.ProcessEnv = process.env): DocumentStore {
+/**
+ * R2 when configured (production), otherwise a local folder: `GPIP_ARCHIVE_DIR`, or `localDir`
+ * (callers pass their own default so no file path is resolved from this module's location —
+ * the web bundler cannot follow those).
+ */
+export function storeFromEnv(
+  env: NodeJS.ProcessEnv = process.env,
+  localDir?: string,
+): DocumentStore {
   const { R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET } = env;
   if (R2_ACCOUNT_ID && R2_ACCESS_KEY_ID && R2_SECRET_ACCESS_KEY && R2_BUCKET) {
     return createR2Store({
@@ -17,7 +24,9 @@ export function storeFromEnv(env: NodeJS.ProcessEnv = process.env): DocumentStor
       bucket: R2_BUCKET,
     });
   }
-  return createLocalStore();
+  const dir = env.GPIP_ARCHIVE_DIR ?? localDir;
+  if (!dir) throw new Error('No archive configured: set R2_* or GPIP_ARCHIVE_DIR');
+  return createLocalStore(dir);
 }
 
 const MIME: Record<string, string> = {
@@ -42,6 +51,8 @@ export function countPdfPages(bytes: Uint8Array): number | null {
 export interface ArchiveInput {
   url?: string;
   file?: string;
+  /** Bytes uploaded through the admin screen; the filename gives the type. */
+  upload?: { bytes: Uint8Array; filename: string };
   title: string;
   docType: string;
   publisher: string;
@@ -70,13 +81,17 @@ export async function archiveDocument(
   store: DocumentStore,
   input: ArchiveInput,
 ): Promise<{ documentId: string; duplicate: boolean }> {
-  if (!input.url === !input.file) throw new Error('Give exactly one of url or file');
+  const given = [input.url, input.file, input.upload].filter((x) => x !== undefined).length;
+  if (given !== 1) throw new Error('Give exactly one of url, file or upload');
+  const mimeOf = (name: string) => MIME[extname(name).toLowerCase()] ?? 'application/octet-stream';
   const { bytes, mime } = input.url
     ? await download(input.url, input.fetchImpl ?? fetch)
-    : {
-        bytes: new Uint8Array(await readFile(input.file as string)),
-        mime: MIME[extname(input.file as string).toLowerCase()] ?? 'application/octet-stream',
-      };
+    : input.upload
+      ? { bytes: input.upload.bytes, mime: mimeOf(input.upload.filename) }
+      : {
+          bytes: new Uint8Array(await readFile(input.file as string)),
+          mime: mimeOf(input.file as string),
+        };
 
   const sha256 = createHash('sha256').update(bytes).digest('hex');
   const [existing] = await db

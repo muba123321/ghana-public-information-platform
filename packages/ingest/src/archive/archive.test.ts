@@ -103,3 +103,21 @@ describe('countPdfPages', () => {
     expect(countPdfPages(new Uint8Array(Buffer.from('not a pdf')))).toBeNull();
   });
 });
+
+describe('archiveDocument from uploaded bytes', () => {
+  it('archives an upload using its filename for the type', async () => {
+    const store = createLocalStore(join(dir, 'up'));
+    const r = await archiveDocument(db, store, {
+      ...meta,
+      upload: { bytes: new Uint8Array(PDF), filename: 'Manifesto 2016.PDF' },
+    });
+    const [doc] = await db.select().from(documents).where(eq(documents.id, r.documentId));
+    expect(doc).toMatchObject({ mime: 'application/pdf', pages: 2 });
+  });
+
+  it('requires exactly one of url, file or upload', async () => {
+    await expect(archiveDocument(db, createLocalStore(join(dir, 'x')), meta)).rejects.toThrow(
+      /exactly one/,
+    );
+  });
+});

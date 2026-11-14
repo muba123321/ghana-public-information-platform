@@ -1,14 +1,14 @@
-import { readFileSync } from 'node:fs';
 import type Anthropic from '@anthropic-ai/sdk';
 import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
 import { ExtractionResultSchema } from '@gpip/core';
 import { type Db, documents, eq } from '@gpip/db';
 import type { DocumentStore } from '../archive/store.ts';
+import { PROMPT_V1 } from './prompt.ts';
 import { type ExtractionOutcome, queueExtraction, type RunMeta, recordFailedRun } from './queue.ts';
 
 export const EXTRACTION_MODEL = 'claude-opus-5-5';
 export const PROMPT_VERSION = 'v1';
-const PROMPT = readFileSync(new URL('./prompt.v1.md', import.meta.url), 'utf8');
+const PROMPT = PROMPT_V1;
 /** Claude Opus 5.5 list price, USD per million tokens. */
 const PRICE = { input: 4, output: 20 };
 

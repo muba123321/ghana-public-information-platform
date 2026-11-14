@@ -17,6 +17,7 @@ import {
   commitments,
   correctionReports,
   documents,
+  extractionRuns,
   sectors,
 } from '../schema/index.ts';
 
@@ -289,4 +290,71 @@ export async function setCorrectionStatus(
       changedBy: reviewer,
     });
   });
+}
+
+export interface AdminDocument {
+  id: string;
+  title: string;
+  docType: string;
+  pages: number | null;
+  administrationSlug: string | null;
+  publicRedistribution: boolean;
+  /** Drafts from this document waiting for review. */
+  waiting: number;
+  latestRun: {
+    status: string;
+    model: string;
+    itemsFound: number;
+    itemsQueued: number;
+    costUsd: number | null;
+    error: string | null;
+    finishedAt: Date | null;
+  } | null;
+}
+
+export async function listDocumentsForAdmin(db: Db): Promise<AdminDocument[]> {
+  const docs = await db.select().from(documents).orderBy(desc(documents.archivedAt));
+  const waiting = await db
+    .select({ documentId: commitments.documentId, n: count() })
+    .from(commitments)
+    .where(QUEUE)
+    .groupBy(commitments.documentId);
+  const runs = await db
+    .select()
+    .from(extractionRuns)
+    .orderBy(desc(extractionRuns.startedAt), desc(extractionRuns.id));
+  return docs.map((d) => {
+    const run = runs.find((r) => r.documentId === d.id);
+    return {
+      id: d.id,
+      title: d.title,
+      docType: d.docType,
+      pages: d.pages,
+      administrationSlug: d.administrationSlug,
+      publicRedistribution: d.publicRedistribution,
+      waiting: waiting.find((w) => w.documentId === d.id)?.n ?? 0,
+      latestRun: run
+        ? {
+            status: run.status,
+            model: run.model,
+            itemsFound: run.itemsFound,
+            itemsQueued: run.itemsQueued,
+            costUsd: run.costUsd,
+            error: run.error,
+            finishedAt: run.finishedAt,
+          }
+        : null,
+    };
+  });
+}
+
+export async function getDocumentFile(
+  db: Db,
+  id: string,
+): Promise<{ storageKey: string; mime: string; title: string } | null> {
+  const [d] = await db
+    .select({ storageKey: documents.storageKey, mime: documents.mime, title: documents.title })
+    .from(documents)
+    .where(eq(documents.id, id));
+  return d ?? null;
 }

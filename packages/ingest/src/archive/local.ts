@@ -1,11 +1,8 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import type { DocumentStore } from './store.ts';
 
-const DEFAULT_DIR = fileURLToPath(new URL('../../../../.data/archive', import.meta.url));
-
-export function createLocalStore(dir: string = DEFAULT_DIR): DocumentStore {
+export function createLocalStore(dir: string): DocumentStore {
   const root = resolve(dir);
   const pathFor = (key: string) => {
     const p = resolve(join(root, key));
