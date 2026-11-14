@@ -1,19 +1,24 @@
 import { describe, expect, it } from 'vitest';
 import { devLoginEnabled, isAllowedEditor } from './editors';
 
-describe('isAllowedEditor', () => {
-  const env = { ADMIN_GITHUB_LOGINS: 'muba123321, Another-Editor' };
+describe('isAllowedEditor (by permanent account id, not the renameable username)', () => {
+  const env = { ADMIN_GITHUB_IDS: '105753631, 42' };
 
-  it('allows listed GitHub logins, case-insensitively', () => {
-    expect(isAllowedEditor('muba123321', env)).toBe(true);
-    expect(isAllowedEditor('another-editor', env)).toBe(true);
+  it('allows listed account ids', () => {
+    expect(isAllowedEditor('105753631', env)).toBe(true);
+    expect(isAllowedEditor('42', env)).toBe(true);
   });
 
-  it('refuses everyone else, including when no list is set', () => {
-    expect(isAllowedEditor('stranger', env)).toBe(false);
+  it('refuses everyone else, including a username that matches someone listed', () => {
+    expect(isAllowedEditor('muba123321', env)).toBe(false);
+    expect(isAllowedEditor('7', env)).toBe(false);
     expect(isAllowedEditor(undefined, env)).toBe(false);
-    expect(isAllowedEditor('muba123321', {})).toBe(false);
-    expect(isAllowedEditor('', { ADMIN_GITHUB_LOGINS: '' })).toBe(false);
+    expect(isAllowedEditor('105753631', {})).toBe(false);
+    expect(isAllowedEditor('', { ADMIN_GITHUB_IDS: '' })).toBe(false);
+  });
+
+  it('ignores the old username list entirely', () => {
+    expect(isAllowedEditor('muba123321', { ADMIN_GITHUB_LOGINS: 'muba123321' })).toBe(false);
   });
 });
 

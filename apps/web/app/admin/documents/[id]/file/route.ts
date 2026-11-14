@@ -1,6 +1,7 @@
 import { getDocumentFile } from '@gpip/db';
 import { archiveStore, currentEditor } from '../../../../../lib/admin';
 import { getDb } from '../../../../../lib/db';
+import { archivedFileHeaders } from '../../../../../lib/files';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,12 +13,5 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
   if (!doc) return new Response('Not found', { status: 404 });
   const bytes = await archiveStore().get(doc.storageKey);
   if (!bytes) return new Response('Archived file missing', { status: 404 });
-  return new Response(Buffer.from(bytes), {
-    headers: {
-      'Content-Type': doc.mime,
-      'Content-Disposition': 'inline',
-      'Cache-Control': 'private, no-store',
-      'X-Content-Type-Options': 'nosniff',
-    },
-  });
+  return new Response(Buffer.from(bytes), { headers: archivedFileHeaders(doc.mime, bytes) });
 }

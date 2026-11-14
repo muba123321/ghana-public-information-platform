@@ -21,7 +21,7 @@ export default defineConfig({
       AUTH_SECRET: 'e2e-only-secret-not-used-anywhere-else-0123456789',
       AUTH_DEV_LOGIN: '1',
       GPIP_E2E: '1',
-      ADMIN_GITHUB_LOGINS: 'e2e-editor',
+      ADMIN_GITHUB_IDS: 'e2e-editor',
       AUTH_GITHUB_ID: 'e2e',
       AUTH_GITHUB_SECRET: 'e2e',
     },

@@ -13,6 +13,8 @@ const PDF = Buffer.from(
   '%PDF-1.4\n1 0 obj <</Type /Catalog /Pages 2 0 R>> endobj\n2 0 obj <</Type /Pages /Kids [3 0 R 4 0 R] /Count 2>> endobj\n3 0 obj <</Type /Page /Parent 2 0 R>> endobj\n4 0 obj <</Type/Page /Parent 2 0 R>> endobj\ntrailer <</Root 1 0 R>>\n%%EOF',
 );
 
+const publicLookup = async () => [{ address: '93.184.216.34', family: 4 }];
+
 let db: Db;
 let dir: string;
 beforeEach(async () => {
@@ -119,5 +121,21 @@ describe('archiveDocument from uploaded bytes', () => {
     await expect(archiveDocument(db, createLocalStore(join(dir, 'x')), meta)).rejects.toThrow(
       /exactly one/,
     );
+  });
+});
+
+describe('archiveDocument content checks', () => {
+  it('refuses a file that claims to be a PDF but is not one', async () => {
+    const store = createLocalStore(join(dir, 'fake'));
+    await expect(
+      archiveDocument(db, store, {
+        ...meta,
+        upload: {
+          bytes: new Uint8Array(Buffer.from('<html><script>alert(1)</script>')),
+          filename: 'manifesto.pdf',
+        },
+      }),
+    ).rejects.toThrow(/not a PDF/);
+    expect(await db.$count(documents)).toBe(0);
   });
 });

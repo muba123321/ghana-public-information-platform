@@ -1,9 +1,15 @@
 import { expect, type Page, test } from '@playwright/test';
 
-async function signIn(page: Page, login = 'e2e-editor') {
+async function submitSignIn(page: Page, id: string) {
   await page.goto('/api/auth/signin?callbackUrl=%2Fadmin');
-  await page.getByLabel('GitHub login').fill(login);
+  await page.getByLabel('Test editor id').fill(id);
   await page.getByRole('button', { name: /Sign in with Test editor/ }).click();
+}
+
+/** Signs in and waits until the session cookie is set and the editor area has loaded. */
+async function signIn(page: Page) {
+  await submitSignIn(page, 'e2e-editor');
+  await page.waitForURL(/\/admin$/);
 }
 
 test.describe.configure({ mode: 'serial' });
@@ -22,8 +28,9 @@ test('archived originals are not public', async ({ request }) => {
   expect(file.status()).toBe(401);
 });
 
-test('a GitHub login that is not on the allow-list cannot sign in', async ({ page }) => {
-  await signIn(page, 'someone-else');
+test('an account that is not on the allow-list cannot sign in', async ({ page }) => {
+  await submitSignIn(page, 'someone-else');
+  await page.waitForURL(/\/api\/auth\/(signin|error)/);
   await page.goto('/admin');
   await expect(page).toHaveURL(/\/api\/auth\/signin/);
 });

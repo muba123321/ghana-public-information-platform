@@ -4,6 +4,7 @@ import { extname } from 'node:path';
 import { type Db, documents, eq, sources } from '@gpip/db';
 import { createLocalStore } from './local.ts';
 import { createR2Store } from './r2.ts';
+import { type Lookup, safeDownload } from './safe-url.ts';
 import type { DocumentStore } from './store.ts';
 
 /**
@@ -41,6 +42,10 @@ const EXT: Record<string, string> = {
   'text/html': 'html',
 };
 
+/** True when the bytes start with the PDF signature. */
+export const isPdf = (bytes: Uint8Array) =>
+  Buffer.from(bytes.subarray(0, 5)).toString('latin1') === '%PDF-';
+
 /** Page objects in a PDF (`/Type /Page`, not `/Pages`); null if it isn't a PDF. Good enough to validate page references. */
 export function countPdfPages(bytes: Uint8Array): number | null {
   const text = Buffer.from(bytes).toString('latin1');
@@ -60,13 +65,16 @@ export interface ArchiveInput {
   /** Only true when the publisher's licence allows sharing copies. */
   publicRedistribution?: boolean;
   fetchImpl?: typeof fetch;
+  /** DNS lookup override (tests). */
+  lookup?: Lookup;
 }
 
 async function download(
   url: string,
   fetchImpl: typeof fetch,
+  lookup?: Lookup,
 ): Promise<{ bytes: Uint8Array; mime: string }> {
-  const res = await fetchImpl(url, { signal: AbortSignal.timeout(60_000) });
+  const res = await safeDownload(url, { fetchImpl, ...(lookup ? { lookup } : {}) });
   if (!res.ok) throw new Error(`GET ${url} failed: HTTP ${res.status}`);
   const mime =
     (res.headers.get('content-type') ?? '').split(';')[0]?.trim() ||
@@ -85,13 +93,16 @@ export async function archiveDocument(
   if (given !== 1) throw new Error('Give exactly one of url, file or upload');
   const mimeOf = (name: string) => MIME[extname(name).toLowerCase()] ?? 'application/octet-stream';
   const { bytes, mime } = input.url
-    ? await download(input.url, input.fetchImpl ?? fetch)
+    ? await download(input.url, input.fetchImpl ?? fetch, input.lookup)
     : input.upload
       ? { bytes: input.upload.bytes, mime: mimeOf(input.upload.filename) }
       : {
           bytes: new Uint8Array(await readFile(input.file as string)),
           mime: mimeOf(input.file as string),
         };
+
+  // A file that claims to be a PDF must be one: anything else could be active content.
+  if (mime === 'application/pdf' && !isPdf(bytes)) throw new Error('This file is not a PDF');
 
   const sha256 = createHash('sha256').update(bytes).digest('hex');
   const [existing] = await db

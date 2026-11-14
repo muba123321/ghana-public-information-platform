@@ -1,13 +1,20 @@
 type Env = Record<string, string | undefined>;
 
-/** Only GitHub accounts listed in ADMIN_GITHUB_LOGINS may review and publish. Empty list = nobody. */
-export function isAllowedEditor(login: string | null | undefined, env: Env = process.env): boolean {
-  if (!login) return false;
-  const allowed = (env.ADMIN_GITHUB_LOGINS ?? '')
+/**
+ * Only accounts listed in ADMIN_GITHUB_IDS may review and publish. These are GitHub's permanent
+ * numeric account ids — usernames can be renamed and re-registered, so they never grant access.
+ * Empty list = nobody.
+ */
+export function isAllowedEditor(
+  accountId: string | null | undefined,
+  env: Env = process.env,
+): boolean {
+  if (!accountId) return false;
+  const allowed = (env.ADMIN_GITHUB_IDS ?? '')
     .split(',')
-    .map((s) => s.trim().toLowerCase())
+    .map((s) => s.trim())
     .filter(Boolean);
-  return allowed.includes(login.toLowerCase());
+  return allowed.includes(accountId.trim());
 }
 
 /**

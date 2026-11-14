@@ -5,10 +5,14 @@ import { redirect } from 'next/navigation';
 import { auth } from '../auth';
 import { isAllowedEditor } from './editors';
 
-/** The signed-in editor's GitHub login, or null. Re-checks the allow-list on every call. */
+/**
+ * The signed-in editor (GitHub login, for display and audit), or null. Authorisation re-checks the
+ * permanent account id against the allow-list on every call, so removing an id revokes access.
+ */
 export async function currentEditor(): Promise<string | null> {
-  const session = (await auth()) as { login?: string } | null;
-  return session?.login && isAllowedEditor(session.login) ? session.login : null;
+  const session = (await auth()) as { editorId?: string; login?: string } | null;
+  if (!session?.editorId || !isAllowedEditor(session.editorId)) return null;
+  return session.login ?? session.editorId;
 }
 
 /**

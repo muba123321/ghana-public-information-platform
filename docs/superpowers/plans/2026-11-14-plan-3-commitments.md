@@ -47,7 +47,7 @@ history, sources and corrections log.
   reading content; typed SDK errors only. Prompt text versioned in a file; the prompt version,
   model, token usage and cost are stored on each extraction run.
 - Secrets only from env: `ANTHROPIC_API_KEY`, `AUTH_SECRET`, `AUTH_GITHUB_ID`,
-  `AUTH_GITHUB_SECRET`, `ADMIN_GITHUB_LOGINS`, `R2_*`. Tests never need any of them.
+  `AUTH_GITHUB_SECRET`, `ADMIN_GITHUB_IDS`, `R2_*`. Tests never need any of them.
 
 ## Review Focus
 
@@ -268,5 +268,5 @@ findings addressed; issue #7 closed by the PR.
 
 1. `ANTHROPIC_API_KEY` (or `ant auth login`) for real extractions — about $2 per 150-page manifesto.
 2. A GitHub OAuth app (callback `http://localhost:3000/api/auth/callback/github`, later the
-   production URL) → `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET`; `ADMIN_GITHUB_LOGINS=muba123321`.
+   production URL) → `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET`; `ADMIN_GITHUB_IDS=105753631` (permanent GitHub account id, not the renameable username).
 3. Cloudflare R2 bucket + token — only needed at deployment (Plan 4).
