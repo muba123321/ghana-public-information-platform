@@ -1,6 +1,5 @@
 import { annualFromYear, type IsoDate } from '@gpip/core';
-import { type Db, importRuns, indicators, observations } from '@gpip/db';
-import { and, desc, eq } from 'drizzle-orm';
+import { and, type Db, desc, eq, importRuns, indicators, observations } from '@gpip/db';
 import type { ImportRunResult, RawPoint, SourceAdapter } from './types.ts';
 
 type Point = {

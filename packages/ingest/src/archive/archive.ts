@@ -1,8 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { extname } from 'node:path';
-import { type Db, documents, sources } from '@gpip/db';
-import { eq } from 'drizzle-orm';
+import { type Db, documents, eq, sources } from '@gpip/db';
 import { createLocalStore } from './local.ts';
 import { createR2Store } from './r2.ts';
 import type { DocumentStore } from './store.ts';

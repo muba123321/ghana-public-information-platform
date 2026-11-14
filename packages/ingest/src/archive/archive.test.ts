@@ -1,10 +1,9 @@
 import { mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { type Db, documents, sources } from '@gpip/db';
+import { type Db, documents, eq, sources } from '@gpip/db';
 import { seed } from '@gpip/db/node';
 import { createTestDb } from '@gpip/db/testing';
-import { eq } from 'drizzle-orm';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { archiveDocument, countPdfPages } from './archive.ts';
 import { createLocalStore } from './local.ts';
