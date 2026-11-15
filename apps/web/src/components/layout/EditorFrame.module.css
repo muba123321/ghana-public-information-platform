@@ -1,0 +1,19 @@
+.adminNav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.adminUser {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--muted);
+  font-weight: 400;
+}

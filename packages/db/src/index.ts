@@ -8,4 +8,5 @@ export * from './repositories/commitments.ts';
 export * from './repositories/indicators.ts';
 export * from './repositories/institutions.ts';
 export * from './repositories/review.ts';
+export * from './repositories/sectors.ts';
 export * from './schema/index.ts';

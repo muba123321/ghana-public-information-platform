@@ -1,0 +1,53 @@
+// Global styles load first so every component module can refine them.
+import '@/styles/tokens.css';
+import '@/styles/base.css';
+import type { Metadata, Viewport } from 'next';
+import { Atkinson_Hyperlegible_Next, Bricolage_Grotesque } from 'next/font/google';
+import type { ReactNode } from 'react';
+import { SiteFooter } from '@/components/layout/SiteFooter';
+import { SiteHeader } from '@/components/layout/SiteHeader';
+
+const display = Bricolage_Grotesque({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+  // Missing glyphs (e.g. arrows) come from the system font, as the design intends.
+  fallback: ['system-ui', 'sans-serif'],
+  adjustFontFallback: false,
+});
+const body = Atkinson_Hyperlegible_Next({
+  subsets: ['latin'],
+  variable: '--font-body',
+  display: 'swap',
+  // Missing glyphs (e.g. arrows) come from the system font, as the design intends.
+  fallback: ['system-ui', 'sans-serif'],
+  adjustFontFallback: false,
+});
+
+export const metadata: Metadata = {
+  title: { default: 'Ghana Public Information Platform', template: '%s · GPIP' },
+  description:
+    'A neutral, sourced record of every government of Ghana since 1957 — who governed, when, and the public evidence behind each record.',
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#2a1b14' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a110c' },
+  ],
+};
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en-GH" className={`${display.variable} ${body.variable}`}>
+      <body>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <SiteHeader />
+        <main id="main">{children}</main>
+        <SiteFooter />
+      </body>
+    </html>
+  );
+}

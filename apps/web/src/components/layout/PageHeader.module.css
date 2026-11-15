@@ -1,0 +1,6 @@
+.pageLede {
+  color: var(--muted);
+  font-size: 1.15rem;
+  max-width: 60ch;
+  margin-top: 12px;
+}

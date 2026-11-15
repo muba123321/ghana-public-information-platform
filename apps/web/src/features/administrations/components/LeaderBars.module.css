@@ -1,0 +1,61 @@
+.leaders {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+
+.leader {
+  display: grid;
+  gap: 8px;
+}
+
+.leaderText {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+}
+
+.leaderText strong {
+  font-size: 1.1rem;
+}
+
+.leaderRole {
+  color: var(--muted);
+}
+
+.leaderDates {
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.leaderTrack {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.leaderTrack span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 999px;
+  background: var(--gold);
+}
+
+.leader[data-role="vice_president"] .leaderTrack span {
+  background: var(--gold-soft);
+}
+
+.leaderDates {
+  font-family: var(--font-display);
+}
+
+.leaderTrack span {
+  left: var(--left);
+  width: var(--width);
+}

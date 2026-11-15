@@ -1,0 +1,81 @@
+.chartFigure {
+  margin: 0;
+}
+
+.chartFigure figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 8px;
+}
+
+.legendItem::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 0;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.legendProjection::before {
+  border-top: 3px dashed var(--projection);
+}
+
+.legendBand::before {
+  height: 12px;
+  background: var(--band-a);
+  border: 1px solid var(--line);
+}
+
+.legendEvent::before {
+  border-top: 2px dotted var(--muted);
+}
+
+.howToRead {
+  padding: 18px 20px;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+}
+
+.howToRead h2 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.howToRead p {
+  max-width: var(--measure);
+  color: var(--muted);
+}
+
+.tableWrap summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--link);
+}
+
+.vintages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  color: var(--muted);
+}
+
+.vintages a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.legendSeries::before {
+  border-top: 3px solid var(--series);
+}
+
+.legendPoints::before {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--series);
+}

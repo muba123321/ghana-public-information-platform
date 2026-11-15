@@ -174,3 +174,14 @@ export async function listPersonTenures(db: Db, personSlug: string): Promise<Ten
   }
   return tenures;
 }
+
+/**
+ * Every administration, drafts included, as editor choices (review form). Never use this for
+ * public pages — use listAdministrations, which shows published records only.
+ */
+export function listAdministrationNames(db: Db): Promise<{ slug: string; name: string }[]> {
+  return db
+    .select({ slug: administrations.slug, name: administrations.name })
+    .from(administrations)
+    .orderBy(asc(administrations.startDate));
+}

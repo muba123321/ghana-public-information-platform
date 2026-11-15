@@ -1,0 +1,4 @@
+.sparkline {
+  color: var(--series);
+  flex: none;
+}

@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { annualPeriod, overlapDays, parseIsoDate, periodDays } from './period.ts';
+import {
+  annualPeriod,
+  fullYearsBetween,
+  monthsBetween,
+  overlapDays,
+  parseIsoDate,
+  periodDays,
+} from './period.ts';
 
 describe('period maths', () => {
   it('counts days in a leap year', () => {
@@ -24,5 +31,18 @@ describe('period maths', () => {
 
   it.each(['2023-02-30', '2023-13-01', '23-01-01', '2023-1-1', ''])('rejects %j', (s) => {
     expect(() => parseIsoDate(s)).toThrow(RangeError);
+  });
+});
+
+describe('calendar differences', () => {
+  it('counts whole months, not counting a month that has not finished', () => {
+    expect(monthsBetween('2024-01-31', '2024-02-29')).toBe(0);
+    expect(monthsBetween('2024-01-15', '2025-03-15')).toBe(14);
+  });
+
+  it('counts complete years', () => {
+    expect(fullYearsBetween('1957-03-06', '2026-11-10')).toBe(69);
+    expect(fullYearsBetween('1957-03-06', '2027-03-05')).toBe(69);
+    expect(fullYearsBetween('1957-03-06', '2027-03-06')).toBe(70);
   });
 });

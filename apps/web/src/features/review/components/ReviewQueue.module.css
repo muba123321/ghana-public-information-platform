@@ -1,0 +1,19 @@
+.queueLink {
+  display: grid;
+  gap: 4px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.queueWording {
+  font-weight: 600;
+}
+
+.queueMeta {
+  color: var(--muted);
+  font-size: 0.9rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}

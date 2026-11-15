@@ -1,0 +1,8 @@
+.prose h2 {
+  font-size: 1.35rem;
+  margin: 36px 0 8px;
+}
+
+.prose p {
+  max-width: var(--measure);
+}

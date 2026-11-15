@@ -9,7 +9,8 @@
     "start": "NEXT_MANUAL_SIG_HANDLE=true next start",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
-    "e2e": "playwright test"
+    "e2e": "playwright test --project=chromium",
+    "e2e:visual": "playwright test --project='visual-*'"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "1.8.0",

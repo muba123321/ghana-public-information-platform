@@ -1,0 +1,53 @@
+.stewardship {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+
+.stewardHead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
+}
+
+.stewardHead strong {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+.stewardTrack {
+  position: relative;
+  height: 14px;
+  margin: 8px 0 6px;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.stewardTrack span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 999px;
+  background: var(--gold);
+}
+
+.stewardTrack span[data-tone="b"] {
+  background: var(--umber);
+}
+
+.stewardProgress {
+  margin: 0;
+}
+
+.stewardProgress {
+  font-family: var(--font-display);
+}
+
+.stewardTrack span {
+  left: var(--left);
+  width: var(--width);
+}

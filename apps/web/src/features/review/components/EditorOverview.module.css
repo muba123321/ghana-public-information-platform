@@ -1,0 +1,21 @@
+.adminCards {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.adminCards a {
+  display: block;
+  padding: 18px 20px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--text);
+}
+
+.adminCards strong {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-right: 6px;
+}
