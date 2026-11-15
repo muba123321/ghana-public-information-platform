@@ -18,7 +18,7 @@ export async function archiveAction(form: FormData) {
   const file = form.get('file');
   const url = String(form.get('url') ?? '').trim();
   const upload = file instanceof File && file.size > 0 ? file : null;
-  if (!upload === !url) await back('error', 'Choose a PDF file or give a URL (not both).');
+  if (!url) await back('error', "Give the publisher's URL for this document.");
   if (upload && upload.size > MAX_DOCUMENT_BYTES) await back('error', 'File is larger than 40 MB.');
   if (url && !/^https:\/\//.test(url)) await back('error', 'URL must start with https://');
 
@@ -26,7 +26,10 @@ export async function archiveAction(form: FormData) {
   try {
     const r = await archiveDocument(await getDb(), archiveStore(), {
       ...(upload
-        ? { upload: { bytes: new Uint8Array(await upload.arrayBuffer()), filename: upload.name } }
+        ? {
+            upload: { bytes: new Uint8Array(await upload.arrayBuffer()), filename: upload.name },
+            sourceUrl: url,
+          }
         : { url }),
       title: String(form.get('title') ?? '').trim(),
       docType: String(form.get('docType') ?? 'manifesto'),

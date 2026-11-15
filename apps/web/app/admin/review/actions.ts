@@ -2,6 +2,7 @@
 
 import {
   approveCommitment,
+  type BudgetEdit,
   type CommitmentEdit,
   listReviewQueue,
   ReviewError,
@@ -34,6 +35,17 @@ export async function approveAction(form: FormData) {
     finalStatus: text(form, 'finalStatus') as CommitmentEdit['finalStatus'],
     target: optional(form, 'target'),
     targetDeadline: optional(form, 'targetDeadline'),
+    budgets: form.getAll('budgetId').map((raw) => {
+      const id = Number(raw);
+      const year = text(form, `budget-${id}-fiscalYear`);
+      return {
+        id,
+        amount: Number(text(form, `budget-${id}-amount`)),
+        currency: text(form, `budget-${id}-currency`) as BudgetEdit['currency'],
+        fiscalYear: year ? Number(year) : null,
+        publish: form.get(`budget-${id}-publish`) === 'on',
+      };
+    }),
   };
   try {
     await approveCommitment(await getDb(), slug, edit, editor);

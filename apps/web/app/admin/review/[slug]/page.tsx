@@ -1,6 +1,8 @@
+import { CURRENCIES } from '@gpip/core';
 import { administrations, asc, getReviewItem, sectors } from '@gpip/db';
 import { notFound } from 'next/navigation';
 import { KIND_LABELS } from '../../../../components/KindBadge';
+import { requireEditor } from '../../../../lib/admin';
 import { getDb } from '../../../../lib/db';
 import { readFlash } from '../../../../lib/flash';
 import { approveAction, rejectAction } from '../actions';
@@ -19,6 +21,7 @@ const STATUSES = [
 ] as const;
 
 export default async function ReviewItemPage({ params }: Props) {
+  await requireEditor(); // pages render without the layout on client navigations
   const db = await getDb();
   const item = await getReviewItem(db, (await params).slug);
   if (!item) notFound();
@@ -126,6 +129,49 @@ export default async function ReviewItemPage({ params }: Props) {
               </select>
             </label>
           </div>
+          {item.budgets.length > 0 && (
+            <fieldset className="stack">
+              <legend>Money figures found on the page — check each one</legend>
+              {item.budgets.map((b) => (
+                <div key={b.id} className="row" data-budget={b.id}>
+                  <input type="hidden" name="budgetId" value={b.id} />
+                  <label>
+                    {b.kind} amount
+                    <input
+                      name={`budget-${b.id}-amount`}
+                      type="number"
+                      step="any"
+                      min={0}
+                      defaultValue={b.amount}
+                    />
+                  </label>
+                  <label>
+                    Currency
+                    <select name={`budget-${b.id}-currency`} defaultValue={b.currency}>
+                      {CURRENCIES.map((c) => (
+                        <option key={c} value={c}>
+                          {c}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    Fiscal year
+                    <input
+                      name={`budget-${b.id}-fiscalYear`}
+                      type="number"
+                      min={1957}
+                      defaultValue={b.fiscalYear ?? ''}
+                    />
+                  </label>
+                  <label>
+                    <input type="checkbox" name={`budget-${b.id}-publish`} /> Publish this figure
+                  </label>
+                </div>
+              ))}
+              <p className="muted">Unticked figures are dropped (kept only in the audit log).</p>
+            </fieldset>
+          )}
           <button type="submit" className="button">
             Approve and publish
           </button>

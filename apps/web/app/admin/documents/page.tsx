@@ -1,10 +1,12 @@
 import { listDocumentsForAdmin } from '@gpip/db';
 import Link from 'next/link';
+import { requireEditor } from '../../../lib/admin';
 import { getDb } from '../../../lib/db';
 import { readFlash } from '../../../lib/flash';
 import { archiveAction, extractAction } from './actions';
 
 export default async function DocumentsPage() {
+  await requireEditor(); // pages render without the layout on client navigations
   const docs = await listDocumentsForAdmin(await getDb());
   const flash = await readFlash();
   return (
@@ -21,12 +23,12 @@ export default async function DocumentsPage() {
         <h2 className="section-title">Archive a document</h2>
         <div className="row">
           <label>
-            PDF file
-            <input type="file" name="file" accept="application/pdf" />
+            Publisher URL (cited as the source)
+            <input type="url" name="url" required placeholder="https://…" />
           </label>
           <label>
-            or publisher URL
-            <input type="url" name="url" placeholder="https://…" />
+            PDF file (only if the URL can&apos;t be downloaded)
+            <input type="file" name="file" accept="application/pdf" />
           </label>
         </div>
         <div className="row">

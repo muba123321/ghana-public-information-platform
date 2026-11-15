@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import type { Db } from '../client.ts';
 import {
   changeLog,
+  commitmentBudgets,
   commitmentStewardships,
   commitments,
   correctionReports,
@@ -84,7 +85,26 @@ const edit = {
   finalStatus: 'in_progress' as const,
   target: null,
   targetDeadline: null,
+  budgets: [],
 };
+
+async function draftBudget(slug: string) {
+  const [src] = await db.select({ id: sources.id }).from(sources);
+  const [b] = await db
+    .insert(commitmentBudgets)
+    .values({
+      commitmentSlug: slug,
+      kind: 'allocated',
+      amount: 400_000_000,
+      currency: 'GHS',
+      fiscalYear: 2018,
+      sourceId: src!.id,
+      page: 20,
+      provenance: 'ai_extracted',
+    })
+    .returning();
+  return b!;
+}
 
 describe('review queue', () => {
   it('counts and lists drafts with their source page', async () => {
@@ -139,6 +159,73 @@ describe('review queue', () => {
     await expect(
       approveCommitment(db, 'd1', bad as typeof edit, 'muba123321'),
     ).rejects.toBeInstanceOf(ReviewError);
+    expect(await listCommitments(db)).toHaveLength(0);
+  });
+
+  it('shows the editor every extracted budget figure to check', async () => {
+    const b = await draftBudget('d1');
+    expect((await getReviewItem(db, 'd1'))?.budgets).toEqual([
+      {
+        id: b.id,
+        kind: 'allocated',
+        amount: 400_000_000,
+        currency: 'GHS',
+        fiscalYear: 2018,
+        page: 20,
+      },
+    ]);
+  });
+
+  it('publishes a budget figure only as the editor confirmed it, and drops the ones they did not', async () => {
+    const kept = await draftBudget('d1');
+    const dropped = await draftBudget('d1');
+    await approveCommitment(
+      db,
+      'd1',
+      {
+        ...edit,
+        budgets: [
+          { id: kept.id, amount: 450_000_000, currency: 'GHC', fiscalYear: 2019, publish: true },
+          { id: dropped.id, amount: 1, currency: 'GHS', fiscalYear: null, publish: false },
+        ],
+      },
+      'muba123321',
+    );
+    const rows = await db.select().from(commitmentBudgets);
+    expect(rows.find((r) => r.id === kept.id)).toMatchObject({
+      reviewStatus: 'published',
+      amount: 450_000_000,
+      currency: 'GHC',
+      fiscalYear: 2019,
+      reviewedBy: 'muba123321',
+    });
+    expect(rows.find((r) => r.id === dropped.id)).toMatchObject({
+      reviewStatus: 'rejected',
+      amount: 400_000_000,
+    });
+    expect((await getCommitment(db, 'd1'))?.budgets).toHaveLength(1);
+  });
+
+  it('refuses to approve while an extracted budget figure has not been checked', async () => {
+    await draftBudget('d1');
+    await expect(approveCommitment(db, 'd1', edit, 'muba123321')).rejects.toThrow(/budget/i);
+    expect(await listCommitments(db)).toHaveLength(0);
+  });
+
+  it.each([
+    [{ amount: 0, currency: 'GHS' }, /amount/i],
+    [{ amount: Number.NaN, currency: 'GHS' }, /amount/i],
+    [{ amount: 5, currency: 'EUR' }, /currency/i],
+  ])('refuses an invalid confirmed budget figure (%#)', async (bad, msg) => {
+    const b = await draftBudget('d1');
+    await expect(
+      approveCommitment(
+        db,
+        'd1',
+        { ...edit, budgets: [{ id: b.id, fiscalYear: 2018, publish: true, ...bad }] as never },
+        'muba123321',
+      ),
+    ).rejects.toThrow(msg);
     expect(await listCommitments(db)).toHaveLength(0);
   });
 

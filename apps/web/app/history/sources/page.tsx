@@ -17,8 +17,8 @@ export default async function SourcesPage() {
     <div className="container page">
       <h1 className="page-title">Sources and documents</h1>
       <p className="page-lede">
-        The original documents commitments are taken from. Links go to the publisher. A copy is
-        offered here only when the publisher&apos;s licence allows it.
+        The original documents published commitments are taken from. Links go to the publisher; we
+        keep an archived copy so each quotation can be checked against the page it came from.
       </p>
       {docs.length === 0 ? (
         <p className="callout">Documents appear here once they are archived.</p>
@@ -36,7 +36,6 @@ export default async function SourcesPage() {
                   {d.administration ? ` — ${d.administration.name}` : ''}
                 </span>
               </div>
-              {d.downloadable ? <span className="pill">Copy available</span> : null}
             </li>
           ))}
         </ul>

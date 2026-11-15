@@ -24,6 +24,7 @@ await migrateDb(db);
 
 const { documentId } = await archiveDocument(db, createLocalStore(archiveDir), {
   upload: { bytes: new Uint8Array(PDF), filename: 'test-manifesto.pdf' },
+  sourceUrl: 'https://example.org/test-manifesto-2012',
   title: 'Test Manifesto 2012',
   docType: 'manifesto',
   publisher: 'Test Party',

@@ -29,13 +29,14 @@ const meta = {
   publisher: 'National Democratic Congress',
   administrationSlug: '2013-mahama-i',
 };
+const sourceUrl = 'https://ndc.org.gh/manifesto-2012';
 
 describe('archiveDocument', () => {
   it('stores a local PDF under its hash and records it with a source', async () => {
     const file = join(dir, 'm.pdf');
     writeFileSync(file, PDF);
     const store = createLocalStore(join(dir, 'store'));
-    const r = await archiveDocument(db, store, { ...meta, file });
+    const r = await archiveDocument(db, store, { ...meta, file, sourceUrl });
     expect(r.duplicate).toBe(false);
     const [doc] = await db.select().from(documents).where(eq(documents.id, r.documentId));
     expect(doc).toMatchObject({ pages: 2, mime: 'application/pdf', publicRedistribution: false });
@@ -45,15 +46,38 @@ describe('archiveDocument', () => {
     expect(src).toMatchObject({
       publisher: 'National Democratic Congress',
       sourceType: 'manifesto',
+      url: sourceUrl,
     });
+  });
+
+  it.each([
+    [undefined, /publisher's URL/],
+    ['http://ndc.org.gh/m', /https/],
+    ['javascript:alert(1)', /https/],
+  ])('refuses a file without a real publisher URL to cite (%s)', async (bad, msg) => {
+    const file = join(dir, 'm.pdf');
+    writeFileSync(file, PDF);
+    await expect(
+      archiveDocument(db, createLocalStore(join(dir, 's')), {
+        ...meta,
+        file,
+        ...(bad ? { sourceUrl: bad } : {}),
+      }),
+    ).rejects.toThrow(msg);
+    expect(await db.$count(documents)).toBe(0);
   });
 
   it('archives identical bytes only once', async () => {
     const file = join(dir, 'm.pdf');
     writeFileSync(file, PDF);
     const store = createLocalStore(join(dir, 'store'));
-    const a = await archiveDocument(db, store, { ...meta, file });
-    const b = await archiveDocument(db, store, { ...meta, file, title: 'Same file again' });
+    const a = await archiveDocument(db, store, { ...meta, file, sourceUrl });
+    const b = await archiveDocument(db, store, {
+      ...meta,
+      file,
+      sourceUrl,
+      title: 'Same file again',
+    });
     expect(b).toEqual({ documentId: a.documentId, duplicate: true });
     expect(await db.$count(documents)).toBe(1);
   });
@@ -130,7 +154,11 @@ describe('archiveDocument', () => {
   it('accepts non-PDF files with an unknown page count', async () => {
     const file = join(dir, 'notes.txt');
     writeFileSync(file, 'plain text');
-    const r = await archiveDocument(db, createLocalStore(join(dir, 's')), { ...meta, file });
+    const r = await archiveDocument(db, createLocalStore(join(dir, 's')), {
+      ...meta,
+      file,
+      sourceUrl,
+    });
     const [doc] = await db.select().from(documents).where(eq(documents.id, r.documentId));
     expect(doc).toMatchObject({ pages: null, mime: 'text/plain' });
     expect(doc!.storageKey).toMatch(/\.txt$/);
@@ -149,6 +177,7 @@ describe('archiveDocument from uploaded bytes', () => {
     const store = createLocalStore(join(dir, 'up'));
     const r = await archiveDocument(db, store, {
       ...meta,
+      sourceUrl,
       upload: { bytes: new Uint8Array(PDF), filename: 'Manifesto 2016.PDF' },
     });
     const [doc] = await db.select().from(documents).where(eq(documents.id, r.documentId));
@@ -168,6 +197,7 @@ describe('archiveDocument content checks', () => {
     await expect(
       archiveDocument(db, store, {
         ...meta,
+        sourceUrl,
         upload: {
           bytes: new Uint8Array(Buffer.from('<html><script>alert(1)</script>')),
           filename: 'manifesto.pdf',

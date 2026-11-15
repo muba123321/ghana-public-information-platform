@@ -329,6 +329,7 @@ export interface DocumentSummary {
   downloadable: boolean;
 }
 
+/** Documents behind at least one published commitment. */
 export async function listPublicDocuments(db: Db): Promise<DocumentSummary[]> {
   const rows = await db
     .select({
@@ -345,6 +346,16 @@ export async function listPublicDocuments(db: Db): Promise<DocumentSummary[]> {
     .from(documents)
     .innerJoin(sources, eq(documents.sourceId, sources.id))
     .leftJoin(administrations, eq(documents.administrationSlug, administrations.slug))
+    // Archiving alone publishes nothing: a document appears once something taken from it is public.
+    .where(
+      inArray(
+        documents.id,
+        db
+          .select({ id: commitments.documentId })
+          .from(commitments)
+          .where(eq(commitments.reviewStatus, 'published')),
+      ),
+    )
     .orderBy(desc(documents.archivedAt));
   return rows.map(({ adminSlug, adminName, ...r }) => ({
     ...r,

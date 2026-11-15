@@ -1,10 +1,12 @@
 import { safeLocalPath } from '@gpip/core';
 import { listCorrectionReports } from '@gpip/db';
+import { requireEditor } from '../../../lib/admin';
 import { getDb } from '../../../lib/db';
 import { formatDate } from '../../../lib/format';
 import { setCorrectionStatusAction } from './actions';
 
 export default async function CorrectionsPage() {
+  await requireEditor(); // pages render without the layout on client navigations
   const reports = await listCorrectionReports(await getDb());
   return (
     <>

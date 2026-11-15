@@ -1,9 +1,11 @@
 import { listReviewQueue } from '@gpip/db';
 import Link from 'next/link';
 import { KindBadge } from '../../../components/KindBadge';
+import { requireEditor } from '../../../lib/admin';
 import { getDb } from '../../../lib/db';
 
 export default async function ReviewQueue() {
+  await requireEditor(); // pages render without the layout on client navigations
   const items = await listReviewQueue(await getDb());
   return (
     <>

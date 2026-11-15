@@ -84,7 +84,10 @@ async function readLimited(res: Response, max: number): Promise<Uint8Array> {
 }
 
 export interface ArchiveInput {
+  /** Download the original from here; it is also the cited source. */
   url?: string;
+  /** Where the publisher publishes a file given as `file` or `upload` — the cited source. */
+  sourceUrl?: string;
   file?: string;
   /** Bytes uploaded through the admin screen; the filename gives the type. */
   upload?: { bytes: Uint8Array; filename: string };
@@ -128,6 +131,12 @@ export async function archiveDocument(
 ): Promise<{ documentId: string; duplicate: boolean }> {
   const given = [input.url, input.file, input.upload].filter((x) => x !== undefined).length;
   if (given !== 1) throw new Error('Give exactly one of url, file or upload');
+  // Every source must point at the publisher, so readers can check the original themselves.
+  const citation = input.url ?? input.sourceUrl;
+  if (!citation) throw new Error("Give the publisher's URL for this file");
+  if (!/^https:\/\//.test(citation) || !URL.canParse(citation)) {
+    throw new Error('The publisher URL must start with https://');
+  }
   const mimeOf = (name: string) => MIME[extname(name).toLowerCase()] ?? 'application/octet-stream';
   const { bytes, mime } = input.url
     ? await download(input.url, input.fetchImpl, input.lookup, input.maxBytes ?? MAX_DOCUMENT_BYTES)
@@ -151,9 +160,7 @@ export async function archiveDocument(
   const storageKey = `documents/${sha256}.${EXT[mime] ?? 'bin'}`;
   await store.put(storageKey, bytes, mime);
   const today = new Date().toISOString().slice(0, 10);
-  const sourceUrl =
-    input.url ??
-    `https://github.com/muba123321/ghana-public-information-platform#archived-${sha256.slice(0, 12)}`;
+  const sourceUrl = citation;
 
   return db.transaction(async (tx) => {
     const [src] = await tx

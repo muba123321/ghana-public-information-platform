@@ -213,6 +213,34 @@ describe('public reads never leak unpublished records', () => {
     expect(c!.links).toEqual([{ slug: 'school-b', kind: 'supersedes', direction: 'to' }]);
   });
 
+  it('lists a document only once a commitment taken from it is published', async () => {
+    const [src] = await db.select({ id: sources.id }).from(sources).limit(1);
+    const [doc] = await db
+      .insert(documents)
+      .values({
+        sourceId: src!.id,
+        title: 'Archived, nothing published yet',
+        docType: 'manifesto',
+        mime: 'application/pdf',
+        sha256: 'c'.repeat(64),
+        storageKey: 'documents/c.pdf',
+        bytes: 10,
+      })
+      .returning();
+    await db.insert(commitments).values({
+      slug: 'draft-only',
+      documentId: doc!.id,
+      wording: 'Unreviewed.',
+      page: 1,
+      kind: 'campaign_promise',
+      originatingAdministrationSlug: '2013-mahama-i',
+      provenance: 'ai_extracted',
+    });
+    const titles = (await listPublicDocuments(db)).map((d) => d.title);
+    expect(titles).toContain('2012 Manifesto');
+    expect(titles).not.toContain('Archived, nothing published yet');
+  });
+
   it('uses only published institution names', async () => {
     const [src] = await db.select({ id: sources.id }).from(sources).limit(1);
     await db.insert(institutions).values({ slug: 'mrh', kind: 'ministry' });

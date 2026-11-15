@@ -14,9 +14,9 @@ const { values } = parseArgs({
     'public-redistribution': { type: 'boolean', default: false },
   },
 });
-if (!values.title || !values.publisher || !values.url === !values.file) {
+if (!values.title || !values.publisher || !values.url) {
   console.error(
-    'Usage: pnpm archive (--url <url> | --file <path>) --title <title> --publisher <name> [--type manifesto|budget_statement|report] [--administration <slug>] [--public-redistribution]',
+    'Usage: pnpm archive --url <publisher url> [--file <local copy>] --title <title> --publisher <name> [--type manifesto|budget_statement|report] [--administration <slug>] [--public-redistribution]',
   );
   process.exit(2);
 }
@@ -24,7 +24,8 @@ if (!values.title || !values.publisher || !values.url === !values.file) {
 const db = await openDb();
 await migrateDb(db);
 const r = await archiveDocument(db, storeFromEnv(process.env, LOCAL_ARCHIVE_DIR), {
-  ...(values.url ? { url: values.url } : { file: values.file as string }),
+  // --url is always the cited source; --file archives a local copy instead of downloading it.
+  ...(values.file ? { file: values.file, sourceUrl: values.url } : { url: values.url }),
   title: values.title,
   docType: values.type ?? 'manifesto',
   publisher: values.publisher,

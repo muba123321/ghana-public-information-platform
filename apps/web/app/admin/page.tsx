@@ -1,8 +1,10 @@
 import { reviewCounts } from '@gpip/db';
 import Link from 'next/link';
+import { requireEditor } from '../../lib/admin';
 import { getDb } from '../../lib/db';
 
 export default async function AdminHome() {
+  await requireEditor(); // pages render without the layout on client navigations
   const counts = await reviewCounts(await getDb());
   return (
     <>
