@@ -32,7 +32,7 @@ export default defineConfig({
   webServer: {
     // Fresh database for every run: migrate + seed, import recorded API responses, then serve.
     command: `rm -rf ${DB} ${ARCHIVE} && ${env} pnpm --filter @gpip/db db:seed && ${env} pnpm --filter @gpip/ingest ingest --fixtures && ${env} pnpm exec tsx e2e/fixtures.ts && ${env} NEXT_MANUAL_SIG_HANDLE=true exec ./node_modules/.bin/next start -p ${PORT}`,
-    // Test-only sign-in: allowed in this production build solely because GPIP_E2E=1 (see lib/editors.ts).
+    // Test-only sign-in: allowed in this production build solely because GPIP_E2E=1 (see src/server/editors.ts).
     env: {
       AUTH_SECRET: 'e2e-only-secret-not-used-anywhere-else-0123456789',
       AUTH_DEV_LOGIN: '1',
