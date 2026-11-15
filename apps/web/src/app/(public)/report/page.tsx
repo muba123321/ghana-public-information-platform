@@ -1,5 +1,9 @@
 import { safeLocalPath } from '@gpip/core';
 import type { Metadata } from 'next';
+import { PageContainer } from '@/components/layout/PageContainer';
+import { PageHeader } from '@/components/layout/PageHeader';
+import { Button } from '@/components/ui/Button';
+import { FlashMessage } from '@/components/ui/FlashMessage';
 import { readFlash } from '@/server/flash';
 import { submitReportAction } from './actions';
 
@@ -12,18 +16,12 @@ export default async function ReportPage({ searchParams }: Props) {
   const page = safeLocalPath(from ?? '/') ?? '/';
   const flash = await readFlash();
   return (
-    <div className="container page prose">
-      <h1 className="page-title">Report an error</h1>
-      <p className="page-lede">
-        Tell us what looks wrong and, if you can, link to the source that shows the correct
-        information. An editor checks every report. Accepted corrections appear in the public change
-        log.
-      </p>
-      {flash?.kind === 'error' && (
-        <p className="form-error" role="alert">
-          {flash.text}
-        </p>
-      )}
+    <PageContainer prose>
+      <PageHeader
+        title="Report an error"
+        lede="Tell us what looks wrong and, if you can, link to the source that shows the correct information. An editor checks every report. Accepted corrections appear in the public change log."
+      />
+      <FlashMessage flash={flash} />
       <form action={submitReportAction} className="stack card-form">
         <input type="hidden" name="pageUrl" value={page} />
         <p className="muted">
@@ -47,10 +45,8 @@ export default async function ReportPage({ searchParams }: Props) {
             <input name="website" tabIndex={-1} autoComplete="off" />
           </label>
         </div>
-        <button type="submit" className="button">
-          Send report
-        </button>
+        <Button>Send report</Button>
       </form>
-    </div>
+    </PageContainer>
   );
 }

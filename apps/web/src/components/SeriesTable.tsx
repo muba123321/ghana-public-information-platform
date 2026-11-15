@@ -1,6 +1,6 @@
+import { NotAvailable } from '@/components/ui/NotAvailable';
 import type { ChartModel } from '@/lib/chart';
 import { formatValue } from '@/lib/number';
-import { NotAvailable } from './NotAvailable';
 
 interface Props {
   model: ChartModel;

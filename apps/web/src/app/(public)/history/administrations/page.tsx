@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { AdministrationTimeline } from '@/components/AdministrationTimeline';
+import { PageContainer } from '@/components/layout/PageContainer';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { RibbonLegend, TimelineRibbon } from '@/components/TimelineRibbon';
 import { loadRibbon } from '@/lib/data';
 import { filterByKind, parseKind } from '@/lib/timeline';
@@ -25,17 +27,21 @@ export default async function AdministrationsPage({ searchParams }: Props) {
   return (
     <>
       <div className="container page page--flush">
-        <h1 className="page-title">Every government since independence</h1>
-        <p className="page-lede">
-          {items.length} governments from 1957 to today: {items.length - military} civilian and{' '}
-          {military} military, in date order.
-        </p>
+        <PageHeader
+          title="Every government since independence"
+          lede={
+            <>
+              {items.length} governments from 1957 to today: {items.length - military} civilian and{' '}
+              {military} military, in date order.
+            </>
+          }
+        />
       </div>
       <div className="container container--wide ribbon-wrap">
         <TimelineRibbon segments={segments} ticks={ticks} size="compact" />
         <RibbonLegend />
       </div>
-      <div className="container page">
+      <PageContainer>
         <nav aria-label="Filter governments" className="filters">
           {FILTERS.map((f) => (
             <Link
@@ -49,7 +55,7 @@ export default async function AdministrationsPage({ searchParams }: Props) {
           ))}
         </nav>
         <AdministrationTimeline items={shown} />
-      </div>
+      </PageContainer>
     </>
   );
 }

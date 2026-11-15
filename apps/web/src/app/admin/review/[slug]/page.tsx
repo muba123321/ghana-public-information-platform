@@ -3,6 +3,8 @@ import { administrations, asc, getReviewItem, sectors } from '@gpip/db';
 import { notFound } from 'next/navigation';
 import { approveAction, rejectAction } from '@/app/admin/review/admin-actions';
 import { KIND_LABELS } from '@/components/KindBadge';
+import { Button } from '@/components/ui/Button';
+import { FlashMessage } from '@/components/ui/FlashMessage';
 import { getDb } from '@/server/db';
 import { requireEditor } from '@/server/editor-access';
 import { readFlash } from '@/server/flash';
@@ -49,11 +51,7 @@ export default async function ReviewItemPage({ params }: Props) {
 
       <section className="review-form" aria-label="Check and correct">
         <h1 className="section-title">Check against the page, then approve</h1>
-        {flash?.kind === 'error' && (
-          <p className="form-error" role="alert">
-            {flash.text}
-          </p>
-        )}
+        <FlashMessage flash={flash} />
         <form action={approveAction} className="stack">
           <input type="hidden" name="slug" value={item.slug} />
           <label>
@@ -172,9 +170,7 @@ export default async function ReviewItemPage({ params }: Props) {
               <p className="muted">Unticked figures are dropped (kept only in the audit log).</p>
             </fieldset>
           )}
-          <button type="submit" className="button">
-            Approve and publish
-          </button>
+          <Button>Approve and publish</Button>
         </form>
 
         <form action={rejectAction} className="stack reject">
@@ -183,9 +179,7 @@ export default async function ReviewItemPage({ params }: Props) {
             Or reject — reason (kept in the audit log)
             <input name="reason" required placeholder="e.g. not a checkable commitment" />
           </label>
-          <button type="submit" className="button button--quiet">
-            Reject
-          </button>
+          <Button variant="quiet">Reject</Button>
         </form>
       </section>
     </div>

@@ -1,5 +1,6 @@
 import { reviewCounts } from '@gpip/db';
 import Link from 'next/link';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { getDb } from '@/server/db';
 import { requireEditor } from '@/server/editor-access';
 
@@ -8,10 +9,10 @@ export default async function AdminHome() {
   const counts = await reviewCounts(await getDb());
   return (
     <>
-      <h1 className="page-title">Editor</h1>
-      <p className="page-lede">
-        Nothing extracted by AI reaches the public site until you approve it here.
-      </p>
+      <PageHeader
+        title="Editor"
+        lede="Nothing extracted by AI reaches the public site until you approve it here."
+      />
       <ul className="admin-cards">
         <li>
           <Link href="/admin/review">

@@ -1,5 +1,5 @@
 import type { StewardshipView } from '@gpip/db';
-import { NotAvailable } from './NotAvailable';
+import { NotAvailable } from '@/components/ui/NotAvailable';
 import { STATUS_LABELS } from './StatusLabel';
 
 interface Props {

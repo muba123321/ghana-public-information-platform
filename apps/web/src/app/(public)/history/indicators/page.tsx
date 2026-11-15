@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { PageContainer } from '@/components/layout/PageContainer';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { Sparkline } from '@/components/Sparkline';
 import { buildChartModel } from '@/lib/chart';
 import { loadIndicatorSeries, loadIndicators } from '@/lib/data';
@@ -19,12 +21,16 @@ export default async function IndicatorsPage() {
   const sectors = [...new Map(indicators.map((i) => [i.sectorSlug, i.sectorName])).entries()];
 
   return (
-    <div className="container page">
-      <h1 className="page-title">National indicators</h1>
-      <p className="page-lede">
-        {indicators.length} measures of Ghana&apos;s economy and society, from the World Bank and
-        the IMF, with each government&apos;s time in office marked on every chart.
-      </p>
+    <PageContainer>
+      <PageHeader
+        title="National indicators"
+        lede={
+          <>
+            {indicators.length} measures of Ghana&apos;s economy and society, from the World Bank
+            and the IMF, with each government&apos;s time in office marked on every chart.
+          </>
+        }
+      />
       {sectors.map(([slug, name]) => (
         <section key={slug} className="indicator-group" aria-labelledby={`sector-${slug}`}>
           <h2 id={`sector-${slug}`} className="section-title">
@@ -56,6 +62,6 @@ export default async function IndicatorsPage() {
           </ul>
         </section>
       ))}
-    </div>
+    </PageContainer>
   );
 }

@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CommitmentCard } from '@/components/CommitmentCard';
+import { PageContainer } from '@/components/layout/PageContainer';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { loadCommitments, loadInstitutionHistory, loadInstitutions } from '@/lib/data';
 import { formatRange } from '@/lib/format';
 
@@ -34,11 +36,11 @@ export default async function MinistryPage({ params }: Props) {
   const nameOf = (s: string) => all.find((i) => i.slug === s)?.name ?? 'another institution';
 
   return (
-    <div className="container page">
-      <p className="crumbs">
-        <Link href="/history/ministries">All ministries</Link>
-      </p>
-      <h1 className="page-title">{history.versions.at(-1)?.name}</h1>
+    <PageContainer>
+      <PageHeader
+        title={history.versions.at(-1)?.name}
+        back={{ href: '/history/ministries', label: 'All ministries' }}
+      />
 
       <h2 className="section-title">Names over time</h2>
       <ol className="spine">
@@ -77,6 +79,6 @@ export default async function MinistryPage({ params }: Props) {
           ))}
         </ul>
       )}
-    </div>
+    </PageContainer>
   );
 }

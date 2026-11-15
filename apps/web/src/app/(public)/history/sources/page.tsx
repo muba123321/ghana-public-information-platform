@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import { PageContainer } from '@/components/layout/PageContainer';
+import { PageHeader } from '@/components/layout/PageHeader';
+import { Callout } from '@/components/ui/Callout';
 import { loadSources } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
@@ -14,14 +17,13 @@ const TYPES: Record<string, string> = {
 export default async function SourcesPage() {
   const docs = await loadSources();
   return (
-    <div className="container page">
-      <h1 className="page-title">Sources and documents</h1>
-      <p className="page-lede">
-        The original documents published commitments are taken from. Links go to the publisher; we
-        keep an archived copy so each quotation can be checked against the page it came from.
-      </p>
+    <PageContainer>
+      <PageHeader
+        title="Sources and documents"
+        lede="The original documents published commitments are taken from. Links go to the publisher; we keep an archived copy so each quotation can be checked against the page it came from."
+      />
       {docs.length === 0 ? (
-        <p className="callout">Documents appear here once they are archived.</p>
+        <Callout>Documents appear here once they are archived.</Callout>
       ) : (
         <ul className="indicator-list">
           {docs.map((d) => (
@@ -40,6 +42,6 @@ export default async function SourcesPage() {
           ))}
         </ul>
       )}
-    </div>
+    </PageContainer>
   );
 }

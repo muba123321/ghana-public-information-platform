@@ -1,6 +1,8 @@
 import { listChangeLog } from '@gpip/db';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { PageContainer } from '@/components/layout/PageContainer';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { getDb } from '@/server/db';
 
 export const dynamic = 'force-dynamic';
@@ -45,12 +47,11 @@ export default async function ChangesPage({ searchParams }: Props) {
   const { items, total } = await listChangeLog(await getDb(), { page, perPage: PER_PAGE });
   const pages = Math.max(1, Math.ceil(total / PER_PAGE));
   return (
-    <div className="container page">
-      <h1 className="page-title">Change log</h1>
-      <p className="page-lede">
-        Every change to published information, newest first — additions, corrections and records
-        retired. Nothing is edited silently.
-      </p>
+    <PageContainer>
+      <PageHeader
+        title="Change log"
+        lede="Every change to published information, newest first — additions, corrections and records retired. Nothing is edited silently."
+      />
       <table className="series-table admin-table">
         <thead>
           <tr>
@@ -80,6 +81,6 @@ export default async function ChangesPage({ searchParams }: Props) {
           {page < pages && <Link href={`?page=${page + 1}`}>Older</Link>}
         </nav>
       )}
-    </div>
+    </PageContainer>
   );
 }

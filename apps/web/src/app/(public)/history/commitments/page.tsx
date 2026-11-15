@@ -7,7 +7,11 @@ import {
 import type { Metadata } from 'next';
 import { CommitmentCard } from '@/components/CommitmentCard';
 import { KIND_LABELS } from '@/components/KindBadge';
+import { PageContainer } from '@/components/layout/PageContainer';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { STATUS_LABELS } from '@/components/StatusLabel';
+import { Button } from '@/components/ui/Button';
+import { Callout } from '@/components/ui/Callout';
 import { loadAdministrations, loadCommitments } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
@@ -55,12 +59,11 @@ export default async function CommitmentsPage({ searchParams }: Props) {
   const filtered = Object.keys(filters).length > 0;
 
   return (
-    <div className="container page">
-      <h1 className="page-title">Commitment tracker</h1>
-      <p className="page-lede">
-        What governments and parties committed to, in their own words, and what happened next —
-        followed across changes of government. Every item links to the page it came from.
-      </p>
+    <PageContainer>
+      <PageHeader
+        title="Commitment tracker"
+        lede="What governments and parties committed to, in their own words, and what happened next — followed across changes of government. Every item links to the page it came from."
+      />
 
       <form className="filters-form" method="get">
         <label>
@@ -111,9 +114,7 @@ export default async function CommitmentsPage({ searchParams }: Props) {
             ))}
           </select>
         </label>
-        <button type="submit" className="button">
-          Show
-        </button>
+        <Button>Show</Button>
       </form>
 
       <p className="muted results-count">
@@ -121,11 +122,11 @@ export default async function CommitmentsPage({ searchParams }: Props) {
         {filtered ? ' match these filters' : ' published so far'}
       </p>
       {items.length === 0 ? (
-        <p className="callout">
+        <Callout>
           {filtered
             ? 'No published commitment matches these filters.'
             : 'Commitments appear here as editors verify them against their source documents.'}
-        </p>
+        </Callout>
       ) : (
         <ul className="commitment-list">
           {items.map((c) => (
@@ -133,6 +134,6 @@ export default async function CommitmentsPage({ searchParams }: Props) {
           ))}
         </ul>
       )}
-    </div>
+    </PageContainer>
   );
 }

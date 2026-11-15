@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { PageContainer } from '@/components/layout/PageContainer';
+import { PageHeader } from '@/components/layout/PageHeader';
+import { Pill } from '@/components/ui/Pill';
 
 export const metadata: Metadata = { title: 'Government Performance & History' };
 
@@ -47,12 +50,11 @@ const AREAS: { name: string; about: string; href?: string }[] = [
 
 export default function HistoryPage() {
   return (
-    <div className="container page">
-      <h1 className="page-title">Government Performance &amp; History</h1>
-      <p className="page-lede">
-        A continuous record across every government since 1957. No scores, just sourced facts, with
-        gaps shown as gaps.
-      </p>
+    <PageContainer>
+      <PageHeader
+        title="Government Performance &amp; History"
+        lede="A continuous record across every government since 1957. No scores, just sourced facts, with gaps shown as gaps."
+      />
       <ul className="areas">
         {AREAS.map((a) => (
           <li key={a.name} data-soon={a.href ? undefined : true}>
@@ -64,10 +66,10 @@ export default function HistoryPage() {
               <span className="area-name">{a.name}</span>
             )}
             <p>{a.about}</p>
-            {!a.href && <span className="pill">Coming soon</span>}
+            {!a.href && <Pill>Coming soon</Pill>}
           </li>
         ))}
       </ul>
-    </div>
+    </PageContainer>
   );
 }

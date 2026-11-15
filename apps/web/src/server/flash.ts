@@ -5,7 +5,9 @@ import { cookies } from 'next/headers';
  * One-off messages after a form action ("Archived.", "Page must be between…"). They travel in a
  * short-lived HttpOnly cookie set by the server — never in the URL, where anyone could forge one.
  */
-export type Flash = { kind: 'error' | 'note'; text: string };
+import type { Flash } from '@/components/ui/FlashMessage';
+
+export type { Flash };
 
 const NAME = 'gpip_flash';
 

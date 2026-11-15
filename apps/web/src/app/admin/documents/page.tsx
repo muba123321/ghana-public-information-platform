@@ -1,5 +1,8 @@
 import { listDocumentsForAdmin } from '@gpip/db';
 import Link from 'next/link';
+import { PageHeader } from '@/components/layout/PageHeader';
+import { Button } from '@/components/ui/Button';
+import { FlashMessage } from '@/components/ui/FlashMessage';
 import { getDb } from '@/server/db';
 import { requireEditor } from '@/server/editor-access';
 import { readFlash } from '@/server/flash';
@@ -11,13 +14,8 @@ export default async function DocumentsPage() {
   const flash = await readFlash();
   return (
     <>
-      <h1 className="page-title">Documents</h1>
-      {flash?.kind === 'note' && <p className="form-note">{flash.text}</p>}
-      {flash?.kind === 'error' && (
-        <p className="form-error" role="alert">
-          {flash.text}
-        </p>
-      )}
+      <PageHeader title="Documents" />
+      <FlashMessage flash={flash} />
 
       <form action={archiveAction} className="stack card-form">
         <h2 className="section-title">Archive a document</h2>
@@ -60,9 +58,7 @@ export default async function DocumentsPage() {
           <input type="checkbox" name="publicRedistribution" /> The publisher&apos;s licence allows
           sharing copies
         </label>
-        <button type="submit" className="button">
-          Archive
-        </button>
+        <Button>Archive</Button>
       </form>
 
       <table className="series-table admin-table">
@@ -94,9 +90,7 @@ export default async function DocumentsPage() {
               <td>
                 <form action={extractAction}>
                   <input type="hidden" name="documentId" value={d.id} />
-                  <button type="submit" className="link-button">
-                    Extract with Claude API
-                  </button>
+                  <Button variant="link">Extract with Claude API</Button>
                 </form>
               </td>
             </tr>

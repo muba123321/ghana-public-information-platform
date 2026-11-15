@@ -3,7 +3,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CommitmentCard } from '@/components/CommitmentCard';
 import { LeaderBars } from '@/components/LeaderBars';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { TimelineRibbon } from '@/components/TimelineRibbon';
+import { Callout } from '@/components/ui/Callout';
 import { loadAdministration, loadAdministrationCommitments, loadRibbon } from '@/lib/data';
 import { formatDate, formatRange, timeInOffice, todayIso } from '@/lib/format';
 import { KIND_LABEL } from '@/lib/timeline';
@@ -30,10 +32,10 @@ export default async function AdministrationPage({ params }: Props) {
     <>
       <section className="profile-head">
         <div className="container">
-          <p className="crumbs">
-            <Link href="/history/administrations">All governments</Link>
-          </p>
-          <h1 className="page-title">{a.name}</h1>
+          <PageHeader
+            title={a.name}
+            back={{ href: '/history/administrations', label: 'All governments' }}
+          />
           <p className="profile-dates">{formatRange(a.startDate, a.endDate)}</p>
           <ul className="profile-facts">
             <li>{timeInOffice(a.startDate, a.endDate, today)}</li>
@@ -59,7 +61,7 @@ export default async function AdministrationPage({ params }: Props) {
             end={a.endDate ?? today}
             adminEnd={a.endDate}
           />
-          {a.notes && <p className="callout">{a.notes}</p>}
+          {a.notes && <Callout>{a.notes}</Callout>}
         </section>
 
         <section className="profile-commitments">

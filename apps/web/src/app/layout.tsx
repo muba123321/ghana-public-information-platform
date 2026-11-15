@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import { Atkinson_Hyperlegible_Next, Bricolage_Grotesque } from 'next/font/google';
 import type { ReactNode } from 'react';
-import { SiteFooter } from '@/components/SiteFooter';
-import { SiteHeader } from '@/components/SiteHeader';
+import { SiteFooter } from '@/components/layout/SiteFooter';
+import { SiteHeader } from '@/components/layout/SiteHeader';
 import './globals.css';
 
 const display = Bricolage_Grotesque({

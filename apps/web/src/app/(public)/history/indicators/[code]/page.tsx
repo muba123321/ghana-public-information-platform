@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { IndicatorChart } from '@/components/IndicatorChart';
-import { NotAvailable } from '@/components/NotAvailable';
+import { PageHeader } from '@/components/layout/PageHeader';
 import { SeriesTable } from '@/components/SeriesTable';
+import { Callout } from '@/components/ui/Callout';
+import { NotAvailable } from '@/components/ui/NotAvailable';
 import { buildChartModel } from '@/lib/chart';
 import { loadAdministrations, loadContextEvents, loadIndicatorSeries } from '@/lib/data';
 import { formatDate, todayIso } from '@/lib/format';
@@ -28,11 +30,11 @@ export default async function IndicatorPage({ params, searchParams }: Props) {
 
   return (
     <div className="container page indicator-page">
-      <p className="crumbs">
-        <Link href="/history/indicators">All indicators</Link>
-      </p>
-      <h1 className="page-title">{ind.name}</h1>
-      <p className="page-lede">{ind.definition}</p>
+      <PageHeader
+        title={ind.name}
+        lede={ind.definition}
+        back={{ href: '/history/indicators', label: 'All indicators' }}
+      />
       <ul className="profile-facts">
         <li>{ind.unit}</li>
         <li>{ind.sectorName}</li>
@@ -45,9 +47,9 @@ export default async function IndicatorPage({ params, searchParams }: Props) {
       </ul>
 
       {model.years.length === 0 ? (
-        <p className="callout">
+        <Callout>
           <NotAvailable what={ind.name} />: figures for this indicator have not been imported yet.
-        </p>
+        </Callout>
       ) : (
         <>
           <figure className="chart-figure">

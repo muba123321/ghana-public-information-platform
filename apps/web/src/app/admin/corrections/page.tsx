@@ -1,5 +1,7 @@
 import { safeLocalPath } from '@gpip/core';
 import { listCorrectionReports } from '@gpip/db';
+import { PageHeader } from '@/components/layout/PageHeader';
+import { Button } from '@/components/ui/Button';
 import { formatDate } from '@/lib/format';
 import { getDb } from '@/server/db';
 import { requireEditor } from '@/server/editor-access';
@@ -10,8 +12,10 @@ export default async function CorrectionsPage() {
   const reports = await listCorrectionReports(await getDb());
   return (
     <>
-      <h1 className="page-title">Error reports</h1>
-      <p className="page-lede">Sent through “Report an error”. Nothing here is public.</p>
+      <PageHeader
+        title="Error reports"
+        lede="Sent through “Report an error”. Nothing here is public."
+      />
       <ul className="queue">
         {reports.map((r) => (
           <li key={r.id} className="report" data-status={r.status}>
@@ -36,9 +40,9 @@ export default async function CorrectionsPage() {
             <form action={setCorrectionStatusAction} className="row">
               <input type="hidden" name="id" value={r.id} />
               {(['reviewed', 'actioned', 'dismissed'] as const).map((s) => (
-                <button key={s} type="submit" name="status" value={s} className="link-button">
+                <Button variant="link" key={s} name="status" value={s}>
                   Mark {s}
-                </button>
+                </Button>
               ))}
             </form>
           </li>

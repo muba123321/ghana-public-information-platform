@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { Button } from '@/components/ui/Button';
 import { signOutAction } from '@/server/auth-actions';
 import { requireEditor } from '@/server/editor-access';
 
@@ -18,9 +19,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
         <Link href="/admin/corrections">Error reports</Link>
         <form action={signOutAction} className="admin-user">
           <span>Signed in as {login}</span>
-          <button type="submit" className="link-button">
-            Sign out
-          </button>
+          <Button variant="link">Sign out</Button>
         </form>
       </nav>
       {children}

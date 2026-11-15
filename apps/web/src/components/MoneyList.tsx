@@ -1,5 +1,5 @@
 import type { Currency } from '@gpip/core';
-import { NotAvailable } from './NotAvailable';
+import { NotAvailable } from '@/components/ui/NotAvailable';
 
 type Budget = {
   kind: 'allocated' | 'released' | 'spent';
