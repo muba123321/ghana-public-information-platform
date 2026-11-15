@@ -10,6 +10,9 @@ describe('safeLocalPath', () => {
 
   it.each([
     '//evil.example',
+    '/.//evil.example',
+    '/..//evil.example',
+    '/a/..//evil.example',
     '/\\evil.example',
     '\\\\evil.example',
     'https://evil.example/',

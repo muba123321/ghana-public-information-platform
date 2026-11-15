@@ -19,5 +19,7 @@ export function safeLocalPath(value: string): string | null {
     return null;
   }
   if (url.origin !== PLACEHOLDER) return null;
+  // Dot segments can normalise to "//host", which a browser would read as another site.
+  if (url.pathname.startsWith('//')) return null;
   return `${url.pathname}${url.search}`;
 }

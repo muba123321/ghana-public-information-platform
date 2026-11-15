@@ -1,13 +1,19 @@
 import { createHash } from 'node:crypto';
 
 /**
- * The visitor's address for rate limiting. Prefers headers set by the hosting platform (visitors
- * cannot forge them); otherwise the right-most x-forwarded-for entry, which our own proxy appended
- * — the left-most entries are whatever the client sent.
+ * The visitor's address for rate limiting. On Vercel, the header Vercel sets (visitors cannot
+ * forge it there); anywhere else that header is just client input and is ignored. Otherwise the
+ * right-most x-forwarded-for entry, which our own proxy appended — the left-most entries are
+ * whatever the client sent.
  */
-export function clientIp(headers: Headers): string {
-  const platform = headers.get('x-vercel-forwarded-for') ?? headers.get('x-real-ip');
-  if (platform?.trim()) return platform.split(',')[0]?.trim() ?? 'unknown';
+export function clientIp(
+  headers: Headers,
+  env: Readonly<Record<string, string | undefined>> = process.env,
+): string {
+  if (env.VERCEL === '1') {
+    const platform = headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim();
+    if (platform) return platform;
+  }
   const chain = (headers.get('x-forwarded-for') ?? '')
     .split(',')
     .map((s) => s.trim())
