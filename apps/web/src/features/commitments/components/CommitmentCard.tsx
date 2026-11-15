@@ -1,15 +1,16 @@
 import type { CommitmentSummary } from '@gpip/db';
 import Link from 'next/link';
+import styles from './CommitmentCard.module.css';
 import { KindBadge } from './KindBadge';
 import { StatusLabel } from './StatusLabel';
 
 export function CommitmentCard({ c }: { c: CommitmentSummary }) {
   return (
-    <li className="commitment-card">
-      <Link href={`/history/commitments/${c.slug}`} className="commitment-link">
-        <q className="commitment-quote">{c.wording}</q>
+    <li className={styles.commitmentCard}>
+      <Link href={`/history/commitments/${c.slug}`} className={styles.commitmentLink}>
+        <q className={styles.commitmentQuote}>{c.wording}</q>
       </Link>
-      <p className="commitment-meta">
+      <p className={styles.commitmentMeta}>
         <KindBadge kind={c.kind} />
         <StatusLabel status={c.finalStatus} />
         <span>Made by {c.originatingAdministration.name}</span>

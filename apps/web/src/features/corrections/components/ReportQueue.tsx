@@ -4,6 +4,7 @@ import { PageHeader } from '@/components/layout/PageHeader';
 import { Button } from '@/components/ui/Button';
 import { formatDate } from '@/lib/format';
 import { CORRECTION_OUTCOMES } from '../outcomes';
+import styles from './ReportQueue.module.css';
 
 type Report = Awaited<ReturnType<typeof listCorrectionReports>>[number];
 
@@ -23,7 +24,7 @@ export function ReportQueue({
       />
       <ul className="queue">
         {reports.map((r) => (
-          <li key={r.id} className="report" data-status={r.status}>
+          <li key={r.id} className={styles.report} data-status={r.status}>
             <p>
               {safeLocalPath(r.pageUrl) ? (
                 <a href={safeLocalPath(r.pageUrl) ?? '/'}>{r.pageUrl}</a>
@@ -32,7 +33,7 @@ export function ReportQueue({
               )}{' '}
               · {formatDate(r.createdAt.toISOString().slice(0, 10))} · <strong>{r.status}</strong>
             </p>
-            <p className="report-message">{r.message}</p>
+            <p className={styles.reportMessage}>{r.message}</p>
             {r.evidenceUrl && (
               <p>
                 Evidence:{' '}

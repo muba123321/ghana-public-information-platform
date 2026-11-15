@@ -61,7 +61,8 @@ const RULES: Rule[] = [
   },
   {
     name: 'other files and folders are kebab-case',
-    files: (all) => all.filter((f) => !f.endsWith('.tsx') && !isTest(f)),
+    files: (all) =>
+      all.filter((f) => !f.endsWith('.tsx') && !isTest(f) && !f.endsWith('.module.css')),
     check: (f) => {
       const stem = basename(f).replace(/(\.module)?\.(ts|css)$/, '');
       if (!KEBAB.test(stem)) return `file name "${basename(f)}" is not kebab-case`;
@@ -70,6 +71,22 @@ const RULES: Rule[] = [
         .filter((d) => d !== '.' && !KEBAB.test(d) && !NEXT_FOLDER.test(d));
       return bad.length ? `folder "${bad[0]}" is not kebab-case` : null;
     },
+  },
+  {
+    name: 'every CSS module sits beside the component it styles',
+    files: (all) => all.filter((f) => f.endsWith('.module.css')),
+    check: (f) =>
+      ALL.includes(f.replace(/\.module\.css$/, '.tsx')) ? null : 'has no component file beside it',
+    bad: { file: 'components/ui/Orphan.module.css', source: '' },
+  },
+  {
+    name: 'global CSS is only the design tokens and base styles',
+    files: (all) => all.filter((f) => f.endsWith('.css') && !f.endsWith('.module.css')),
+    check: (f) =>
+      ['styles/tokens.css', 'styles/base.css'].includes(f)
+        ? null
+        : 'add styles to a component module instead',
+    bad: { file: 'app/globals.css', source: '' },
   },
   {
     name: 'every editor-only server function checks the editor first',

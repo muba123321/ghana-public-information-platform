@@ -1,0 +1,47 @@
+.filtersForm {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  align-items: end;
+  padding: 18px;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  margin: 24px 0 12px;
+}
+
+.filtersForm label {
+  display: grid;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.filtersForm input,
+.filtersForm select {
+  font: inherit;
+  font-weight: 400;
+  padding: 9px 11px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.filtersForm :global(.button) {
+  border: 0;
+  cursor: pointer;
+}
+
+.resultsCount {
+  margin-bottom: 8px;
+}
+
+.filtersForm label {
+  min-width: 0;
+}
+
+.filtersForm input,
+.filtersForm select {
+  width: 100%;
+  min-width: 0;
+}

@@ -1,19 +1,27 @@
+// Global styles load first so every component module can refine them.
+import '@/styles/tokens.css';
+import '@/styles/base.css';
 import type { Metadata, Viewport } from 'next';
 import { Atkinson_Hyperlegible_Next, Bricolage_Grotesque } from 'next/font/google';
 import type { ReactNode } from 'react';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
-import './globals.css';
 
 const display = Bricolage_Grotesque({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
+  // Missing glyphs (e.g. arrows) come from the system font, as the design intends.
+  fallback: ['system-ui', 'sans-serif'],
+  adjustFontFallback: false,
 });
 const body = Atkinson_Hyperlegible_Next({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
+  // Missing glyphs (e.g. arrows) come from the system font, as the design intends.
+  fallback: ['system-ui', 'sans-serif'],
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {

@@ -1,0 +1,35 @@
+.commitmentCard {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.commitmentLink {
+  /* Block, so the whole multi-line quote is one click target. */
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.commitmentQuote {
+  font-size: 1.08rem;
+  quotes: "“" "”";
+}
+
+.commitmentLink:hover .commitmentQuote {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.commitmentMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: center;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.commitmentMeta {
+  font-family: var(--font-display);
+}

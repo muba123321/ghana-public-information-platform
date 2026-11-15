@@ -1,0 +1,66 @@
+/* GPIP design tokens — "Sankofa": Adinkra-cloth mahogany, Gold Coast gold, paper, teal links.
+   Party colours (NDC red/green/black, NPP blue) are deliberately absent. */
+:root {
+  --mahogany: #2a1b14;
+  --mahogany-2: #3a271d;
+  --gold: #c99a2e;
+  --gold-soft: #e8d3a1;
+  --umber: #8a6a3e;
+  --paper: #ffffff;
+  --stone: #eef0ec;
+  --ink: #221a15;
+  --muted: #5d5650;
+  --line: #ddd8cf;
+  --teal: #0e5a5e;
+  --focus: #0b74d1;
+  --on-dark: #f6efe2;
+  --on-dark-muted: #cdbfa8;
+
+  --bg: var(--paper);
+  --surface: var(--stone);
+  --text: var(--ink);
+  --link: var(--teal);
+
+  /* --font-display and --font-body are set by next/font in app/layout.tsx. */
+  --measure: 68ch;
+  --gutter: 16px;
+  --r-sm: 6px;
+  --r-lg: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17110d;
+    --surface: #221913;
+    --text: #f1e9dc;
+    --muted: #b5a998;
+    --line: #3b2f26;
+    --link: #7cc6c5;
+    --mahogany: #1a110c;
+    --mahogany-2: #271a13;
+  }
+}
+
+@media (min-width: 720px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+
+:root {
+  --band-a: rgba(201, 154, 46, 0.16);
+  --band-b: rgba(201, 154, 46, 0.06);
+  --band-military: rgba(138, 106, 62, 0.22);
+  --series: var(--teal);
+  --projection: var(--umber);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --band-a: rgba(232, 211, 161, 0.14);
+    --band-b: rgba(232, 211, 161, 0.05);
+    --band-military: rgba(232, 211, 161, 0.24);
+    --series: #7cc6c5;
+    --projection: var(--gold-soft);
+  }
+}

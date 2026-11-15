@@ -1,3 +1,5 @@
+import styles from './Sparkline.module.css';
+
 /** Tiny server-rendered trend line; breaks at missing years, and shows survey-only series as dots. */
 export function Sparkline({
   values,
@@ -25,7 +27,7 @@ export function Sparkline({
         viewBox={`0 0 ${W} ${H}`}
         role="img"
         aria-label={label}
-        className="sparkline"
+        className={styles.sparkline}
       >
         {values.map((v, i) =>
           v === null ? null : <circle key={x(i)} cx={x(i)} cy={y(v)} r="2.5" fill="currentColor" />,
@@ -53,7 +55,7 @@ export function Sparkline({
       viewBox={`0 0 ${W} ${H}`}
       role="img"
       aria-label={label}
-      className="sparkline"
+      className={styles.sparkline}
     >
       {runs.map((d) => (
         <path

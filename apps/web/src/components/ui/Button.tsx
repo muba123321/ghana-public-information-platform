@@ -1,6 +1,11 @@
 import type { ButtonHTMLAttributes } from 'react';
+import styles from './Button.module.css';
 
-const CLASS = { primary: 'button', quiet: 'button button--quiet', link: 'link-button' } as const;
+const CLASS = {
+  primary: 'button',
+  quiet: 'button button--quiet',
+  link: styles.linkButton,
+} as const;
 
 /** Form buttons in the site's three styles. Submits by default. */
 export function Button({

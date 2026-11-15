@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import type { ChartModel } from '../chart-model';
 import { formatValue } from '../format-value';
+import styles from './IndicatorChart.module.css';
 
 interface Props {
   model: ChartModel;
@@ -161,7 +162,7 @@ export function IndicatorChart({ model, name, unit }: Props) {
   return (
     <div
       ref={ref}
-      className="indicator-chart"
+      className={styles.indicatorChart}
       role="img"
       aria-label={`Chart of ${name} (${unit}), ${span}. Shaded bands show the government in office; the table below lists every value.`}
     />

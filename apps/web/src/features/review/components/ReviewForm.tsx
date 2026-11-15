@@ -3,6 +3,7 @@ import type { ReviewItem } from '@gpip/db';
 import { Button } from '@/components/ui/Button';
 import { type Flash, FlashMessage } from '@/components/ui/FlashMessage';
 import { KIND_LABELS } from '@/features/commitments';
+import styles from './ReviewForm.module.css';
 
 type Action = (form: FormData) => Promise<void>;
 type Option = { slug: string; name: string };
@@ -19,8 +20,8 @@ interface Props {
 /** The source page beside an editable copy of one draft: approve with corrections, or reject. */
 export function ReviewForm({ item, flash, administrations, sectors, approve, reject }: Props) {
   return (
-    <div className="review">
-      <section className="review-source" aria-label="Source document">
+    <div className={styles.review}>
+      <section className={styles.reviewSource} aria-label="Source document">
         <p className="muted">
           {item.documentTitle}, page {item.page} of {item.documentPages ?? '?'} —{' '}
           {item.provenance === 'ai_extracted' ? 'extracted by AI' : 'entered by hand'}
@@ -31,7 +32,7 @@ export function ReviewForm({ item, flash, administrations, sectors, approve, rej
         />
       </section>
 
-      <section className="review-form" aria-label="Check and correct">
+      <section className={styles.reviewForm} aria-label="Check and correct">
         <h1 className="section-title">Check against the page, then approve</h1>
         <FlashMessage flash={flash} />
         <form action={approve} className="stack">
@@ -155,7 +156,7 @@ export function ReviewForm({ item, flash, administrations, sectors, approve, rej
           <Button>Approve and publish</Button>
         </form>
 
-        <form action={reject} className="stack reject">
+        <form action={reject} className={`stack ${styles.reject}`}>
           <input type="hidden" name="slug" value={item.slug} />
           <label>
             Or reject — reason (kept in the audit log)

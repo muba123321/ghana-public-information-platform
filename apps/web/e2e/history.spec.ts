@@ -69,7 +69,7 @@ test('home page timeline links all 19 governments', async ({ page }) => {
   await expect(ribbon.getByRole('link')).toHaveCount(19);
   await ribbon.getByRole('link', { name: /Provisional National Defence Council/ }).click();
   await expect(page).toHaveURL(/1981-pndc$/);
-  await expect(page.locator('.ribbon a[aria-current="page"]')).toHaveAccessibleName(
+  await expect(ribbon.locator('a[aria-current="page"]')).toHaveAccessibleName(
     /Provisional National Defence Council/,
   );
 });

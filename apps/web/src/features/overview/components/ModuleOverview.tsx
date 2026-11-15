@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { PageContainer } from '@/components/layout/PageContainer';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { Pill } from '@/components/ui/Pill';
+import styles from './ModuleOverview.module.css';
 
 const AREAS: { name: string; about: string; href?: string }[] = [
   {
@@ -53,15 +54,15 @@ export function ModuleOverview() {
         title="Government Performance &amp; History"
         lede="A continuous record across every government since 1957. No scores, just sourced facts, with gaps shown as gaps."
       />
-      <ul className="areas">
+      <ul className={styles.areas}>
         {AREAS.map((a) => (
           <li key={a.name} data-soon={a.href ? undefined : true}>
             {a.href ? (
-              <Link href={a.href} className="area-name">
+              <Link href={a.href} className={styles.areaName}>
                 {a.name}
               </Link>
             ) : (
-              <span className="area-name">{a.name}</span>
+              <span className={styles.areaName}>{a.name}</span>
             )}
             <p>{a.about}</p>
             {!a.href && <Pill>Coming soon</Pill>}

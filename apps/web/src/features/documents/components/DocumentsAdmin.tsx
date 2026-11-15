@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { Button } from '@/components/ui/Button';
 import { type Flash, FlashMessage } from '@/components/ui/FlashMessage';
+import styles from './DocumentsAdmin.module.css';
 
 type Action = (form: FormData) => Promise<void>;
 
@@ -57,7 +58,7 @@ export function DocumentsAdmin({ docs, flash, archive, extract }: Props) {
             <input name="administrationSlug" placeholder="2017-akufo-addo-i" />
           </label>
         </div>
-        <label className="check">
+        <label className={styles.check}>
           <input type="checkbox" name="publicRedistribution" /> The publisher&apos;s licence allows
           sharing copies
         </label>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PageHeader } from '@/components/layout/PageHeader';
+import styles from './EditorOverview.module.css';
 
 /** The editor's start page: what is waiting, and where to go next. */
 export function EditorOverview({
@@ -13,7 +14,7 @@ export function EditorOverview({
         title="Editor"
         lede="Nothing extracted by AI reaches the public site until you approve it here."
       />
-      <ul className="admin-cards">
+      <ul className={styles.adminCards}>
         <li>
           <Link href="/admin/review">
             <strong>{counts.commitments}</strong> commitments waiting for review

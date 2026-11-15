@@ -1,0 +1,20 @@
+.money {
+  display: grid;
+  gap: 10px 32px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin: 0;
+}
+
+.money dt {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.money dd {
+  margin: 2px 0 0;
+}
+
+.moneyAmount {
+  font-family: var(--font-display);
+  font-weight: 600;
+}

@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { cssVars } from '@/lib/css-vars';
 import { ADMINISTRATION_KIND_WORDS } from '../labels';
 import type { RibbonSegment } from '../timeline';
+import styles from './TimelineRibbon.module.css';
 
 interface Props {
   segments: RibbonSegment[];
@@ -15,8 +17,10 @@ interface Props {
  */
 export function TimelineRibbon({ segments, ticks, currentSlug, size = 'large' }: Props) {
   return (
-    <div className={`ribbon ribbon--${size}`}>
-      <ol className="ribbon-track" aria-label="Governments of Ghana from 1957 to today">
+    <div
+      className={size === 'compact' ? `${styles.ribbon} ${styles.ribbonCompact}` : styles.ribbon}
+    >
+      <ol className={styles.ribbonTrack} aria-label="Governments of Ghana from 1957 to today">
         {segments.map((s, i) => {
           const current = s.slug === currentSlug;
           const mid = s.startPct + s.widthPct / 2;
@@ -24,19 +28,19 @@ export function TimelineRibbon({ segments, ticks, currentSlug, size = 'large' }:
           return (
             <li
               key={s.slug}
-              className="ribbon-band"
+              className={styles.ribbonBand}
               data-kind={s.kind}
               data-tone={i % 2 === 0 ? 'a' : 'b'}
               data-current={current || undefined}
               data-align={align}
-              style={{ width: `${s.widthPct}%`, animationDelay: `${i * 35}ms` }}
+              style={cssVars({ '--width': `${s.widthPct}%`, '--delay': `${i * 35}ms` })}
             >
               <Link
                 href={`/history/administrations/${s.slug}`}
                 aria-label={`${s.name}, ${s.years}, ${ADMINISTRATION_KIND_WORDS[s.kind]}`}
                 aria-current={current ? 'page' : undefined}
               >
-                <span className="ribbon-tip" aria-hidden="true">
+                <span className={styles.ribbonTip} aria-hidden="true">
                   <strong>{s.name}</strong>
                   <span>{s.years}</span>
                 </span>
@@ -48,7 +52,7 @@ export function TimelineRibbon({ segments, ticks, currentSlug, size = 'large' }:
       {ticks.length > 0 && (
         <div className="ribbon-axis" aria-hidden="true">
           {ticks.map((t) => (
-            <span key={t.year} style={{ left: `${t.pct}%` }}>
+            <span key={t.year} style={cssVars({ '--left': `${t.pct}%` })}>
               {t.year}
             </span>
           ))}

@@ -1,6 +1,8 @@
 import type { StewardshipView } from '@gpip/db';
 import { NotAvailable } from '@/components/ui/NotAvailable';
+import { cssVars } from '@/lib/css-vars';
 import { STATUS_LABELS } from '../labels';
+import styles from './StewardshipTimeline.module.css';
 
 interface Props {
   stewardships: StewardshipView[];
@@ -15,29 +17,29 @@ interface Props {
  */
 export function StewardshipTimeline({ stewardships, timeline }: Props) {
   return (
-    <ol className="stewardship">
+    <ol className={styles.stewardship} aria-label="Governments that held this commitment">
       {stewardships.map((s) => {
         const i = timeline.indexOf(s.administrationSlug);
         const known = s.progressAtStart !== null && s.progressAtEnd !== null;
         const delta = known ? (s.progressAtEnd as number) - (s.progressAtStart as number) : null;
         return (
-          <li key={s.administrationSlug} className="steward">
-            <div className="steward-head">
+          <li key={s.administrationSlug} className={styles.steward}>
+            <div className={styles.stewardHead}>
               <strong>{s.administrationName}</strong>
               <span className="muted">{STATUS_LABELS[s.status]}</span>
             </div>
-            <div className="steward-track" aria-hidden="true">
+            <div className={styles.stewardTrack} aria-hidden="true">
               {known && (
                 <span
                   data-tone={i % 2 === 0 ? 'a' : 'b'}
-                  style={{
-                    left: `${s.progressAtStart}%`,
-                    width: `${Math.max(delta as number, 1)}%`,
-                  }}
+                  style={cssVars({
+                    '--left': `${s.progressAtStart}%`,
+                    '--width': `${Math.max(delta as number, 1)}%`,
+                  })}
                 />
               )}
             </div>
-            <p className="steward-progress">
+            <p className={styles.stewardProgress}>
               Progress while in office:{' '}
               {known ? (
                 <>

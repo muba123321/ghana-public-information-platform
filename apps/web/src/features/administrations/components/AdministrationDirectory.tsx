@@ -6,6 +6,7 @@ import { PageHeader } from '@/components/layout/PageHeader';
 import { ADMINISTRATION_FILTERS } from '../labels';
 import type { RibbonSegment, ribbonTicks } from '../timeline';
 import { filterByKind } from '../timeline';
+import styles from './AdministrationDirectory.module.css';
 import { AdministrationTimeline } from './AdministrationTimeline';
 import { RibbonLegend } from './RibbonLegend';
 import { TimelineRibbon } from './TimelineRibbon';
@@ -24,7 +25,7 @@ export function AdministrationDirectory({ items, segments, ticks, kind }: Props)
 
   return (
     <>
-      <div className="container page page--flush">
+      <div className={`container page ${styles.pageFlush}`}>
         <PageHeader
           title="Every government since independence"
           lede={
@@ -40,12 +41,12 @@ export function AdministrationDirectory({ items, segments, ticks, kind }: Props)
         <RibbonLegend />
       </div>
       <PageContainer>
-        <nav aria-label="Filter governments" className="filters">
+        <nav aria-label="Filter governments" className={styles.filters}>
           {ADMINISTRATION_FILTERS.map((f) => (
             <Link
               key={f.label}
               href={f.kind ? `?kind=${f.kind}` : '?'}
-              className="filter"
+              className={styles.filter}
               aria-current={kind === f.kind ? 'page' : undefined}
             >
               {f.label}

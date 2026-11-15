@@ -7,6 +7,7 @@ import { Callout } from '@/components/ui/Callout';
 import type { CommitmentSearch } from '../commitments-filter';
 import { KIND_LABELS, STATUS_LABELS } from '../labels';
 import { CommitmentCard } from './CommitmentCard';
+import styles from './CommitmentTracker.module.css';
 
 type Option = { slug: string; name: string };
 
@@ -37,7 +38,7 @@ export function CommitmentTracker({
         lede="What governments and parties committed to, in their own words, and what happened next — followed across changes of government. Every item links to the page it came from."
       />
 
-      <form className="filters-form" method="get">
+      <form className={styles.filtersForm} method="get">
         <label>
           Search wording
           <input name="q" defaultValue={sp.q ?? ''} placeholder="e.g. hospital, road, school" />
@@ -89,7 +90,7 @@ export function CommitmentTracker({
         <Button>Show</Button>
       </form>
 
-      <p className="muted results-count">
+      <p className={`muted ${styles.resultsCount}`}>
         {items.length} {items.length === 1 ? 'commitment' : 'commitments'}
         {filtered ? ' match these filters' : ' published so far'}
       </p>

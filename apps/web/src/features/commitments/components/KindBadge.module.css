@@ -1,0 +1,22 @@
+.kindBadge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 1px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.kindBadge[data-kind="funded_project"],
+.kindBadge[data-kind="approved_programme"] {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.kindBadge[data-kind="funded_project"],
+.kindBadge[data-kind="approved_programme"] {
+  border-color: var(--link);
+  color: var(--link);
+}

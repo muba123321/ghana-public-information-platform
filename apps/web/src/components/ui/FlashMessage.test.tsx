@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { FlashMessage } from './FlashMessage';
+import styles from './FlashMessage.module.css';
 
 describe('FlashMessage', () => {
   it('announces an error', () => {
@@ -11,7 +12,7 @@ describe('FlashMessage', () => {
   it('shows a note quietly', () => {
     render(<FlashMessage flash={{ kind: 'note', text: 'Archived.' }} />);
     expect(screen.queryByRole('alert')).toBeNull();
-    expect(screen.getByText('Archived.')).toHaveClass('form-note');
+    expect(screen.getByText('Archived.')).toHaveClass(styles.formNote as string);
   });
 
   it('renders nothing without a message', () => {

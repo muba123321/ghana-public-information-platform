@@ -6,6 +6,7 @@ import { CommitmentCard } from '@/features/commitments';
 import { formatDate, formatRange, timeInOffice } from '@/lib/format';
 import { ADMINISTRATION_KIND_LABELS, COMMITMENT_GROUP_HEADINGS } from '../labels';
 import type { RibbonSegment, ribbonTicks } from '../timeline';
+import styles from './AdministrationProfile.module.css';
 import { LeaderBars } from './LeaderBars';
 import { TimelineRibbon } from './TimelineRibbon';
 
@@ -21,13 +22,13 @@ interface Props {
 export function AdministrationProfile({ a, segments, ticks, commitments, today }: Props) {
   return (
     <>
-      <section className="profile-head">
+      <section className={styles.profileHead}>
         <div className="container">
           <PageHeader
             title={a.name}
             back={{ href: '/history/administrations', label: 'All governments' }}
           />
-          <p className="profile-dates">{formatRange(a.startDate, a.endDate)}</p>
+          <p className={styles.profileDates}>{formatRange(a.startDate, a.endDate)}</p>
           <ul className="profile-facts">
             <li>{timeInOffice(a.startDate, a.endDate, today)}</li>
             <li>{ADMINISTRATION_KIND_LABELS[a.kind]}</li>
@@ -43,7 +44,7 @@ export function AdministrationProfile({ a, segments, ticks, commitments, today }
         </div>
       </section>
 
-      <div className="container page profile-body">
+      <div className={`container page ${styles.profileBody}`}>
         <section>
           <h2 className="section-title">Leaders</h2>
           <LeaderBars
@@ -55,7 +56,7 @@ export function AdministrationProfile({ a, segments, ticks, commitments, today }
           {a.notes && <Callout>{a.notes}</Callout>}
         </section>
 
-        <section className="profile-commitments">
+        <section className={styles.profileCommitments}>
           <h2 className="section-title">Commitments</h2>
           {(['originated', 'inherited', 'handedOver'] as const).map((group) => {
             const items = commitments[group];
@@ -94,9 +95,9 @@ export function AdministrationProfile({ a, segments, ticks, commitments, today }
 
         <nav className="pager" aria-label="Neighbouring governments">
           {a.previous ? (
-            <Link href={`/history/administrations/${a.previous.slug}`} className="pager-link">
-              <span className="pager-dir">Previous</span>
-              <span className="pager-name">{a.previous.name}</span>
+            <Link href={`/history/administrations/${a.previous.slug}`} className={styles.pagerLink}>
+              <span className={styles.pagerDir}>Previous</span>
+              <span className={styles.pagerName}>{a.previous.name}</span>
             </Link>
           ) : (
             <span />
@@ -104,10 +105,10 @@ export function AdministrationProfile({ a, segments, ticks, commitments, today }
           {a.next && (
             <Link
               href={`/history/administrations/${a.next.slug}`}
-              className="pager-link pager-link--next"
+              className={`${styles.pagerLink} ${styles.pagerLinkNext}`}
             >
-              <span className="pager-dir">Next</span>
-              <span className="pager-name">{a.next.name}</span>
+              <span className={styles.pagerDir}>Next</span>
+              <span className={styles.pagerName}>{a.next.name}</span>
             </Link>
           )}
         </nav>

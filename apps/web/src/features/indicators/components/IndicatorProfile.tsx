@@ -6,6 +6,7 @@ import { NotAvailable } from '@/components/ui/NotAvailable';
 import { formatDate } from '@/lib/format';
 import type { ChartModel } from '../chart-model';
 import { IndicatorChart } from './IndicatorChart';
+import styles from './IndicatorProfile.module.css';
 import { SeriesTable } from './SeriesTable';
 
 interface Props {
@@ -42,23 +43,29 @@ export function IndicatorProfile({ s, model, events }: Props) {
         </Callout>
       ) : (
         <>
-          <figure className="chart-figure">
+          <figure className={styles.chartFigure}>
             <IndicatorChart model={model} name={ind.name} unit={ind.unit} />
             <figcaption>
-              <span className={`legend-item ${model.sparse ? 'legend-points' : 'legend-series'}`}>
+              <span
+                className={`${styles.legendItem} ${model.sparse ? styles.legendPoints : styles.legendSeries}`}
+              >
                 {ind.name}
               </span>
               {model.hasProjection && (
-                <span className="legend-item legend-projection">IMF projection</span>
+                <span className={`${styles.legendItem} ${styles.legendProjection}`}>
+                  IMF projection
+                </span>
               )}
-              <span className="legend-item legend-band">Shaded: government in office</span>
+              <span className={`${styles.legendItem} ${styles.legendBand}`}>
+                Shaded: government in office
+              </span>
               {model.events.length > 0 && (
-                <span className="legend-item legend-event">Dotted: event</span>
+                <span className={`${styles.legendItem} ${styles.legendEvent}`}>Dotted: event</span>
               )}
             </figcaption>
           </figure>
 
-          <aside className="how-to-read">
+          <aside className={styles.howToRead}>
             <h2>How to read this</h2>
             <p>
               Each shaded band is the government in office during those years. Being in office is
@@ -89,7 +96,7 @@ export function IndicatorProfile({ s, model, events }: Props) {
             </section>
           )}
 
-          <details className="table-wrap">
+          <details className={styles.tableWrap}>
             <summary>Show the figures as a table</summary>
             <SeriesTable model={model} unit={ind.unit} modelled={ind.estimateType === 'modelled'} />
           </details>
@@ -109,7 +116,7 @@ export function IndicatorProfile({ s, model, events }: Props) {
         {s.vintage && <p className="muted">Figures as published on {formatDate(s.vintage)}.</p>}
         {ind.methodology && <p className="muted">{ind.methodology}</p>}
         {s.vintages.length > 1 && (
-          <nav aria-label="Earlier releases" className="vintages">
+          <nav aria-label="Earlier releases" className={styles.vintages}>
             Earlier releases:{' '}
             {s.vintages.map((v) => (
               <Link

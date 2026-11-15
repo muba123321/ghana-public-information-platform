@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Button } from './Button';
+import styles from './Button.module.css';
 
 describe('Button', () => {
   it.each([
     [undefined, 'button'],
     ['quiet', 'button button--quiet'],
-    ['link', 'link-button'],
+    ['link', styles.linkButton],
   ] as const)('variant %s has class %s', (variant, cls) => {
     render(<Button variant={variant}>Go</Button>);
     expect(screen.getByRole('button', { name: 'Go' }).className).toBe(cls);

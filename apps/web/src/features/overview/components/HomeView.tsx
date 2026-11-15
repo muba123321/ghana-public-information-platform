@@ -2,6 +2,7 @@ import { fullYearsBetween } from '@gpip/core';
 import type { AdministrationSummary } from '@gpip/db';
 import Link from 'next/link';
 import { RibbonLegend, type RibbonSegment, TimelineRibbon } from '@/features/administrations';
+import styles from './HomeView.module.css';
 
 const PRINCIPLES = [
   [
@@ -40,8 +41,8 @@ export function HomeView({ items, segments, ticks, today }: Props) {
     <>
       <section className="hero">
         <div className="container">
-          <h1 className="hero-title">{years} years of Ghanaian government, on the record.</h1>
-          <p className="hero-lede">
+          <h1 className={styles.heroTitle}>{years} years of Ghanaian government, on the record.</h1>
+          <p className={styles.heroLede}>
             {items.length} governments since independence: {items.length - military} civilian and{' '}
             {military} military. Follow what each one promised, funded and handed on, with every
             fact linked to its public source.
@@ -49,9 +50,9 @@ export function HomeView({ items, segments, ticks, today }: Props) {
         </div>
         <div className="container container--wide">
           <TimelineRibbon segments={segments} ticks={ticks} />
-          <div className="hero-foot">
+          <div className={styles.heroFoot}>
             <RibbonLegend />
-            <p className="hero-hint">
+            <p className={styles.heroHint}>
               Each band is one government, sized by its time in office. Select a band to open its
               record.
             </p>
@@ -59,12 +60,12 @@ export function HomeView({ items, segments, ticks, today }: Props) {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container split">
+      <section className={styles.section}>
+        <div className={`container ${styles.split}`}>
           <h2 className="section-title">What you can explore</h2>
-          <ul className="explore">
+          <ul className={styles.explore}>
             <li>
-              <Link href="/history/administrations" className="explore-link">
+              <Link href="/history/administrations" className={styles.exploreLink}>
                 Every government since 1957
               </Link>
               <p>
@@ -73,13 +74,13 @@ export function HomeView({ items, segments, ticks, today }: Props) {
               </p>
             </li>
             <li>
-              <Link href="/history/commitments" className="explore-link">
+              <Link href="/history/commitments" className={styles.exploreLink}>
                 Promises and what happened to them
               </Link>
               <p>Manifesto and budget commitments, followed across changes of government.</p>
             </li>
             <li>
-              <Link href="/history/indicators" className="explore-link">
+              <Link href="/history/indicators" className={styles.exploreLink}>
                 Sixty years of national indicators
               </Link>
               <p>
@@ -91,10 +92,10 @@ export function HomeView({ items, segments, ticks, today }: Props) {
         </div>
       </section>
 
-      <section className="section section--stone">
+      <section className={`${styles.section} ${styles.sectionStone}`}>
         <div className="container">
           <h2 className="section-title">How this record stays fair</h2>
-          <dl className="principles">
+          <dl className={styles.principles}>
             {PRINCIPLES.map(([title, body]) => (
               <div key={title}>
                 <dt>{title}</dt>
@@ -102,15 +103,15 @@ export function HomeView({ items, segments, ticks, today }: Props) {
               </div>
             ))}
           </dl>
-          <p className="section-cta">
+          <p className={styles.sectionCta}>
             <Link href="/data-notice">Read how we source and correct data</Link>
           </p>
         </div>
       </section>
 
       {incumbent && (
-        <section className="section">
-          <div className="container cta-row">
+        <section className={styles.section}>
+          <div className={`container ${styles.ctaRow}`}>
             <Link href={`/history/administrations/${incumbent.slug}`} className="button">
               See the current government
             </Link>

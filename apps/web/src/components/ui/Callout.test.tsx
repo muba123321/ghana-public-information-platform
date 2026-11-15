@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Callout } from './Callout';
+import calloutStyles from './Callout.module.css';
 import { Pill } from './Pill';
+import pillStyles from './Pill.module.css';
 
 describe('Callout and Pill', () => {
   it('render their text in the shared styles', () => {
@@ -11,7 +13,7 @@ describe('Callout and Pill', () => {
         <Pill>Draft</Pill>
       </>,
     );
-    expect(screen.getByText(/Documents appear/)).toHaveClass('callout');
-    expect(screen.getByText('Draft')).toHaveClass('pill');
+    expect(screen.getByText(/Documents appear/)).toHaveClass(calloutStyles.callout as string);
+    expect(screen.getByText('Draft')).toHaveClass(pillStyles.pill as string);
   });
 });

@@ -1,0 +1,4 @@
+.indicatorChart {
+  width: 100%;
+  height: clamp(280px, 48vw, 460px);
+}

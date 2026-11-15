@@ -1,6 +1,7 @@
 import type { Currency } from '@gpip/core';
 import { NotAvailable } from '@/components/ui/NotAvailable';
 import { BUDGET_STAGE_LABELS } from '../labels';
+import styles from './MoneyList.module.css';
 
 type Budget = {
   kind: 'allocated' | 'released' | 'spent';
@@ -21,7 +22,7 @@ export const formatMoney = (amount: number, currency: Currency) =>
 
 export function MoneyList({ budgets }: { budgets: Budget[] }) {
   return (
-    <dl className="money">
+    <dl className={styles.money}>
       {BUDGET_STAGE_LABELS.map(([kind, label]) => {
         const rows = budgets.filter((b) => b.kind === kind);
         return (
@@ -34,7 +35,7 @@ export function MoneyList({ budgets }: { budgets: Budget[] }) {
             ) : (
               rows.map((b) => (
                 <dd key={`${b.currency}-${b.fiscalYear}-${b.amount}`}>
-                  <span className="money-amount">{formatMoney(b.amount, b.currency)}</span>
+                  <span className={styles.moneyAmount}>{formatMoney(b.amount, b.currency)}</span>
                   <span className="muted">
                     {b.fiscalYear ? ` in ${b.fiscalYear}` : ''} ({b.source})
                   </span>

@@ -2,6 +2,7 @@ import { PageContainer } from '@/components/layout/PageContainer';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { Button } from '@/components/ui/Button';
 import { type Flash, FlashMessage } from '@/components/ui/FlashMessage';
+import styles from './ReportForm.module.css';
 
 interface Props {
   /** The same-site page the report is about (already checked). */
@@ -36,7 +37,7 @@ export function ReportForm({ page, flash, action }: Props) {
           How can we reach you? (optional, never published)
           <input name="contact" maxLength={200} />
         </label>
-        <div className="hp" aria-hidden="true">
+        <div className={styles.hp} aria-hidden="true">
           <label>
             Leave this empty
             <input name="website" tabIndex={-1} autoComplete="off" />

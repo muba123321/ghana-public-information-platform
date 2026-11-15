@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import styles from './PageHeader.module.css';
 
 /** A page's heading: an optional "All …" link back to its list, the title, and a one-line lede. */
 export function PageHeader({
@@ -19,7 +20,7 @@ export function PageHeader({
         </p>
       )}
       <h1 className="page-title">{title}</h1>
-      {lede && <p className="page-lede">{lede}</p>}
+      {lede && <p className={styles.pageLede}>{lede}</p>}
     </>
   );
 }

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SankofaMark } from './SankofaMark';
+import styles from './SiteFooter.module.css';
 
 /** Owner-approved wording (spec §11 item 10). Do not paraphrase. */
 export const FOOTER_NOTICE =
@@ -7,12 +8,12 @@ export const FOOTER_NOTICE =
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer">
-      <div className="container site-footer-inner">
+    <footer className={styles.siteFooter}>
+      <div className={`container ${styles.siteFooterInner}`}>
         <SankofaMark size={40} />
         <div>
-          <p className="footer-notice">{FOOTER_NOTICE}</p>
-          <p className="footer-links">
+          <p className={styles.footerNotice}>{FOOTER_NOTICE}</p>
+          <p className={styles.footerLinks}>
             <Link href="/data-notice">Data notice &amp; disclaimer</Link>
             <Link href="/report">Report an error</Link>
             <Link href="/changes">Change log</Link>

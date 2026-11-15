@@ -1,19 +1,20 @@
 import Link from 'next/link';
 import { SankofaMark } from './SankofaMark';
+import styles from './SiteHeader.module.css';
 
 export function SiteHeader() {
   return (
-    <header className="site-header">
-      <div className="container site-header-inner">
-        <Link href="/" className="brand">
+    <header className={styles.siteHeader}>
+      <div className={`container ${styles.siteHeaderInner}`}>
+        <Link href="/" className={styles.brand}>
           <SankofaMark size={30} />
-          <span className="brand-text">
-            <span className="brand-name">GPIP</span>
-            <span className="brand-full">Ghana Public Information Platform</span>
+          <span className={styles.brandText}>
+            <span className={styles.brandName}>GPIP</span>
+            <span className={styles.brandFull}>Ghana Public Information Platform</span>
           </span>
         </Link>
         <nav aria-label="Main">
-          <ul className="nav">
+          <ul className={styles.nav}>
             <li>
               <Link href="/history/administrations">Governments</Link>
             </li>
