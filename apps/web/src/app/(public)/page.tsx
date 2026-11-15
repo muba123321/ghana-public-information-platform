@@ -1,7 +1,7 @@
+import { fullYearsBetween } from '@gpip/core';
 import Link from 'next/link';
 import { RibbonLegend, TimelineRibbon } from '@/components/TimelineRibbon';
 import { loadRibbon } from '@/lib/data';
-import { fullYearsBetween } from '@/lib/format';
 
 export const dynamic = 'force-dynamic';
 

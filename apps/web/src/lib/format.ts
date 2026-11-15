@@ -1,4 +1,4 @@
-import type { IsoDate } from '@gpip/core';
+import { type IsoDate, monthsBetween } from '@gpip/core';
 
 const fmt = new Intl.DateTimeFormat('en-GB', {
   day: 'numeric',
@@ -26,16 +26,6 @@ export function yearRange(start: IsoDate, end: IsoDate | null): string {
 /** Today's date in Ghana (GMT, no daylight saving). */
 export function todayIso(): IsoDate {
   return new Date().toISOString().slice(0, 10);
-}
-
-function monthsBetween(a: IsoDate, b: IsoDate): number {
-  const [y1, m1, d1] = a.split('-').map(Number) as [number, number, number];
-  const [y2, m2, d2] = b.split('-').map(Number) as [number, number, number];
-  return (y2 - y1) * 12 + (m2 - m1) - (d2 < d1 ? 1 : 0);
-}
-
-export function fullYearsBetween(a: IsoDate, b: IsoDate): number {
-  return Math.floor(monthsBetween(a, b) / 12);
 }
 
 const plural = (n: number, unit: string) => `${n} ${unit}${n === 1 ? '' : 's'}`;

@@ -1,12 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import {
-  formatDate,
-  formatDuration,
-  formatRange,
-  fullYearsBetween,
-  timeInOffice,
-  yearRange,
-} from './format';
+import { formatDate, formatDuration, formatRange, timeInOffice, yearRange } from './format';
 
 it('formats ISO dates in day-month-year', () => {
   expect(formatDate('2012-07-24')).toBe('24 Jul 2012');
@@ -36,14 +29,6 @@ describe('formatDuration', () => {
 
   it('measures an incumbent up to today', () => {
     expect(formatDuration('2025-01-07', null, '2026-11-10')).toBe('1 year, 10 months');
-  });
-});
-
-describe('fullYearsBetween', () => {
-  it('counts complete years', () => {
-    expect(fullYearsBetween('1957-03-06', '2026-11-10')).toBe(69);
-    expect(fullYearsBetween('1957-03-06', '2027-03-05')).toBe(69);
-    expect(fullYearsBetween('1957-03-06', '2027-03-06')).toBe(70);
   });
 });
 

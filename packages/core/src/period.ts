@@ -61,3 +61,15 @@ export function periodEndingAt(boundary: IsoDate, frequency: Frequency): Period 
     Number(boundary.slice(0, 4)) * 12 + Number(boundary.slice(5, 7)) - 1 - MONTHS[frequency];
   return { start: `${Math.floor(total / 12)}-${pad((total % 12) + 1)}-01`, end: boundary };
 }
+
+/** Whole calendar months from a to b; a month counts only once its day of the month is reached. */
+export function monthsBetween(a: IsoDate, b: IsoDate): number {
+  const [y1, m1, d1] = a.split('-').map(Number) as [number, number, number];
+  const [y2, m2, d2] = b.split('-').map(Number) as [number, number, number];
+  return (y2 - y1) * 12 + (m2 - m1) - (d2 < d1 ? 1 : 0);
+}
+
+/** Complete years from a to b. */
+export function fullYearsBetween(a: IsoDate, b: IsoDate): number {
+  return Math.floor(monthsBetween(a, b) / 12);
+}
