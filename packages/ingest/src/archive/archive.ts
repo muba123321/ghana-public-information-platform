@@ -53,6 +53,36 @@ export function countPdfPages(bytes: Uint8Array): number | null {
   return (text.match(/\/Type\s*\/Page(?![s\w])/g) ?? []).length || null;
 }
 
+/** Largest original we keep (uploads and downloads alike). */
+export const MAX_DOCUMENT_BYTES = 40 * 1024 * 1024;
+
+const tooLarge = (max: number) =>
+  new Error(`The document is larger than ${Math.round(max / 1024 / 1024)} MB`);
+
+/** Reads a body, giving up as soon as it passes `max` bytes, so a huge response can't exhaust memory. */
+async function readLimited(res: Response, max: number): Promise<Uint8Array> {
+  const declared = Number(res.headers.get('content-length'));
+  if (declared > max) {
+    await res.body?.cancel();
+    throw tooLarge(max);
+  }
+  if (!res.body) return new Uint8Array(0);
+  const parts: Uint8Array[] = [];
+  let total = 0;
+  const reader = res.body.getReader();
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > max) {
+      await reader.cancel();
+      throw tooLarge(max);
+    }
+    parts.push(value);
+  }
+  return new Uint8Array(Buffer.concat(parts));
+}
+
 export interface ArchiveInput {
   url?: string;
   file?: string;
@@ -67,12 +97,15 @@ export interface ArchiveInput {
   fetchImpl?: typeof fetch;
   /** DNS lookup override (tests). */
   lookup?: Lookup;
+  /** Size limit override (tests); defaults to MAX_DOCUMENT_BYTES. */
+  maxBytes?: number;
 }
 
 async function download(
   url: string,
   fetchImpl: typeof fetch | undefined,
-  lookup?: Lookup,
+  lookup: Lookup | undefined,
+  maxBytes: number,
 ): Promise<{ bytes: Uint8Array; mime: string }> {
   // No fetchImpl → safeDownload's pinned fetch. Never substitute the global fetch here.
   const res = await safeDownload(url, {
@@ -84,7 +117,7 @@ async function download(
     (res.headers.get('content-type') ?? '').split(';')[0]?.trim() ||
     MIME[extname(new URL(url).pathname)] ||
     'application/octet-stream';
-  return { bytes: new Uint8Array(await res.arrayBuffer()), mime };
+  return { bytes: await readLimited(res, maxBytes), mime };
 }
 
 /** Archives an original once (by SHA-256) and records it with its publisher as the source. */
@@ -97,7 +130,7 @@ export async function archiveDocument(
   if (given !== 1) throw new Error('Give exactly one of url, file or upload');
   const mimeOf = (name: string) => MIME[extname(name).toLowerCase()] ?? 'application/octet-stream';
   const { bytes, mime } = input.url
-    ? await download(input.url, input.fetchImpl, input.lookup)
+    ? await download(input.url, input.fetchImpl, input.lookup, input.maxBytes ?? MAX_DOCUMENT_BYTES)
     : input.upload
       ? { bytes: input.upload.bytes, mime: mimeOf(input.upload.filename) }
       : {

@@ -1,13 +1,12 @@
 'use server';
 
 import Anthropic from '@anthropic-ai/sdk';
-import { archiveDocument, extractCommitments } from '@gpip/ingest/web';
+import { archiveDocument, extractCommitments, MAX_DOCUMENT_BYTES } from '@gpip/ingest/web';
 import { redirect } from 'next/navigation';
 import { archiveStore, requireEditor } from '../../../lib/admin';
 import { getDb } from '../../../lib/db';
 import { setFlash } from '../../../lib/flash';
 
-const MAX_UPLOAD = 40 * 1024 * 1024;
 const PATH = '/admin/documents';
 async function back(kind: 'error' | 'note', text: string): Promise<never> {
   await setFlash(PATH, { kind, text });
@@ -20,7 +19,7 @@ export async function archiveAction(form: FormData) {
   const url = String(form.get('url') ?? '').trim();
   const upload = file instanceof File && file.size > 0 ? file : null;
   if (!upload === !url) await back('error', 'Choose a PDF file or give a URL (not both).');
-  if (upload && upload.size > MAX_UPLOAD) await back('error', 'File is larger than 40 MB.');
+  if (upload && upload.size > MAX_DOCUMENT_BYTES) await back('error', 'File is larger than 40 MB.');
   if (url && !/^https:\/\//.test(url)) await back('error', 'URL must start with https://');
 
   let message: string;

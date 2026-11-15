@@ -89,6 +89,44 @@ describe('archiveDocument', () => {
     expect(await db.$count(documents)).toBe(0);
   });
 
+  it('refuses a download larger than the limit, even without a content-length', async () => {
+    const chunk = new Uint8Array(1024).fill(65);
+    const fetchImpl = (async () =>
+      new Response(
+        new ReadableStream({
+          start(c) {
+            for (let i = 0; i < 4; i++) c.enqueue(chunk);
+            c.close();
+          },
+        }),
+        { headers: { 'content-type': 'text/plain' } },
+      )) as typeof fetch;
+    await expect(
+      archiveDocument(db, createLocalStore(join(dir, 's')), {
+        ...meta,
+        url: 'https://example.org/big.txt',
+        fetchImpl,
+        maxBytes: 3000,
+      }),
+    ).rejects.toThrow(/larger than/);
+    expect(await db.$count(documents)).toBe(0);
+  });
+
+  it('refuses a download whose declared length is over the limit before reading it', async () => {
+    const fetchImpl = (async () =>
+      new Response('x', {
+        headers: { 'content-type': 'text/plain', 'content-length': '999999' },
+      })) as typeof fetch;
+    await expect(
+      archiveDocument(db, createLocalStore(join(dir, 's')), {
+        ...meta,
+        url: 'https://example.org/big.txt',
+        fetchImpl,
+        maxBytes: 3000,
+      }),
+    ).rejects.toThrow(/larger than/);
+  });
+
   it('accepts non-PDF files with an unknown page count', async () => {
     const file = join(dir, 'notes.txt');
     writeFileSync(file, 'plain text');
