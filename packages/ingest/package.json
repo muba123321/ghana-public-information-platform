@@ -4,17 +4,24 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./web": "./src/web.ts"
   },
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json",
-    "ingest": "tsx src/cli.ts"
+    "ingest": "tsx src/cli.ts",
+    "archive": "tsx src/archive/cli.ts",
+    "extract": "tsx src/extract/cli.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "1.8.0",
+    "@aws-sdk/client-s3": "3.1167.0",
     "@gpip/core": "workspace:*",
     "@gpip/db": "workspace:*",
-    "drizzle-orm": "0.45.4"
+    "ipaddr.js": "2.5.0",
+    "undici": "8.12.4",
+    "zod": "4.6.7"
   },
   "devDependencies": {
     "@types/node": "24.10.1",

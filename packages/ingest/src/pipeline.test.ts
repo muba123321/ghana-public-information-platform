@@ -1,7 +1,6 @@
-import { type Db, importRuns, indicators, observations } from '@gpip/db';
+import { type Db, eq, importRuns, indicators, observations } from '@gpip/db';
 import { seed } from '@gpip/db/node';
 import { createTestDb } from '@gpip/db/testing';
-import { eq } from 'drizzle-orm';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { runImport } from './pipeline.ts';
 import type { RawPoint, SourceAdapter } from './types.ts';

@@ -3,7 +3,14 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import type { Db } from '../client.ts';
 import { getAdministration, listAdministrations } from '../repositories/administrations.ts';
 import { listContextEvents, listIndicators } from '../repositories/indicators.ts';
-import { administrations, changeLog, indicators, sources } from '../schema/index.ts';
+import { listInstitutions } from '../repositories/institutions.ts';
+import {
+  administrations,
+  changeLog,
+  indicators,
+  institutionVersions,
+  sources,
+} from '../schema/index.ts';
 import { createTestDb } from '../testing.ts';
 import { defaultSeedData, seed } from './seed.ts';
 
@@ -154,5 +161,31 @@ describe('catalogue changes', () => {
     expect((await listIndicators(db)).map((i) => i.code)).not.toContain('poverty');
     const [row] = await db.select().from(indicators).where(eq(indicators.code, 'poverty'));
     expect(row!.reviewStatus).toBe('rejected');
+  });
+});
+
+describe('ministry seed (Civil Service (Ministries) Instrument, 2025)', () => {
+  it('seeds the sector ministries in force since 9 January 2025, each sourced', async () => {
+    await seed(db);
+    const list = await listInstitutions(db);
+    expect(list).toHaveLength(13);
+    expect(list.every((i) => i.since === '2025-01-09' && i.until === null)).toBe(true);
+    for (const sector of [
+      'economy',
+      'agriculture',
+      'education',
+      'health',
+      'infrastructure',
+      'social-development',
+    ]) {
+      expect(list.some((i) => i.sectorSlug === sector)).toBe(true);
+    }
+    expect(list.map((i) => i.name)).toContain('Ministry of Energy and Green Transition');
+    const rows = await db
+      .select({ url: sources.url })
+      .from(institutionVersions)
+      .innerJoin(sources, eq(institutionVersions.sourceId, sources.id));
+    expect(rows).toHaveLength(13);
+    for (const r of rows) expect(r.url).toMatch(/^https:\/\//);
   });
 });

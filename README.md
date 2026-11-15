@@ -25,6 +25,9 @@ pnpm dev        # http://localhost:3000
 changed) before starting it again. The local database (PGlite) can only be opened by one process
 at a time, and the dev server does not apply migrations itself.
 
+If `pnpm dev` ever fails with `Aborted()` (a local database damaged by a crash), rebuild it — every
+local record is reproducible: `rm -rf .data/pglite && pnpm db:seed && pnpm ingest`.
+
 `pnpm check` runs lint, typecheck and tests. Contributor rules: [AGENTS.md](AGENTS.md).
 
 ## Licence

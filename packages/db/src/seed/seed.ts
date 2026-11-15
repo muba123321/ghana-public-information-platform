@@ -5,6 +5,8 @@ import {
   ContextEventSeedSchema,
   type IndicatorSeed,
   IndicatorSeedSchema,
+  type InstitutionSeed,
+  InstitutionSeedSchema,
   type LeaderSeed,
   LeaderSeedSchema,
   type PartySeed,
@@ -22,6 +24,8 @@ import {
   administrations,
   contextEvents,
   indicators,
+  institutions,
+  institutionVersions,
   parties,
   persons,
   sectors,
@@ -30,6 +34,7 @@ import {
 import { administrationSeeds } from './data/administrations.ts';
 import { contextEventSeeds } from './data/contextEvents.ts';
 import { indicatorSeeds } from './data/indicators.ts';
+import { institutionSeeds } from './data/institutions.ts';
 import { leaderSeeds } from './data/leaders.ts';
 import { partySeeds } from './data/parties.ts';
 import { personSeeds } from './data/persons.ts';
@@ -46,6 +51,7 @@ export interface SeedData {
   leaders: LeaderSeed[];
   indicators: IndicatorSeed[];
   contextEvents: ContextEventSeed[];
+  institutions: InstitutionSeed[];
 }
 
 export const defaultSeedData: SeedData = {
@@ -57,6 +63,7 @@ export const defaultSeedData: SeedData = {
   leaders: leaderSeeds,
   indicators: indicatorSeeds,
   contextEvents: contextEventSeeds,
+  institutions: institutionSeeds,
 };
 
 /** Idempotently loads the verified reference data. Safe to run on every deploy. */
@@ -181,6 +188,34 @@ export async function seed(db: Db, data: SeedData = defaultSeedData): Promise<Sy
             provenance: 'manual',
           })),
         { prune: true },
+      ),
+    );
+    const insts = data.institutions.map((i) => InstitutionSeedSchema.parse(i));
+    add(
+      await syncRows(
+        tx,
+        institutions,
+        'institutions',
+        ['slug'],
+        insts.map(({ slug, kind }) => ({ slug, kind })),
+      ),
+    );
+    add(
+      await syncRows(
+        tx,
+        institutionVersions,
+        'institution_versions',
+        ['institutionSlug', 'validFrom'],
+        insts.map((i) => ({
+          institutionSlug: i.slug,
+          name: i.name,
+          sectorSlug: i.sectorSlug,
+          validFrom: i.validFrom,
+          validTo: null,
+          sourceId: sourceId(i.sourceKey),
+          reviewStatus: 'published',
+          provenance: 'manual',
+        })),
       ),
     );
     return total;

@@ -67,10 +67,11 @@ export default async function Home() {
                 military.
               </p>
             </li>
-            <li data-soon>
-              <span className="explore-link">Promises and what happened to them</span>
+            <li>
+              <Link href="/history/commitments" className="explore-link">
+                Promises and what happened to them
+              </Link>
               <p>Manifesto and budget commitments, followed across changes of government.</p>
-              <span className="pill">Coming soon</span>
             </li>
             <li>
               <Link href="/history/indicators" className="explore-link">

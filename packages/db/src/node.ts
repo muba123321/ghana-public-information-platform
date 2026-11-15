@@ -8,6 +8,7 @@ import { migrate as migratePglite } from 'drizzle-orm/pglite/migrator';
 import { migrate as migratePostgres } from 'drizzle-orm/postgres-js/migrator';
 import { createDb, type Db, dbDriver } from './client.ts';
 
+export { closeDb } from './client.ts';
 export { seed } from './seed/seed.ts';
 
 const MIGRATIONS_DIR = fileURLToPath(new URL('../migrations', import.meta.url));

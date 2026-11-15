@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   AdministrationSeedSchema,
   ContextEventSeedSchema,
+  ExtractionResultSchema,
   IndicatorSeedSchema,
   LeaderSeedSchema,
 } from './schemas.ts';
@@ -90,5 +91,26 @@ describe('indicator and context-event seeds', () => {
 
   it('rejects titles over 90 characters', () => {
     expect(() => ContextEventSeedSchema.parse({ ...event, title: 'x'.repeat(91) })).toThrow();
+  });
+});
+
+describe('extraction schema', () => {
+  const item = {
+    wording: 'We will build 88 district hospitals.',
+    page: 42,
+    kind: 'campaign_promise',
+  };
+
+  it('accepts a minimal extracted commitment', () => {
+    expect(ExtractionResultSchema.parse({ commitments: [item] }).commitments).toHaveLength(1);
+  });
+
+  it.each([
+    [{ ...item, page: 0 }],
+    [{ ...item, wording: '   ' }],
+    [{ ...item, kind: 'promise' }],
+    [{ ...item, budget: { amount: 5, currency: 'EUR', note: null } }],
+  ])('rejects %j', (bad) => {
+    expect(() => ExtractionResultSchema.parse({ commitments: [bad] })).toThrow();
   });
 });
