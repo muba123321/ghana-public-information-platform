@@ -1,4 +1,5 @@
 'use server';
+import 'server-only';
 
 import { safeLocalPath } from '@gpip/core';
 import { submitCorrection } from '@gpip/db';
