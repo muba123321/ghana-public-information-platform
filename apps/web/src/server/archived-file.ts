@@ -1,3 +1,5 @@
+import 'server-only';
+
 const PDF_SIGNATURE = '%PDF-';
 
 /**

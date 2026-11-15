@@ -1,7 +1,8 @@
 import { getDocumentFile } from '@gpip/db';
-import { archiveStore, currentEditor } from '@/lib/admin';
-import { getDb } from '@/lib/db';
-import { archivedFileHeaders } from '@/lib/files';
+import { archiveStore } from '@/server/archive-store';
+import { archivedFileHeaders } from '@/server/archived-file';
+import { getDb } from '@/server/db';
+import { currentEditor } from '@/server/editor-access';
 
 export const dynamic = 'force-dynamic';
 

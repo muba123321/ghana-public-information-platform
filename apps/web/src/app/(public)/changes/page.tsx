@@ -1,7 +1,7 @@
 import { listChangeLog } from '@gpip/db';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getDb } from '@/lib/db';
+import { getDb } from '@/server/db';
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'Change log' };

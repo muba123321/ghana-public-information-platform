@@ -1,6 +1,6 @@
 import { safeLocalPath } from '@gpip/core';
 import type { Metadata } from 'next';
-import { readFlash } from '@/lib/flash';
+import { readFlash } from '@/server/flash';
 import { submitReportAction } from './actions';
 
 export const metadata: Metadata = { title: 'Report an error', robots: { index: false } };

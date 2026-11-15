@@ -1,6 +1,4 @@
 import 'server-only';
-import { resolve } from 'node:path';
-import { storeFromEnv } from '@gpip/ingest/web';
 import { redirect } from 'next/navigation';
 import { auth } from '@/server/auth';
 import { isAllowedEditor } from './editors';
@@ -24,7 +22,3 @@ export async function requireEditor(): Promise<string> {
   if (!login) redirect('/api/auth/signin?callbackUrl=%2Fadmin');
   return login;
 }
-
-/** The document archive: R2 in production, repo-root .data/archive locally (next runs in apps/web). */
-export const archiveStore = () =>
-  storeFromEnv(process.env, resolve(process.cwd(), '../../.data/archive'));

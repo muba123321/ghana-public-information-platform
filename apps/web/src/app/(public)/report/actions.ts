@@ -4,9 +4,9 @@ import { safeLocalPath } from '@gpip/core';
 import { submitCorrection } from '@gpip/db';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { getDb } from '@/lib/db';
-import { setFlash } from '@/lib/flash';
-import { clientIp, senderHash } from '@/lib/sender';
+import { getDb } from '@/server/db';
+import { setFlash } from '@/server/flash';
+import { clientIp, senderHash } from '@/server/sender';
 
 const field = (f: FormData, k: string) => String(f.get(k) ?? '');
 

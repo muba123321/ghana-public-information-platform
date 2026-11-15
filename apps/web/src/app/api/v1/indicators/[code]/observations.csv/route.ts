@@ -1,7 +1,7 @@
 import type { NextRequest } from 'next/server';
-import { CACHE_HEADERS, notFound } from '@/lib/api';
 import { toCsv } from '@/lib/csv';
 import { loadIndicatorSeries } from '@/lib/data';
+import { CACHE_HEADERS, notFound } from '@/server/api';
 
 export const dynamic = 'force-dynamic';
 

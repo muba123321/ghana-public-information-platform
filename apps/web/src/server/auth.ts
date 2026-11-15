@@ -1,7 +1,8 @@
+import 'server-only';
 import NextAuth, { type NextAuthConfig } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import GitHub from 'next-auth/providers/github';
-import { devLoginEnabled, isAllowedEditor } from '@/lib/editors';
+import { devLoginEnabled, isAllowedEditor } from '@/server/editors';
 
 type WithLogin = { login?: string };
 type Account = { provider?: string; providerAccountId?: string } | null | undefined;

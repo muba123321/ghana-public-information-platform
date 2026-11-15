@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { archivedFileHeaders } from './files';
+import { archivedFileHeaders } from './archived-file';
 
 const pdf = new Uint8Array(Buffer.from('%PDF-1.4 ...'));
 const html = new Uint8Array(Buffer.from('<html><script>alert(1)</script>'));

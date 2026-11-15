@@ -1,9 +1,9 @@
 import { listDocumentsForAdmin } from '@gpip/db';
 import Link from 'next/link';
-import { requireEditor } from '@/lib/admin';
-import { getDb } from '@/lib/db';
-import { readFlash } from '@/lib/flash';
-import { archiveAction, extractAction } from './actions';
+import { getDb } from '@/server/db';
+import { requireEditor } from '@/server/editor-access';
+import { readFlash } from '@/server/flash';
+import { archiveAction, extractAction } from './admin-actions';
 
 export default async function DocumentsPage() {
   await requireEditor(); // pages render without the layout on client navigations

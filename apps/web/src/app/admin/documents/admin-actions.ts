@@ -3,9 +3,10 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { archiveDocument, extractCommitments, MAX_DOCUMENT_BYTES } from '@gpip/ingest/web';
 import { redirect } from 'next/navigation';
-import { archiveStore, requireEditor } from '@/lib/admin';
-import { getDb } from '@/lib/db';
-import { setFlash } from '@/lib/flash';
+import { archiveStore } from '@/server/archive-store';
+import { getDb } from '@/server/db';
+import { requireEditor } from '@/server/editor-access';
+import { setFlash } from '@/server/flash';
 
 const PATH = '/admin/documents';
 async function back(kind: 'error' | 'note', text: string): Promise<never> {

@@ -2,8 +2,8 @@
 
 import { setCorrectionStatus } from '@gpip/db';
 import { revalidatePath } from 'next/cache';
-import { requireEditor } from '@/lib/admin';
-import { getDb } from '@/lib/db';
+import { getDb } from '@/server/db';
+import { requireEditor } from '@/server/editor-access';
 
 const STATUSES = ['reviewed', 'actioned', 'dismissed'] as const;
 

@@ -1,5 +1,5 @@
-import { API_LICENCE, CACHE_HEADERS } from '@/lib/api';
 import { loadIndicators } from '@/lib/data';
+import { API_LICENCE, CACHE_HEADERS } from '@/server/api';
 
 export const dynamic = 'force-dynamic';
 

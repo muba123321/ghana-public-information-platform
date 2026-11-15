@@ -1,6 +1,6 @@
 import type { NextRequest } from 'next/server';
-import { API_LICENCE, CACHE_HEADERS, notFound } from '@/lib/api';
 import { loadIndicatorSeries } from '@/lib/data';
+import { API_LICENCE, CACHE_HEADERS, notFound } from '@/server/api';
 
 export const dynamic = 'force-dynamic';
 

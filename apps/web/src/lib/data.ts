@@ -15,7 +15,7 @@ import {
   listPublicDocuments,
 } from '@gpip/db';
 import { cache } from 'react';
-import { getDb } from './db';
+import { getDb } from '@/server/db';
 import { todayIso } from './format';
 import { ribbonSegments, ribbonTicks } from './timeline';
 

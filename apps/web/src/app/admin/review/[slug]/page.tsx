@@ -1,11 +1,11 @@
 import { CURRENCIES } from '@gpip/core';
 import { administrations, asc, getReviewItem, sectors } from '@gpip/db';
 import { notFound } from 'next/navigation';
-import { approveAction, rejectAction } from '@/app/admin/review/actions';
+import { approveAction, rejectAction } from '@/app/admin/review/admin-actions';
 import { KIND_LABELS } from '@/components/KindBadge';
-import { requireEditor } from '@/lib/admin';
-import { getDb } from '@/lib/db';
-import { readFlash } from '@/lib/flash';
+import { getDb } from '@/server/db';
+import { requireEditor } from '@/server/editor-access';
+import { readFlash } from '@/server/flash';
 
 type Props = { params: Promise<{ slug: string }> };
 

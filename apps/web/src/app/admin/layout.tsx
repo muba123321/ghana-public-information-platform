@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import { requireEditor } from '@/lib/admin';
-import { signOutAction } from './actions';
+import { signOutAction } from '@/server/auth-actions';
+import { requireEditor } from '@/server/editor-access';
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'Editor', robots: { index: false, follow: false } };
