@@ -21,7 +21,17 @@ interface Rule {
   files: (all: readonly string[]) => string[];
   /** A problem with this file, or null. */
   check: (file: string, source: string) => string | null;
+  /** A file the rule must reject — proves the check can fail. */
+  bad?: { file: string; source: string };
 }
+
+/** Module specifiers a file imports at runtime (`import type` lines are skipped). */
+const runtimeImports = (src: string) =>
+  [...src.matchAll(/^import (?!type )[^;]*?from '([^']+)';/gms)].map((m) => m[1] as string);
+const allImports = (src: string) =>
+  [...src.matchAll(/^import [^;]*?from '([^']+)';/gms)].map((m) => m[1] as string);
+const inServer = (f: string) => /(^|\/)server\//.test(f);
+const featureOf = (f: string) => f.match(/^features\/([^/]+)\//)?.[1];
 
 const NEXT_FOLDER = /^(\[[^\]]+\]|\[\.\.\.[^\]]+\]|\([a-z-]+\)|[a-z0-9-]+\.csv)$/;
 const KEBAB = /^[a-z0-9-]+$/;
@@ -79,9 +89,70 @@ const RULES: Rule[] = [
     check: (_f, src) =>
       /await (requireEditor|currentEditor)\(\)/.test(src) ? null : 'must check the editor',
   },
+  {
+    name: 'only server code imports the database or ingest packages (types excepted)',
+    files: (all) => all.filter((f) => /\.tsx?$/.test(f) && !inServer(f)),
+    check: (_f, src) => {
+      const bad = runtimeImports(src).find((m) => /^@gpip\/(db|ingest)(\/|$)/.test(m));
+      return bad ? `imports ${bad} outside a server/ folder` : null;
+    },
+    bad: { file: 'features/x/components/X.tsx', source: "import { getDb } from '@gpip/db';\n" },
+  },
+  {
+    name: 'UI and shared helpers never import server code',
+    files: (all) =>
+      all.filter(
+        (f) =>
+          /\.tsx?$/.test(f) && !isTest(f) && /^(components|lib|features)\//.test(f) && !inServer(f),
+      ),
+    check: (_f, src) => {
+      const bad = allImports(src).find((m) => /(^@\/server\/|\/server\/)/.test(m));
+      return bad ? `imports server code (${bad})` : null;
+    },
+    bad: { file: 'components/ui/X.tsx', source: "import { getDb } from '@/server/db';\n" },
+  },
+  {
+    name: "features use each other only through the other feature's index",
+    files: (all) => all.filter((f) => f.startsWith('features/') && /\.tsx?$/.test(f)),
+    check: (f, src) => {
+      const own = featureOf(f);
+      const bad = allImports(src).find((m) => {
+        const other = m.match(/^@\/features\/([^/]+)(\/.*)?$/);
+        return other && (other[1] === own || other[2] !== undefined);
+      });
+      return bad
+        ? `imports ${bad}; use relative paths inside a feature, @/features/<name> across`
+        : null;
+    },
+    bad: {
+      file: 'features/review/components/X.tsx',
+      source: "import { KIND_LABELS } from '@/features/commitments/labels';\n",
+    },
+  },
+  {
+    name: 'pages are thin: no markup classes, no constant maps, no queries',
+    files: (all) => all.filter((f) => f.startsWith('app/') && f.endsWith('page.tsx')),
+    check: (_f, src) => {
+      if (src.includes('className='))
+        return 'has className (move the markup into a feature component)';
+      if (/^const [A-Z_]+[^=]*= [{[]/m.test(src))
+        return 'defines a constant map (move it to labels.ts)';
+      if (allImports(src).includes('drizzle-orm')) return 'imports drizzle-orm';
+      return null;
+    },
+    bad: { file: 'app/x/page.tsx', source: 'const LABELS = { a: 1 };\n' },
+  },
 ];
 
 describe('architecture', () => {
+  it.each(RULES.filter((r) => r.bad).map((r) => [r.name, r] as const))(
+    'rule "%s" rejects its bad example',
+    (_name, rule) => {
+      const bad = rule.bad as { file: string; source: string };
+      expect(rule.check(bad.file, bad.source)).not.toBeNull();
+    },
+  );
+
   it('keeps editor-only server code inside features, never in routes', () => {
     const admin = ALL.filter((f) => /admin-(actions|queries)\.ts$/.test(f));
     expect(admin.filter((f) => f.startsWith('app/'))).toEqual([]);
