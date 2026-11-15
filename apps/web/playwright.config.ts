@@ -12,7 +12,23 @@ export default defineConfig({
   workers: 1,
   reporter: process.env.CI ? 'github' : 'list',
   use: { baseURL: `http://localhost:${PORT}` },
-  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  // Screenshots live outside git: they guard the architecture refactor on the machine that made them.
+  snapshotPathTemplate: '{testDir}/visual/__screenshots__/{projectName}/{arg}{ext}',
+  projects: [
+    { name: 'chromium', testMatch: /.*\.spec\.ts/, use: { ...devices['Desktop Chrome'] } },
+    ...(
+      [
+        ['desktop', devices['Desktop Chrome'].viewport],
+        ['phone', { width: 390, height: 844 }],
+      ] as const
+    ).flatMap(([size, viewport]) =>
+      (['light', 'dark'] as const).map((colorScheme) => ({
+        name: `visual-${size}-${colorScheme}`,
+        testMatch: /.*\.visual\.ts/,
+        use: { ...devices['Desktop Chrome'], viewport, colorScheme },
+      })),
+    ),
+  ],
   webServer: {
     // Fresh database for every run: migrate + seed, import recorded API responses, then serve.
     command: `rm -rf ${DB} ${ARCHIVE} && ${env} pnpm --filter @gpip/db db:seed && ${env} pnpm --filter @gpip/ingest ingest --fixtures && ${env} pnpm exec tsx e2e/fixtures.ts && ${env} NEXT_MANUAL_SIG_HANDLE=true exec ./node_modules/.bin/next start -p ${PORT}`,

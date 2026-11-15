@@ -11,3 +11,4 @@ test-results/
 !.env.example
 .superpowers/
 *.tsbuildinfo
+apps/web/e2e/visual/__screenshots__/
