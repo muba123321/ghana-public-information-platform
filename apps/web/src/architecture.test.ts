@@ -82,6 +82,16 @@ const RULES: Rule[] = [
 ];
 
 describe('architecture', () => {
+  it('keeps editor-only server code inside features, never in routes', () => {
+    const admin = ALL.filter((f) => /admin-(actions|queries)\.ts$/.test(f));
+    expect(admin.filter((f) => f.startsWith('app/'))).toEqual([]);
+    for (const feature of ['corrections', 'review', 'documents']) {
+      for (const kind of ['actions', 'queries']) {
+        expect(admin).toContain(`features/${feature}/server/admin-${kind}.ts`);
+      }
+    }
+  });
+
   for (const rule of RULES) {
     describe(rule.name, () => {
       const files = rule.files(ALL);

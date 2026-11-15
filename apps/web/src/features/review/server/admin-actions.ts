@@ -1,10 +1,10 @@
 'use server';
+import 'server-only';
 
 import {
   approveCommitment,
   type BudgetEdit,
   type CommitmentEdit,
-  listReviewQueue,
   ReviewError,
   rejectCommitment,
 } from '@gpip/db';
@@ -13,13 +13,14 @@ import { redirect } from 'next/navigation';
 import { getDb } from '@/server/db';
 import { requireEditor } from '@/server/editor-access';
 import { setFlash } from '@/server/flash';
+import { loadReviewQueue } from './admin-queries';
 
 const text = (f: FormData, k: string) => String(f.get(k) ?? '').trim();
 const optional = (f: FormData, k: string) => text(f, k) || null;
 
 async function next(slugDone: string): Promise<never> {
   revalidatePath('/history', 'layout');
-  const [following] = (await listReviewQueue(await getDb())).filter((i) => i.slug !== slugDone);
+  const [following] = (await loadReviewQueue()).filter((i) => i.slug !== slugDone);
   redirect(following ? `/admin/review/${following.slug}` : '/admin/review');
 }
 

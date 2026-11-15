@@ -1,4 +1,5 @@
 'use server';
+import 'server-only';
 
 import Anthropic from '@anthropic-ai/sdk';
 import { archiveDocument, extractCommitments, MAX_DOCUMENT_BYTES } from '@gpip/ingest/web';
