@@ -21,8 +21,8 @@ interface Rule {
   files: (all: readonly string[]) => string[];
   /** A problem with this file, or null. */
   check: (file: string, source: string) => string | null;
-  /** A file the rule must reject — proves the check can fail. */
-  bad?: { file: string; source: string };
+  /** A file the rule must reject, and why — proves the check can fail for the right reason. */
+  bad?: { file: string; source: string; reason?: RegExp };
 }
 
 /** Module specifiers a file imports at runtime (`import type` lines are skipped). */
@@ -32,6 +32,9 @@ const allImports = (src: string) =>
   [...src.matchAll(/^import [^;]*?from '([^']+)';/gms)].map((m) => m[1] as string);
 const inServer = (f: string) => /(^|\/)server\//.test(f);
 const featureOf = (f: string) => f.match(/^features\/([^/]+)\//)?.[1];
+
+/** Server-action files anyone may call. Every other 'use server' file must be admin-actions.ts. */
+const PUBLIC_ACTIONS = ['server/auth-actions.ts', 'features/corrections/server/actions.ts'];
 
 const NEXT_FOLDER = /^(\[[^\]]+\]|\[\.\.\.[^\]]+\]|\([a-z-]+\)|[a-z0-9-]+\.csv)$/;
 const KEBAB = /^[a-z0-9-]+$/;
@@ -92,13 +95,40 @@ const RULES: Rule[] = [
     name: 'every editor-only server function checks the editor first',
     files: (all) => all.filter((f) => /(^|\/)admin-(actions|queries)\.ts$/.test(f)),
     check: (_f, src) => {
-      const fns = src.split(/(?=export async function )/).slice(1);
-      if (fns.length === 0) return 'exports no functions';
-      const open = fns.filter((body) => !body.includes('await requireEditor()'));
+      // Every exported value, whatever its form, with the source up to the next export.
+      const exports = [
+        ...src.matchAll(
+          /^export (?!type |interface )(?:async )?(?:function|const|let|var|class) (\w+)/gm,
+        ),
+      ];
+      if (exports.length === 0) return 'exports no functions';
+      const open = exports
+        .filter((m, i) => {
+          const body = src.slice(m.index, exports[i + 1]?.index ?? src.length);
+          return (
+            !m[0].startsWith('export async function ') || !body.includes('await requireEditor()')
+          );
+        })
+        .map((m) => m[1]);
       return open.length
-        ? `${open.map((b) => b.match(/function (\w+)/)?.[1]).join(', ')} must await requireEditor()`
+        ? `${open.join(', ')} must be an \`export async function\` that awaits requireEditor() first`
         : null;
     },
+    bad: {
+      file: 'features/x/server/admin-actions.ts',
+      source:
+        'export async function ok() {\n  await requireEditor();\n}\nexport const sneaky = async () => {};\n',
+      reason: /sneaky/,
+    },
+  },
+  {
+    name: "server actions are editor-only unless they're on the public list",
+    files: (all) => all.filter((f) => /^'use server';/.test(read(f))),
+    check: (f) =>
+      f.endsWith('/admin-actions.ts') || PUBLIC_ACTIONS.includes(f)
+        ? null
+        : 'name it admin-actions.ts (editor-only) or add it to PUBLIC_ACTIONS on purpose',
+    bad: { file: 'features/x/server/actions.ts', source: "'use server';\n" },
   },
   {
     name: 'every editor page and route checks the editor',
@@ -165,8 +195,10 @@ describe('architecture', () => {
   it.each(RULES.filter((r) => r.bad).map((r) => [r.name, r] as const))(
     'rule "%s" rejects its bad example',
     (_name, rule) => {
-      const bad = rule.bad as { file: string; source: string };
-      expect(rule.check(bad.file, bad.source)).not.toBeNull();
+      const bad = rule.bad as { file: string; source: string; reason?: RegExp };
+      const problem = rule.check(bad.file, bad.source);
+      expect(problem).not.toBeNull();
+      if (bad.reason) expect(problem).toMatch(bad.reason);
     },
   );
 

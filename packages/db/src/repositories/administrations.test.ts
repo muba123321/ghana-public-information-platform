@@ -4,7 +4,12 @@ import type { Db } from '../client.ts';
 import { administrations } from '../schema/index.ts';
 import { seed } from '../seed/seed.ts';
 import { createTestDb } from '../testing.ts';
-import { getAdministration, listAdministrations, listPersonTenures } from './administrations.ts';
+import {
+  getAdministration,
+  listAdministrationNames,
+  listAdministrations,
+  listPersonTenures,
+} from './administrations.ts';
 
 let db: Db;
 beforeAll(async () => {
@@ -69,5 +74,21 @@ describe('administration repository', () => {
     expect(await listAdministrations(local)).toHaveLength(18);
     expect(await getAdministration(local, '1957-dominion')).toBeNull();
     expect((await getAdministration(local, '1960-first-republic'))!.previous).toBeNull();
+  });
+});
+
+describe('listAdministrationNames (editor choices)', () => {
+  it('includes drafts, so a draft commitment never loses its government in the review form', async () => {
+    const own = await createTestDb();
+    await seed(own);
+    await own
+      .update(administrations)
+      .set({ reviewStatus: 'draft' })
+      .where(eq(administrations.slug, '1981-pndc'));
+    const names = await listAdministrationNames(own);
+    expect(names.map((a) => a.slug)).toContain('1981-pndc');
+    expect((await listAdministrations(own)).map((a) => a.slug)).not.toContain('1981-pndc');
+    expect(names[0]).toEqual({ slug: '1957-dominion', name: expect.any(String) });
+    expect(names).toHaveLength(await own.$count(administrations));
   });
 });

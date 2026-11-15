@@ -1,7 +1,7 @@
 import 'server-only';
 import {
   getReviewItem,
-  listAdministrations,
+  listAdministrationNames,
   listReviewQueue,
   listSectors,
   reviewCounts,
@@ -28,9 +28,10 @@ export async function loadReviewItem(slug: string) {
 export async function loadReviewOptions() {
   await requireEditor();
   const db = await getDb();
-  const [administrations, sectors] = await Promise.all([listAdministrations(db), listSectors(db)]);
-  return {
-    administrations: administrations.map(({ slug, name }) => ({ slug, name })),
-    sectors,
-  };
+  // Drafts included: a draft commitment may point at a government not yet published.
+  const [administrations, sectors] = await Promise.all([
+    listAdministrationNames(db),
+    listSectors(db),
+  ]);
+  return { administrations, sectors };
 }
