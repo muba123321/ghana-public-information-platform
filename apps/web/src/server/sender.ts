@@ -3,9 +3,10 @@ import { createHash } from 'node:crypto';
 
 /**
  * The visitor's address for rate limiting. On Vercel, the header Vercel sets (visitors cannot
- * forge it there); anywhere else that header is just client input and is ignored. Otherwise the
- * right-most x-forwarded-for entry, which our own proxy appended — the left-most entries are
- * whatever the client sent.
+ * forge it there). x-forwarded-for is used only on Vercel or behind a proxy we run
+ * (TRUST_PROXY=1), and then only its right-most entry, which that proxy appended — the left-most
+ * entries are whatever the client sent. With neither, every visitor could write the header, so
+ * all reports share one rate-limit bucket ("unknown").
  */
 export function clientIp(
   headers: Headers,
@@ -15,6 +16,7 @@ export function clientIp(
     const platform = headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim();
     if (platform) return platform;
   }
+  if (env.VERCEL !== '1' && env.TRUST_PROXY !== '1') return 'unknown';
   const chain = (headers.get('x-forwarded-for') ?? '')
     .split(',')
     .map((s) => s.trim())

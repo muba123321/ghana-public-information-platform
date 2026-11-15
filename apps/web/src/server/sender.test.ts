@@ -14,6 +14,7 @@ describe('senderHash', () => {
 
 describe('clientIp', () => {
   const onVercel = { VERCEL: '1' };
+  const behindProxy = { TRUST_PROXY: '1' };
 
   it('on Vercel, uses the address Vercel sets, which visitors cannot spoof', () => {
     const h = new Headers({
@@ -28,19 +29,25 @@ describe('clientIp', () => {
       'x-vercel-forwarded-for': '6.6.6.6',
       'x-forwarded-for': 'spoofed, 41.66.1.2',
     });
-    expect(clientIp(h, {})).toBe('41.66.1.2');
+    expect(clientIp(h, behindProxy)).toBe('41.66.1.2');
   });
 
   it('never trusts x-real-ip, which nothing in our stack sets', () => {
     const h = new Headers({ 'x-real-ip': '6.6.6.6', 'x-forwarded-for': '41.66.9.9' });
-    expect(clientIp(h, {})).toBe('41.66.9.9');
+    expect(clientIp(h, behindProxy)).toBe('41.66.9.9');
     expect(clientIp(h, onVercel)).toBe('41.66.9.9');
   });
 
-  it('otherwise takes the right-most x-forwarded-for entry (added by our proxy), not a spoofed first one', () => {
+  it('behind a trusted proxy, takes the right-most x-forwarded-for entry (added by the proxy), not a spoofed first one', () => {
     expect(
-      clientIp(new Headers({ 'x-forwarded-for': 'spoofed-1, spoofed-2, 41.66.1.2' }), {}),
+      clientIp(new Headers({ 'x-forwarded-for': 'spoofed-1, spoofed-2, 41.66.1.2' }), behindProxy),
     ).toBe('41.66.1.2');
+  });
+
+  it('with no trusted proxy, ignores x-forwarded-for entirely (a direct visitor writes it)', () => {
+    const h = new Headers({ 'x-forwarded-for': '6.6.6.6' });
+    expect(clientIp(h, {})).toBe('unknown');
+    expect(clientIp(h, { TRUST_PROXY: 'yes' })).toBe('unknown');
   });
 
   it('falls back to unknown', () => {
