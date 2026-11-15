@@ -1,7 +1,7 @@
 import { listReviewQueue } from '@gpip/db';
 import Link from 'next/link';
-import { KindBadge } from '@/components/KindBadge';
 import { PageHeader } from '@/components/layout/PageHeader';
+import { KindBadge } from '@/features/commitments';
 import { getDb } from '@/server/db';
 import { requireEditor } from '@/server/editor-access';
 

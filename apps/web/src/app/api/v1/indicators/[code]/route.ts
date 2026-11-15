@@ -1,5 +1,5 @@
 import type { NextRequest } from 'next/server';
-import { loadIndicatorSeries } from '@/lib/data';
+import { loadIndicatorSeries } from '@/features/indicators/server/queries';
 import { API_LICENCE, CACHE_HEADERS, notFound } from '@/server/api';
 
 export const dynamic = 'force-dynamic';

@@ -1,23 +1,12 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { CommitmentCard } from '@/components/CommitmentCard';
-import { PageContainer } from '@/components/layout/PageContainer';
-import { PageHeader } from '@/components/layout/PageHeader';
-import { loadCommitments, loadInstitutionHistory, loadInstitutions } from '@/lib/data';
-import { formatRange } from '@/lib/format';
+import { loadCommitments } from '@/features/commitments/server/queries';
+import { MinistryHistory } from '@/features/institutions';
+import { loadInstitutionHistory, loadInstitutions } from '@/features/institutions/server/queries';
 
 export const dynamic = 'force-dynamic';
 
 type Props = { params: Promise<{ slug: string }> };
-
-const LINEAGE = {
-  renamed: 'renamed to',
-  merged_into: 'merged into',
-  split_from: 'split from',
-  replaced_by: 'replaced by',
-  absorbed_functions_of: 'took over functions of',
-} as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const h = await loadInstitutionHistory((await params).slug);
@@ -32,53 +21,5 @@ export default async function MinistryPage({ params }: Props) {
     loadCommitments({ institution: slug }),
   ]);
   if (!history || history.versions.length === 0) notFound();
-  // Never fall back to the raw identifier: it could name an unpublished institution.
-  const nameOf = (s: string) => all.find((i) => i.slug === s)?.name ?? 'another institution';
-
-  return (
-    <PageContainer>
-      <PageHeader
-        title={history.versions.at(-1)?.name}
-        back={{ href: '/history/ministries', label: 'All ministries' }}
-      />
-
-      <h2 className="section-title">Names over time</h2>
-      <ol className="spine">
-        {history.versions.map((v) => (
-          <li key={`${v.name}-${v.validFrom}`} className="spine-item">
-            <span className="spine-name">{v.name}</span>
-            <p className="spine-meta">{formatRange(v.validFrom, v.validTo)}</p>
-            {v.mandate && <p>{v.mandate}</p>}
-          </li>
-        ))}
-      </ol>
-
-      {history.lineage.length > 0 && (
-        <>
-          <h2 className="section-title">Reorganisations</h2>
-          <ul className="event-list">
-            {history.lineage.map((l) => (
-              <li key={`${l.fromSlug}-${l.toSlug}-${l.kind}`}>
-                <span className="event-date">{l.effectiveOn.slice(0, 4)}</span>{' '}
-                <Link href={`/history/ministries/${l.fromSlug}`}>{nameOf(l.fromSlug)}</Link>{' '}
-                {LINEAGE[l.kind as keyof typeof LINEAGE] ?? l.kind}{' '}
-                <Link href={`/history/ministries/${l.toSlug}`}>{nameOf(l.toSlug)}</Link>
-              </li>
-            ))}
-          </ul>
-        </>
-      )}
-
-      <h2 className="section-title">Commitments it was responsible for</h2>
-      {commitments.length === 0 ? (
-        <p className="muted">None published yet.</p>
-      ) : (
-        <ul className="commitment-list">
-          {commitments.map((c) => (
-            <CommitmentCard key={c.slug} c={c} />
-          ))}
-        </ul>
-      )}
-    </PageContainer>
-  );
+  return <MinistryHistory history={history} all={all} commitments={commitments} />;
 }
