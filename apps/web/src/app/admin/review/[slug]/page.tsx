@@ -18,6 +18,7 @@ export default async function ReviewItemPage({ params }: Props) {
       flash={flash}
       administrations={options.administrations}
       sectors={options.sectors}
+      regions={options.regions}
       approve={approveAction}
       reject={rejectAction}
     />

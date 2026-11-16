@@ -20,6 +20,7 @@ import {
 import { editorialColumns } from './editorial.ts';
 import { institutions, sectors } from './institutions.ts';
 import { administrations } from './political.ts';
+import { regions } from './regions.ts';
 import { sources } from './sources.ts';
 
 export const commitmentKind = pgEnum('commitment_kind', COMMITMENT_KINDS);
@@ -66,6 +67,8 @@ export const commitments = pgTable(
   'commitments',
   {
     slug: text('slug').primaryKey(),
+    /** A national programme (e.g. Free SHS): listed under no region. */
+    nationwide: boolean('nationwide').notNull().default(false),
     /** Verbatim from the source document. */
     wording: text('wording').notNull(),
     documentId: uuid('document_id')
@@ -218,3 +221,17 @@ export const correctionReports = pgTable('correction_reports', {
   status: correctionStatus('status').notNull().default('new'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
 });
+
+/** Regions a commitment names, as the editor confirmed them. A former region may be named (older documents). */
+export const commitmentRegions = pgTable(
+  'commitment_regions',
+  {
+    commitmentSlug: text('commitment_slug')
+      .notNull()
+      .references(() => commitments.slug, { onDelete: 'cascade' }),
+    regionSlug: text('region_slug')
+      .notNull()
+      .references(() => regions.slug),
+  },
+  (t) => [primaryKey({ columns: [t.commitmentSlug, t.regionSlug] })],
+);

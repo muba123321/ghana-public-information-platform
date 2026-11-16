@@ -16,11 +16,13 @@ import {
   administrations,
   changeLog,
   commitmentBudgets,
+  commitmentRegions,
   commitmentStewardships,
   commitments,
   correctionReports,
   documents,
   extractionRuns,
+  regions,
   sectors,
 } from '../schema/index.ts';
 
@@ -43,9 +45,15 @@ export interface ReviewItem {
   documentId: string;
   documentTitle: string;
   documentPages: number | null;
+  /** Regions the draft names (pre-ticked from the extraction; the editor confirms). */
+  regions: string[];
+  nationwide: boolean;
   /** Draft budget figures from the same document, for the editor to confirm or drop. */
   budgets: DraftBudget[];
 }
+
+/** A queue row: the review item without its budget figures and region tags. */
+export type ReviewQueueItem = Omit<ReviewItem, 'budgets' | 'regions' | 'nationwide'>;
 
 export interface DraftBudget {
   id: number;
@@ -77,6 +85,10 @@ export interface CommitmentEdit {
   targetDeadline: IsoDate | null;
   /** One decision per draft budget figure; approval is refused until every one is decided. */
   budgets: BudgetEdit[];
+  /** Regions the commitment names (current or former), as the editor confirmed them. */
+  regions: string[];
+  /** A national programme: listed under no region. */
+  nationwide: boolean;
 }
 
 export interface StewardshipEdit extends StewardshipInput {
@@ -116,7 +128,7 @@ function itemQuery(db: Db) {
 export async function listReviewQueue(
   db: Db,
   opts: { documentId?: string } = {},
-): Promise<Omit<ReviewItem, 'budgets'>[]> {
+): Promise<ReviewQueueItem[]> {
   return itemQuery(db)
     .where(opts.documentId ? and(QUEUE, eq(commitments.documentId, opts.documentId)) : QUEUE)
     .orderBy(asc(documents.title), asc(commitments.page), asc(commitments.slug));
@@ -141,7 +153,23 @@ function draftBudgets(db: Db, slug: string): Promise<DraftBudget[]> {
 
 export async function getReviewItem(db: Db, slug: string): Promise<ReviewItem | null> {
   const [item] = await itemQuery(db).where(eq(commitments.slug, slug));
-  return item ? { ...item, budgets: await draftBudgets(db, slug) } : null;
+  if (!item) return null;
+  const [tags, [flags]] = await Promise.all([
+    db
+      .select({ slug: commitmentRegions.regionSlug })
+      .from(commitmentRegions)
+      .where(eq(commitmentRegions.commitmentSlug, slug)),
+    db
+      .select({ nationwide: commitments.nationwide })
+      .from(commitments)
+      .where(eq(commitments.slug, slug)),
+  ]);
+  return {
+    ...item,
+    budgets: await draftBudgets(db, slug),
+    regions: tags.map((t) => t.slug),
+    nationwide: flags?.nationwide ?? false,
+  };
 }
 
 function budgetProblems(drafts: readonly DraftBudget[], edits: readonly BudgetEdit[]): string[] {
@@ -168,6 +196,13 @@ function budgetProblems(drafts: readonly DraftBudget[], edits: readonly BudgetEd
 async function validateEdit(db: Db, edit: CommitmentEdit, item: ReviewItem): Promise<void> {
   const documentPages = item.documentPages;
   const problems: string[] = budgetProblems(item.budgets, edit.budgets);
+  if (edit.regions.length) {
+    const known = await db
+      .select({ slug: regions.slug })
+      .from(regions)
+      .where(inArray(regions.slug, edit.regions));
+    if (known.length !== new Set(edit.regions).size) problems.push('Unknown region.');
+  }
   if (!edit.wording.trim()) problems.push('Wording cannot be empty.');
   if (
     !Number.isInteger(edit.page) ||
@@ -208,7 +243,7 @@ export async function approveCommitment(
 
   await db.transaction(async (tx) => {
     const now = new Date();
-    const { budgets, ...commitmentEdit } = edit;
+    const { budgets, regions: regionSlugs, ...commitmentEdit } = edit;
     const fields = {
       ...commitmentEdit,
       wording: edit.wording.trim(),
@@ -218,6 +253,14 @@ export async function approveCommitment(
       updatedAt: now,
     };
     await tx.update(commitments).set(fields).where(eq(commitments.slug, slug));
+    await tx.delete(commitmentRegions).where(eq(commitmentRegions.commitmentSlug, slug));
+    if (regionSlugs.length) {
+      await tx
+        .insert(commitmentRegions)
+        .values(
+          [...new Set(regionSlugs)].map((regionSlug) => ({ commitmentSlug: slug, regionSlug })),
+        );
+    }
     // Each figure exactly as the editor confirmed it; dropped ones stay for audit only.
     for (const b of budgets) {
       await tx

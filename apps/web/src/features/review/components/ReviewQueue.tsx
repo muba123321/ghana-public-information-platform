@@ -1,11 +1,11 @@
-import type { ReviewItem } from '@gpip/db';
+import type { ReviewQueueItem } from '@gpip/db';
 import Link from 'next/link';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { KindBadge } from '@/features/commitments';
 import styles from './ReviewQueue.module.css';
 
 /** Drafts waiting for an editor, in document and page order. */
-export function ReviewQueue({ items }: { items: Omit<ReviewItem, 'budgets'>[] }) {
+export function ReviewQueue({ items }: { items: ReviewQueueItem[] }) {
   return (
     <>
       <PageHeader

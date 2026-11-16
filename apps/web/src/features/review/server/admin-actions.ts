@@ -36,6 +36,8 @@ export async function approveAction(form: FormData) {
     finalStatus: text(form, 'finalStatus') as CommitmentEdit['finalStatus'],
     target: optional(form, 'target'),
     targetDeadline: optional(form, 'targetDeadline'),
+    regions: form.getAll('region').map(String),
+    nationwide: form.get('nationwide') === 'on',
     budgets: form.getAll('budgetId').map((raw) => {
       const id = Number(raw);
       const year = text(form, `budget-${id}-fiscalYear`);

@@ -162,6 +162,8 @@ export const ExtractedCommitmentSchema = z.object({
     })
     .nullable()
     .optional(),
+  /** Towns, districts or regions the commitment names, exactly as printed. */
+  places: z.array(z.string().trim().min(1).max(120)).max(20).optional(),
 });
 export const ExtractionResultSchema = z.object({ commitments: z.array(ExtractedCommitmentSchema) });
 export type ExtractedCommitment = z.infer<typeof ExtractedCommitmentSchema>;

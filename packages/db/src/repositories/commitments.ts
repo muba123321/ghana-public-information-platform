@@ -7,12 +7,15 @@ import {
   commitmentBudgets,
   commitmentInstitutions,
   commitmentLinks,
+  commitmentRegions,
   commitmentStewardships,
   commitments,
   documents,
   editorialNotes,
   institutionVersions,
   progressUpdates,
+  regionLineage,
+  regions,
   sources,
 } from '../schema/index.ts';
 
@@ -421,4 +424,43 @@ export async function listChangeLog(
     db.select({ n: count() }).from(changeLog).where(visible),
   ]);
   return { items, total: totalRow?.n ?? 0 };
+}
+
+/**
+ * Published commitments that name a region: its own (nationwide ones excluded), and, separately,
+ * those named for the former region it was carved from.
+ */
+export async function listCommitmentsForRegion(
+  db: Db,
+  slug: string,
+): Promise<{
+  own: CommitmentSummary[];
+  fromFormer: { region: { slug: string; name: string }; items: CommitmentSummary[] }[];
+}> {
+  const tagged = (regionSlug: string) =>
+    and(
+      eq(commitments.nationwide, false),
+      inArray(
+        commitments.slug,
+        db
+          .select({ slug: commitmentRegions.commitmentSlug })
+          .from(commitmentRegions)
+          .where(eq(commitmentRegions.regionSlug, regionSlug)),
+      ),
+    );
+  const parents = await db
+    .select({ slug: regions.slug, name: regions.name })
+    .from(regionLineage)
+    .innerJoin(regions, eq(regionLineage.fromSlug, regions.slug))
+    .where(eq(regionLineage.toSlug, slug));
+  const [own, ...former] = await Promise.all([
+    summaries(db, tagged(slug)),
+    ...parents.map((p) => summaries(db, tagged(p.slug))),
+  ]);
+  return {
+    own: own ?? [],
+    fromFormer: parents
+      .map((region, i) => ({ region, items: former[i] ?? [] }))
+      .filter((g) => g.items.length > 0),
+  };
 }

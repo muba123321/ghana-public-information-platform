@@ -23,3 +23,20 @@
   padding-top: 20px;
   border-top: 1px solid var(--line);
 }
+
+.regions {
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm, 8px);
+  padding: 12px 16px;
+}
+
+.regionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 4px 16px;
+  margin: 8px 0;
+}
+
+.regionGrid label {
+  font-weight: 400;
+}

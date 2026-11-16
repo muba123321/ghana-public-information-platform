@@ -7,7 +7,7 @@ import { PROMPT_V1 } from './prompt.ts';
 import { type ExtractionOutcome, queueExtraction, type RunMeta, recordFailedRun } from './queue.ts';
 
 export const EXTRACTION_MODEL = 'claude-opus-5-5';
-export const PROMPT_VERSION = 'v1';
+export const PROMPT_VERSION = 'v2'; // v2: asks for the places each commitment names
 const PROMPT = PROMPT_V1;
 /** Claude Opus 5.5 list price, USD per million tokens. */
 const PRICE = { input: 4, output: 20 };

@@ -1,14 +1,48 @@
 import { createHash } from 'node:crypto';
 import { type ExtractedCommitment, ExtractionResultSchema } from '@gpip/core';
 import {
+  administrations,
   commitmentBudgets,
+  commitmentRegions,
   commitments,
   type Db,
   documents,
   eq,
   extractionRuns,
+  regions,
   sectors,
 } from '@gpip/db';
+
+const SPLIT = '2019-02-01';
+const norm = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/-/g, ' ')
+    .replace(/\s*\(before 2019\)/, '')
+    .replace(/\s+region$/, '')
+    .trim();
+
+/**
+ * Region names → our slugs, as they were when the document's government took office: before the
+ * 2019 split, "Northern Region" means the former Northern Region. Towns and districts are not matched.
+ */
+async function regionMatcher(db: Db, adminSlug: string): Promise<(place: string) => string | null> {
+  const [admin] = await db
+    .select({ start: administrations.startDate })
+    .from(administrations)
+    .where(eq(administrations.slug, adminSlug));
+  const beforeSplit = (admin?.start ?? '9999') < SPLIT;
+  const rows = await db
+    .select({ slug: regions.slug, name: regions.name, validTo: regions.validTo })
+    .from(regions);
+  const byName = new Map<string, string>();
+  for (const r of rows) {
+    const former = r.validTo !== null;
+    // A current and a former region can share a name; the document's date decides.
+    if (!byName.has(norm(r.name)) || former === beforeSplit) byName.set(norm(r.name), r.slug);
+  }
+  return (place) => byName.get(norm(place)) ?? null;
+}
 
 export interface RunMeta {
   model: string;
@@ -109,6 +143,7 @@ export async function queueExtraction(
   }
 
   const adminSlug = doc.administrationSlug;
+  const regionOf = await regionMatcher(db, adminSlug);
   return db.transaction(async (tx) => {
     for (const c of keep) {
       const slug = `${adminSlug}-${createHash('sha1')
@@ -131,6 +166,14 @@ export async function queueExtraction(
         reviewStatus: 'draft',
         provenance: 'ai_extracted',
       });
+      const tags = [
+        ...new Set((c.places ?? []).map(regionOf).filter((r): r is string => r !== null)),
+      ];
+      if (tags.length) {
+        await tx
+          .insert(commitmentRegions)
+          .values(tags.map((regionSlug) => ({ commitmentSlug: slug, regionSlug })));
+      }
       if (c.budget) {
         await tx.insert(commitmentBudgets).values({
           commitmentSlug: slug,

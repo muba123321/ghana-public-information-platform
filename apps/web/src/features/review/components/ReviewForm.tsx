@@ -13,12 +13,21 @@ interface Props {
   flash: Flash | null;
   administrations: Option[];
   sectors: Option[];
+  regions: (Option & { former: boolean })[];
   approve: Action;
   reject: Action;
 }
 
 /** The source page beside an editable copy of one draft: approve with corrections, or reject. */
-export function ReviewForm({ item, flash, administrations, sectors, approve, reject }: Props) {
+export function ReviewForm({
+  item,
+  flash,
+  administrations,
+  sectors,
+  regions,
+  approve,
+  reject,
+}: Props) {
   return (
     <div className={styles.review}>
       <section className={styles.reviewSource} aria-label="Source document">
@@ -153,6 +162,30 @@ export function ReviewForm({ item, flash, administrations, sectors, approve, rej
               <p className="muted">Unticked figures are dropped (kept only in the audit log).</p>
             </fieldset>
           )}
+          <fieldset className={styles.regions}>
+            <legend>Regions this commitment names</legend>
+            <label>
+              <input type="checkbox" name="nationwide" defaultChecked={item.nationwide} />{' '}
+              Nationwide (listed under no region)
+            </label>
+            <div className={styles.regionGrid}>
+              {regions.map((r) => (
+                <label key={r.slug}>
+                  <input
+                    type="checkbox"
+                    name="region"
+                    value={r.slug}
+                    defaultChecked={item.regions.includes(r.slug)}
+                  />{' '}
+                  {r.name}
+                  {r.former ? ' (former)' : ''}
+                </label>
+              ))}
+            </div>
+            <p className="muted">
+              Pre-ticked from the places the document names. Check against the page.
+            </p>
+          </fieldset>
           <Button>Approve and publish</Button>
         </form>
 

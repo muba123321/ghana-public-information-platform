@@ -13,7 +13,12 @@ import {
 } from '../schema/index.ts';
 import { seed } from '../seed/seed.ts';
 import { createTestDb } from '../testing.ts';
-import { getCommitment, listChangeLog, listCommitments } from './commitments.ts';
+import {
+  getCommitment,
+  listChangeLog,
+  listCommitments,
+  listCommitmentsForRegion,
+} from './commitments.ts';
 import {
   approveCommitment,
   getReviewItem,
@@ -86,6 +91,8 @@ const edit = {
   target: null,
   targetDeadline: null,
   budgets: [],
+  regions: [] as string[],
+  nationwide: false,
 };
 
 async function draftBudget(slug: string) {
@@ -368,5 +375,47 @@ describe('submitCorrection', () => {
         })
       ).ok,
     ).toBe(true);
+  });
+});
+
+describe('commitments by region', () => {
+  it('tags confirmed by the editor are saved on approval', async () => {
+    await approveCommitment(db, 'd1', { ...edit, regions: ['ahafo', 'bono'] }, 'muba123321');
+    const ahafo = await listCommitmentsForRegion(db, 'ahafo');
+    expect(ahafo.own.map((c) => c.slug)).toEqual(['d1']);
+  });
+
+  it('a commitment named for a former region shows on its successors, apart from their own', async () => {
+    await approveCommitment(
+      db,
+      'd2',
+      { ...edit, page: 12, wording: 'One district, one factory.', regions: ['brong-ahafo'] },
+      'muba123321',
+    );
+    for (const slug of ['bono', 'bono-east', 'ahafo']) {
+      const r = await listCommitmentsForRegion(db, slug);
+      expect(r.own.map((c) => c.slug)).not.toContain('d2');
+      expect(r.fromFormer).toEqual([
+        expect.objectContaining({ region: { slug: 'brong-ahafo', name: 'Brong-Ahafo Region' } }),
+      ]);
+      expect(r.fromFormer[0]?.items.map((c) => c.slug)).toEqual(['d2']);
+    }
+  });
+
+  it('nationwide commitments are in no region, and drafts are never listed', async () => {
+    await approveCommitment(
+      db,
+      'd1',
+      { ...edit, regions: ['ahafo'], nationwide: true },
+      'muba123321',
+    );
+    expect((await listCommitmentsForRegion(db, 'ahafo')).own).toEqual([]);
+    expect((await listCommitmentsForRegion(db, 'savannah')).own).toEqual([]);
+  });
+
+  it('refuses an unknown region', async () => {
+    await expect(
+      approveCommitment(db, 'd1', { ...edit, regions: ['atlantis'] }, 'muba123321'),
+    ).rejects.toThrow(/region/i);
   });
 });

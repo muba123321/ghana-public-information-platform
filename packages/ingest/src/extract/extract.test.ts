@@ -3,6 +3,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
   commitmentBudgets,
+  commitmentRegions,
   commitments,
   type Db,
   documents,
@@ -120,6 +121,25 @@ describe('queueExtraction (shared by the API and Claude Code session paths)', ()
     );
     expect(r).toMatchObject({ status: 'ok', found: 4, queued: 1 });
     expect(await drafts()).toHaveLength(2);
+  });
+
+  it('pre-tags regions the commitment names, as they were when the document was written', async () => {
+    // The document belongs to 2017-akufo-addo-i, which began before the 2019 split.
+    await queueExtraction(
+      db,
+      documentId,
+      {
+        commitments: [
+          item('A road in Brong Ahafo.', 2, { places: ['Brong Ahafo Region'] }),
+          item('A school in Northern Region and Tamale.', 3, {
+            places: ['Northern Region', 'Tamale'],
+          }),
+        ],
+      },
+      { model: 'm', promptVersion: 'v1' },
+    );
+    const tags = await db.select().from(commitmentRegions);
+    expect(tags.map((t) => t.regionSlug).sort()).toEqual(['brong-ahafo', 'northern-former']);
   });
 
   it('ignores unknown sectors rather than failing', async () => {
