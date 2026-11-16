@@ -7,7 +7,14 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!**/migrations/meta", "!**/.next", "!**/next-env.d.ts", "!**/*.md"]
+    "includes": [
+      "**",
+      "!**/migrations/meta",
+      "!**/.next",
+      "!**/next-env.d.ts",
+      "!**/*.md",
+      "!docs/superpowers/specs/assets"
+    ]
   },
   "formatter": {
     "enabled": true,

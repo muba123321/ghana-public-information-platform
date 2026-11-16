@@ -6,3 +6,4 @@ export * from './paths.ts';
 export * from './period.ts';
 export * from './schemas.ts';
 export * from './tenure.ts';
+export * from './tenure-summary.ts';
