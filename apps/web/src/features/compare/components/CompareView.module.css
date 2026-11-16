@@ -1,0 +1,71 @@
+/* Selection tones: position in the comparison only — never party colours. */
+.view {
+  --tone-a: #1f6f78;
+  --tone-b: #b07d2b;
+  --tone-c: #6b5b95;
+  --tone-d: #5f8a5a;
+}
+
+@media (prefers-color-scheme: dark) {
+  .view {
+    --tone-a: #7cc6c5;
+    --tone-b: #e0b45c;
+    --tone-c: #b3a3dd;
+    --tone-d: #9cc595;
+  }
+}
+
+.caveat {
+  font-weight: 600;
+  border-left: 4px solid var(--gold, #c99a2e);
+  padding: 8px 14px;
+  background: var(--surface);
+  border-radius: 0 10px 10px 0;
+}
+
+.indicator {
+  margin: 32px 0;
+}
+
+.unit {
+  font-weight: 400;
+  font-size: 0.8em;
+  color: var(--muted);
+}
+
+.key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 8px;
+  font-weight: 600;
+}
+
+.years {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.swatch {
+  display: inline-block;
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+  margin-right: 8px;
+  vertical-align: middle;
+  background: var(--tone-a);
+}
+
+.swatch[data-tone="b"] {
+  background: var(--tone-b);
+}
+
+.swatch[data-tone="c"] {
+  background: var(--tone-c);
+}
+
+.swatch[data-tone="d"] {
+  background: var(--tone-d);
+}

@@ -1,5 +1,6 @@
 import type { AdministrationDetail, CommitmentSummary } from '@gpip/db';
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { Callout } from '@/components/ui/Callout';
 import { CommitmentCard } from '@/features/commitments';
@@ -16,10 +17,12 @@ interface Props {
   ticks: ReturnType<typeof ribbonTicks>;
   commitments: Record<keyof typeof COMMITMENT_GROUP_HEADINGS, CommitmentSummary[]>;
   today: string;
+  /** Extra sections from other features (e.g. indicators in this term), placed after commitments. */
+  children?: ReactNode;
 }
 
 /** One government's record: dates, leaders, commitments, source and neighbours. */
-export function AdministrationProfile({ a, segments, ticks, commitments, today }: Props) {
+export function AdministrationProfile({ a, segments, ticks, commitments, today, children }: Props) {
   return (
     <>
       <section className={styles.profileHead}>
@@ -76,10 +79,9 @@ export function AdministrationProfile({ a, segments, ticks, commitments, today }
               </div>
             );
           })}
-          <p className="muted">
-            Budgets and indicators for this government are on each commitment and indicator page.
-          </p>
         </section>
+
+        {children}
 
         <section className="source">
           <h2 className="section-title">Source</h2>

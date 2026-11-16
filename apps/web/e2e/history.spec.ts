@@ -44,7 +44,8 @@ test('history landing lists the nine areas', async ({ page }) => {
     'Government Performance & History',
   );
   await expect(page.getByRole('link', { name: 'Administration directory' })).toBeVisible();
-  await expect(page.getByText('Coming soon')).toHaveCount(3);
+  await expect(page.getByRole('link', { name: 'Compare administrations' })).toBeVisible();
+  await expect(page.getByText('Coming soon')).toHaveCount(2);
 });
 
 test('data notice covers every required section', async ({ page }) => {
@@ -83,4 +84,39 @@ test('directory can be filtered to military governments', async ({ page }) => {
   await expect(page).toHaveURL(/\?kind=military$/);
   await expect(page.locator('.spine > li')).toHaveCount(6);
   await expect(page.locator('.spine')).not.toContainText('Fourth Republic');
+});
+
+test('every government profile shows its indicators in the same form', async ({ page }) => {
+  await page.goto('/history/administrations/2017-akufo-addo-i');
+  const section = page.getByRole('region', { name: 'Indicators in this term' });
+  await expect(section).toBeVisible();
+  await expect(
+    section.getByText('Being in office is not the same as causing a change.'),
+  ).toBeVisible();
+  await expect(
+    section.getByRole('link', { name: 'Compare with another government' }),
+  ).toHaveAttribute('href', '/history/compare?a=2017-akufo-addo-i');
+  const rows = section.locator('tbody tr');
+  const count = await rows.count();
+  expect(count).toBeGreaterThan(10);
+  await page.goto('/history/administrations/1957-dominion');
+  await expect(
+    page.getByRole('region', { name: 'Indicators in this term' }).locator('tbody tr'),
+  ).toHaveCount(count);
+});
+
+test('the methodology page explains every rule Compare uses', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('contentinfo').getByRole('link', { name: 'How we compare' }).click();
+  await expect(page).toHaveURL(/\/methodology$/);
+  await expect(page.getByRole('heading', { level: 2 })).toHaveText([
+    'Which government a year belongs to',
+    'The inherited starting point',
+    'Last figure, average and change',
+    'Years with figures',
+    'Modelled figures and projections',
+    'Comparing people, not just terms',
+    'Why there are no scores',
+    'Effects take time',
+  ]);
 });

@@ -1,5 +1,5 @@
-import type { EstimateType, IsoDate, ObservationPoint, Period } from '@gpip/core';
-import { and, asc, desc, eq, gte, lt, max, min, ne, sql } from 'drizzle-orm';
+import type { EstimateType, Frequency, IsoDate, ObservationPoint, Period } from '@gpip/core';
+import { and, asc, desc, eq, gte, inArray, lt, max, min, ne, sql } from 'drizzle-orm';
 import type { Db } from '../client.ts';
 import { contextEvents, indicators, observations, sectors, sources } from '../schema/index.ts';
 
@@ -11,6 +11,7 @@ export interface IndicatorSummary {
   sectorSlug: string;
   sectorName: string;
   estimateType: EstimateType;
+  frequency: Frequency;
   firstYear: number | null;
   lastYear: number | null;
 }
@@ -99,6 +100,7 @@ export async function listIndicators(db: Db): Promise<IndicatorSummary[]> {
       sectorSlug: indicators.sectorSlug,
       sectorName: sectors.name,
       estimateType: indicators.estimateType,
+      frequency: indicators.frequency,
     })
     .from(indicators)
     .innerJoin(sectors, eq(indicators.sectorSlug, sectors.slug))
@@ -126,6 +128,7 @@ export async function getIndicatorSeries(
       sectorSlug: indicators.sectorSlug,
       sectorName: sectors.name,
       estimateType: indicators.estimateType,
+      frequency: indicators.frequency,
       methodology: indicators.methodology,
       seriesCode: indicators.seriesCode,
       sourceKey: indicators.sourceKey,
@@ -230,4 +233,42 @@ export async function listContextEvents(db: Db, range?: Period): Promise<Context
     ...e,
     source: { publisher, title: sourceTitle, url },
   }));
+}
+
+/**
+ * The latest-vintage points of many indicators at once (2 queries instead of 3 per indicator):
+ * the same points getIndicatorSeries returns for each. Unknown or unpublished codes are absent.
+ */
+export async function latestSeries(
+  db: Db,
+  codes: readonly string[],
+): Promise<Map<string, ObservationPoint[]>> {
+  if (codes.length === 0) return new Map();
+  const own = await db
+    .select({ code: indicators.code, sourceId: indicators.sourceId })
+    .from(indicators)
+    .where(and(published, inArray(indicators.code, [...codes])));
+  const sourceOf = new Map(own.map((r) => [r.code, r.sourceId]));
+  const rows = await db
+    .select()
+    .from(observations)
+    .where(inArray(observations.indicatorCode, [...sourceOf.keys()]))
+    .orderBy(asc(observations.periodStart));
+  const mine = rows.filter((o) => sourceOf.get(o.indicatorCode) === o.sourceId);
+  const latest = new Map<string, IsoDate>();
+  for (const o of mine) {
+    const v = latest.get(o.indicatorCode);
+    if (!v || o.vintage > v) latest.set(o.indicatorCode, o.vintage);
+  }
+  const out = new Map<string, ObservationPoint[]>([...sourceOf.keys()].map((c) => [c, []]));
+  for (const o of mine) {
+    if (o.vintage !== latest.get(o.indicatorCode)) continue;
+    out.get(o.indicatorCode)?.push({
+      period: { start: o.periodStart, end: o.periodEnd },
+      value: o.value,
+      estimateType: o.estimateType,
+      vintage: o.vintage,
+    });
+  }
+  return out;
 }

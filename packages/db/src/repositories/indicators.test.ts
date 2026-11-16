@@ -2,7 +2,12 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import type { Db } from '../client.ts';
 import { contextEvents, indicators, observations, sectors, sources } from '../schema/index.ts';
 import { createTestDb } from '../testing.ts';
-import { getIndicatorSeries, listContextEvents, listIndicators } from './indicators.ts';
+import {
+  getIndicatorSeries,
+  latestSeries,
+  listContextEvents,
+  listIndicators,
+} from './indicators.ts';
 
 let db: Db;
 let sourceId: string;
@@ -76,6 +81,7 @@ describe('indicator repository', () => {
         firstYear: 2015,
         lastYear: 2017,
         sectorSlug: 'economy',
+        frequency: 'annual',
       }),
     ]);
   });
@@ -169,5 +175,21 @@ describe('indicator repository — source and coverage rules', () => {
       firstYear: 2015,
       lastYear: 2017,
     });
+  });
+});
+
+describe('latestSeries (batched)', () => {
+  it('returns, per indicator, exactly the latest-vintage points getIndicatorSeries returns', async () => {
+    const codes = (await listIndicators(db)).map((i) => i.code);
+    const batch = await latestSeries(db, codes);
+    for (const code of codes) {
+      expect(batch.get(code)).toEqual((await getIndicatorSeries(db, code))?.points ?? []);
+    }
+  });
+
+  it('gives an empty list for an indicator with no figures, and nothing for unknown codes', async () => {
+    const batch = await latestSeries(db, ['inflation', 'no-such-indicator']);
+    expect(batch.has('no-such-indicator')).toBe(false);
+    expect(Array.isArray(batch.get('inflation'))).toBe(true);
   });
 });

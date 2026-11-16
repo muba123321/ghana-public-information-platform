@@ -27,6 +27,7 @@ const AREAS: { name: string; about: string; href?: string }[] = [
   {
     name: 'Compare administrations',
     about: 'Side-by-side figures, with the starting point each inherited.',
+    href: '/history/compare',
   },
   {
     name: 'Ministry history',
