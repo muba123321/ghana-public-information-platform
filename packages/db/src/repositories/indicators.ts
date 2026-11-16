@@ -90,7 +90,10 @@ async function coverage(
 }
 
 /** Published indicators with the years their current data covers. */
-export async function listIndicators(db: Db): Promise<IndicatorSummary[]> {
+export async function listIndicators(
+  db: Db,
+  opts: { scope?: 'national' | 'regional' } = {},
+): Promise<IndicatorSummary[]> {
   const rows = await db
     .select({
       code: indicators.code,
@@ -104,7 +107,7 @@ export async function listIndicators(db: Db): Promise<IndicatorSummary[]> {
     })
     .from(indicators)
     .innerJoin(sectors, eq(indicators.sectorSlug, sectors.slug))
-    .where(and(published, eq(indicators.scope, 'national')))
+    .where(and(published, eq(indicators.scope, opts.scope ?? 'national')))
     .orderBy(asc(indicators.sectorSlug), asc(indicators.name));
   const cov = await coverage(db);
   return rows.map((r) => ({

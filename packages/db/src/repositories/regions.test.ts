@@ -86,6 +86,12 @@ describe('regions', () => {
     ).toEqual(['ashanti']);
   });
 
+  it('lists the regional indicators on request', async () => {
+    const codes = (await listIndicators(db, { scope: 'regional' })).map((i) => i.code);
+    expect(codes).toEqual(expect.arrayContaining(['population-census', 'skilled-birth-attendance']));
+    expect(codes).not.toContain('inflation');
+  });
+
   it('national indicator lists leave regional indicators out', async () => {
     expect((await listIndicators(db)).map((i) => i.code)).not.toContain('population-census');
   });
