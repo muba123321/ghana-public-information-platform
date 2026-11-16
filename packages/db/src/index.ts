@@ -7,6 +7,7 @@ export * from './repositories/administrations.ts';
 export * from './repositories/commitments.ts';
 export * from './repositories/indicators.ts';
 export * from './repositories/institutions.ts';
+export * from './repositories/places.ts';
 export * from './repositories/regions.ts';
 export * from './repositories/review.ts';
 export * from './repositories/sectors.ts';

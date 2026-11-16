@@ -32,7 +32,9 @@ import {
   institutionVersions,
   parties,
   persons,
+  places,
   regionLineage,
+  regionProducts,
   regions,
   sectors,
   sources,
@@ -44,6 +46,8 @@ import { institutionSeeds } from './data/institutions.ts';
 import { leaderSeeds } from './data/leaders.ts';
 import { partySeeds } from './data/parties.ts';
 import { personSeeds } from './data/persons.ts';
+import { type PlaceSeed, placeSeeds } from './data/places.ts';
+import { type RegionProductSeed, regionProductSeeds } from './data/region-products.ts';
 import { regionLineageSeeds, regionSeeds } from './data/regions.ts';
 import { sectorSeeds } from './data/sectors.ts';
 import { sourceSeeds } from './data/sources.ts';
@@ -61,6 +65,8 @@ export interface SeedData {
   institutions: InstitutionSeed[];
   regions: RegionSeed[];
   regionLineage: RegionLineageSeed[];
+  places: PlaceSeed[];
+  regionProducts: RegionProductSeed[];
 }
 
 export const defaultSeedData: SeedData = {
@@ -75,6 +81,8 @@ export const defaultSeedData: SeedData = {
   institutions: institutionSeeds,
   regions: regionSeeds,
   regionLineage: regionLineageSeeds,
+  places: placeSeeds,
+  regionProducts: regionProductSeeds,
 };
 
 /** Idempotently loads the verified reference data. Safe to run on every deploy. */
@@ -255,6 +263,37 @@ export async function seed(db: Db, data: SeedData = defaultSeedData): Promise<Sy
         data.regionLineage
           .map((l) => RegionLineageSeedSchema.parse(l))
           .map(({ sourceKey, ...l }) => ({ ...l, sourceId: sourceId(sourceKey) })),
+        { prune: true },
+      ),
+    );
+    const editorial = { reviewStatus: 'published' as const, provenance: 'manual' as const };
+    add(
+      await syncRows(
+        tx,
+        places,
+        'places',
+        ['slug'],
+        data.places.map(({ sourceKey, unesco, animal, ...p }) => ({
+          ...p,
+          animal: animal ?? null,
+          unesco: unesco ? 1 : 0,
+          sourceId: sourceId(sourceKey),
+          ...editorial,
+        })),
+        { prune: true },
+      ),
+    );
+    add(
+      await syncRows(
+        tx,
+        regionProducts,
+        'region_products',
+        ['regionSlug', 'product'],
+        data.regionProducts.map(({ sourceKey, ...p }) => ({
+          ...p,
+          sourceId: sourceId(sourceKey),
+          ...editorial,
+        })),
         { prune: true },
       ),
     );

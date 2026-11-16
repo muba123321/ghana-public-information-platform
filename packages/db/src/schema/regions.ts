@@ -91,3 +91,43 @@ export const regionObservations = pgTable(
     index('region_observations_region_idx').on(t.regionSlug, t.indicatorCode),
   ],
 );
+
+/** Heritage and tourist sites, each sourced; descriptions are factual (no promotional words). */
+export const places = pgTable('places', {
+  slug: text('slug').primaryKey(),
+  name: text('name').notNull(),
+  /** Picks the illustrated landmark on the map (castle, mosque, waterfall, forest, …). */
+  kind: text('kind').notNull(),
+  /** For wildlife places: which animal is drawn (elephant, hippo, crocodile). */
+  animal: text('animal'),
+  regionSlug: text('region_slug')
+    .notNull()
+    .references(() => regions.slug),
+  lat: doublePrecision('lat').notNull(),
+  lon: doublePrecision('lon').notNull(),
+  about: text('about').notNull(),
+  unesco: integer('unesco').notNull().default(0),
+  sourceId: uuid('source_id')
+    .notNull()
+    .references(() => sources.id),
+  ...editorialColumns,
+});
+
+/** The main and notable farm products and animals of each region, sourced. */
+export const regionProducts = pgTable(
+  'region_products',
+  {
+    id: serial('id').primaryKey(),
+    regionSlug: text('region_slug')
+      .notNull()
+      .references(() => regions.slug),
+    product: text('product').notNull(),
+    kind: text('kind').notNull(),
+    rank: text('rank').notNull(),
+    sourceId: uuid('source_id')
+      .notNull()
+      .references(() => sources.id),
+    ...editorialColumns,
+  },
+  (t) => [unique('region_products_natural_key').on(t.regionSlug, t.product)],
+);
