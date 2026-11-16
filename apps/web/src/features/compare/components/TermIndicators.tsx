@@ -36,7 +36,7 @@ export function TermIndicators({ slug, rows }: { slug: string; rows: Row[] }) {
           </thead>
           <tbody>
             {rows.map(({ code, name, unit, summary }) => {
-              const t = summaryText(summary);
+              const t = summaryText(summary, unit);
               return (
                 <tr key={code}>
                   <th scope="row">

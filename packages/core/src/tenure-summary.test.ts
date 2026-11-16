@@ -101,3 +101,26 @@ describe('tenureSummary', () => {
     expect(s.sparse).toBe(true);
   });
 });
+
+describe('inherited figure after a mid-year handover', () => {
+  // As in 1981: the Third Republic held most of 1981; the PNDC took over on 31 December.
+  const limann: Tenure = { slug: 'limann', start: '1979-09-24', end: '1981-12-31' };
+  const pndc: Tenure = { slug: 'pndc', start: '1981-12-31', end: '1993-01-07' };
+  const series = [1979, 1980, 1981, 1982, 1983].map((y) => point(y, y - 1900));
+
+  it('is the year just before the first year in office, so no year is skipped or counted twice', () => {
+    const s = tenureSummary(series, pndc, [limann, pndc], 'annual', TODAY);
+    expect(s.points[0]?.year).toBe(1982);
+    expect(s.baseline).toEqual({ year: 1981, value: 81 });
+    const prev = tenureSummary(series, limann, [limann, pndc], 'annual', TODAY);
+    expect(prev.end).toEqual({ year: 1981, value: 81 }); // one government's last year is the next one's start
+  });
+
+  it('never falls back to an older year when that year has no figure', () => {
+    const gap = series.map((p) => (p.period.start.startsWith('1981') ? { ...p, value: null } : p));
+    expect(tenureSummary(gap, pndc, [limann, pndc], 'annual', TODAY).baseline).toEqual({
+      year: 1981,
+      value: null,
+    });
+  });
+});

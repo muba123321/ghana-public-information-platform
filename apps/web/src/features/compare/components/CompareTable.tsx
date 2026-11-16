@@ -23,7 +23,7 @@ export function CompareTable({ indicator }: { indicator: ComparisonIndicator }) 
         </thead>
         <tbody>
           {indicator.rows.map(({ stretchLabel, tone, summary }) => {
-            const t = summaryText(summary);
+            const t = summaryText(summary, indicator.unit);
             return (
               <tr key={stretchLabel}>
                 <th scope="row">

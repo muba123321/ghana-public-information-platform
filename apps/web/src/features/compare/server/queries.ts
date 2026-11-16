@@ -1,11 +1,6 @@
 import 'server-only';
 import { tenureSummary } from '@gpip/core';
-import {
-  getIndicatorSeries,
-  listAdministrations,
-  listContextEvents,
-  listIndicators,
-} from '@gpip/db';
+import { latestSeries, listAdministrations, listContextEvents, listIndicators } from '@gpip/db';
 import { cache } from 'react';
 import { todayIso } from '@/lib/format';
 import { getDb } from '@/server/db';
@@ -24,8 +19,10 @@ const loadTerms = cache(
 );
 
 /** Everything the picker offers: governments, people and the topics that have indicators. */
+const loadIndicatorList = cache(async () => listIndicators(await getDb()));
+
 export const loadCompareOptions = cache(async () => {
-  const [terms, indicators] = await Promise.all([loadTerms(), listIndicators(await getDb())]);
+  const [terms, indicators] = await Promise.all([loadTerms(), loadIndicatorList()]);
   const topics = [
     ...new Map(
       indicators.map((i) => [i.sectorSlug, { slug: i.sectorSlug, name: i.sectorName }]),
@@ -38,20 +35,23 @@ export const loadComparison = cache(async (selection: CompareSelection) => {
   const db = await getDb();
   const [terms, indicators, events] = await Promise.all([
     loadTerms(),
-    listIndicators(db),
+    loadIndicatorList(),
     listContextEvents(db),
   ]);
   const inTopic = indicators.filter((i) => i.sectorSlug === selection.topic);
-  const series = await Promise.all(inTopic.map((i) => getIndicatorSeries(db, i.code)));
+  const series = await latestSeries(
+    db,
+    inTopic.map((i) => i.code),
+  );
   return buildComparison({
     selection,
     terms,
-    indicators: inTopic.map((i, k) => ({
+    indicators: inTopic.map((i) => ({
       code: i.code,
       name: i.name,
       unit: i.unit,
       frequency: i.frequency,
-      points: series[k]?.points ?? [],
+      points: series.get(i.code) ?? [],
     })),
     events,
     today: todayIso(),
@@ -61,18 +61,21 @@ export const loadComparison = cache(async (selection: CompareSelection) => {
 /** Every indicator, in sector order, summarised for one government — the same set for every term. */
 export const loadTermIndicators = cache(async (slug: string) => {
   const db = await getDb();
-  const [terms, indicators] = await Promise.all([loadTerms(), listIndicators(db)]);
+  const [terms, indicators] = await Promise.all([loadTerms(), loadIndicatorList()]);
   const term = terms.find((t) => t.slug === slug);
   if (!term) return [];
   const all = terms.map((t) => ({ slug: t.slug, start: t.start, end: t.end }));
-  const series = await Promise.all(indicators.map((i) => getIndicatorSeries(db, i.code)));
+  const series = await latestSeries(
+    db,
+    indicators.map((i) => i.code),
+  );
   const today = todayIso();
-  return indicators.map((i, k) => ({
+  return indicators.map((i) => ({
     code: i.code,
     name: i.name,
     unit: i.unit,
     summary: tenureSummary(
-      series[k]?.points ?? [],
+      series.get(i.code) ?? [],
       { slug: term.slug, start: term.start, end: term.end },
       all,
       i.frequency,

@@ -30,7 +30,9 @@ export function CompareView({ selection, options, comparison, query }: Props) {
         />
         <ComparePicker selection={selection} {...options} />
         {!comparison ? (
-          <Callout>Choose at least two governments to compare.</Callout>
+          <Callout>
+            Choose at least two {selection.by === 'person' ? 'leaders' : 'governments'} to compare.
+          </Callout>
         ) : (
           <>
             <p className={styles.caveat}>

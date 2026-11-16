@@ -81,11 +81,13 @@ export function CompareChart({
             lineStyle: { color: colour, width: 2.5 },
             itemStyle: { color: colour },
             // The inherited value is drawn hollow, so it never reads as the government's own result.
-            symbol: (value: [number, number | null]) => (value[0] === 0 ? 'emptyCircle' : 'circle'),
+            symbol: (value: [number, number | null, number]) =>
+              value[0] === 0 ? 'emptyCircle' : 'circle',
             endLabel: {
               show: true,
               color: colour,
-              formatter: (p: { value: [number, number] }) => formatValue(p.value[1]),
+              formatter: (p: { value: [number, number, number] }) =>
+                `${formatValue(p.value[1])} (${p.value[2]})`,
             },
           };
         }),

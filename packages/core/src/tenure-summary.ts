@@ -51,6 +51,28 @@ function periodsDuring(t: Tenure, frequency: Frequency, today: IsoDate): Period[
 
 const yearOf = (d: IsoDate) => Number(d.slice(0, 4));
 
+/**
+ * The figure a government inherited: the period just before its first period in office, so that one
+ * government's start is exactly the previous one's last period — nothing skipped, nothing counted
+ * twice. A missing figure stays null (no fallback to older years). With no period in office at all,
+ * the last complete period before it took office. null when the series starts later.
+ */
+function inherited(
+  tenure: Tenure,
+  first: Period | undefined,
+  series: readonly ObservationPoint[],
+  frequency: Frequency,
+): TenureSummary['baseline'] {
+  if (!first) {
+    const base = inheritedBaseline(tenure, series, frequency);
+    return base ? { year: yearOf(base.period.start), value: base.value } : null;
+  }
+  const start = addMonths(first.start, -MONTHS[frequency]);
+  if (!series.some((p) => p.period.end <= first.start)) return null;
+  const match = series.find((p) => p.period.start === start);
+  return { year: yearOf(start), value: match?.value ?? null };
+}
+
 export function tenureSummary(
   points: readonly ObservationPoint[],
   tenure: Tenure,
@@ -75,8 +97,7 @@ export function tenureSummary(
       s.point?.value !== null && s.point?.value !== undefined,
   );
 
-  const base = inheritedBaseline(tenure, series, frequency);
-  const baseline = base ? { year: yearOf(base.period.start), value: base.value } : null;
+  const baseline = inherited(tenure, held[0]?.period, series, frequency);
   const last = withValue.at(-1);
   const end = last ? { year: last.year, value: last.point.value } : null;
   const average = withValue.length

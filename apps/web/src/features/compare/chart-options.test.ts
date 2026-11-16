@@ -40,11 +40,11 @@ const indicator: ComparisonIndicator = {
 describe('compareChartSeries', () => {
   it('starts each line at its inherited value, at year 0 in office', () => {
     const [first] = compareChartSeries(indicator);
-    expect(first?.data[0]).toEqual([0, 25]);
+    expect(first?.data[0]).toEqual([0, 25, 2000]);
     expect(first?.data.slice(1)).toEqual([
-      [1, 33],
-      [2, null],
-      [3, 26],
+      [1, 33, 2001],
+      [2, null, 2002],
+      [3, 26, 2003],
     ]);
   });
 
