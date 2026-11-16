@@ -1,0 +1,4506 @@
+{
+  "Data": [
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 41.9,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 39.9,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 40,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 31.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 30.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 33.3,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 69.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 71.9,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 68.7,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 32.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 32.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 34.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 37.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 39.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 38.1,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 53,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 51.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 51,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 48.6,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 46.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 47.2,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 14.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 12.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 17,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 9.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 21.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 46.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 21.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 8.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 17.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 18,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1988,
+      "SurveyId": "GH1988DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 13.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 39.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 40.7,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 38.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 39.7,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 79.9,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 80.7,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 34.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 32.9,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 55.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 59,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 55.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 52.4,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 55,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 54.3,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 17.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 16.1,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 15.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 13.4,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 22.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 21.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 18.2,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 17.8,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 49.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 39.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 75,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 52.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 56.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 64.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 57.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 47.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 39.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 40,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 64.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 38.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 66,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 92.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 42.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 41,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 59.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 44.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 52.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 36.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 59.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 72.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 26.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 29.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 80.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 8.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 26.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 38.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 19.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 10.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 11.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 10.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1993,
+      "SurveyId": "GH1993DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 10.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 41.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 44.6,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 44.1,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 42.9,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 40,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 43.3,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 72.8,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 72.6,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 74.3,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 33.8,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 36.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 31.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 46.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 47.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 42.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 57.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 58,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 57,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 52.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 51.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 48.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 16.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 15.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 15.8,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 10.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 11.2,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 9,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 24.2,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 22.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 22.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 19.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 16.8,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 19.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 67.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 49.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 73.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 59.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 52.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 67.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 66.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 58.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 47.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 68,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 65.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 52.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 84,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 89.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 31.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 55,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 61.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 57.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 53.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 30.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 77.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 67.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 39.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 43.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 81.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 20.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 39.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 53.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 28.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 15,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 18.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 1998,
+      "SurveyId": "GH1998DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 15.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 37.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 38.6,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 38.4,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 34,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 38.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 35,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 81.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 81.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 85.4,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 47.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 45,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 47.8,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 46.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 46.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 46.3,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 61.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 59.9,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 58.9,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 55.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 58.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 52.1,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 22.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 22.9,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 21.3,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 16.6,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 18.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 15.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 35.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 33.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 37.4,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 28.6,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 27.8,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 26,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 60.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 82.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 69.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 82.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 65.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 71.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 79,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 57.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 48,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 60.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 77,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 71.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 68.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 93.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 61.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 63.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 72,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 69,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 55.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 45.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 67.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 66,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 51.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 40,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 78.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 30.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 48.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 59.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 44,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 20.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 22,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 19.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2003,
+      "SurveyId": "GH2003DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 19.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 61.8,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 61.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 63.9,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 56.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 54,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 54.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 83.2,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 84.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 84.3,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 55,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 53.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 56.5,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 61.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 60.8,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 60.7,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 74.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 72.6,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 73.9,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 66,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 65.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 70.2,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 35.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 33.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 36.7,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 27.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 27.2,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 28.7,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 51.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 46.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 50.9,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 51.8,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 46.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 52.5,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 82.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 73.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 79.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 79.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 76.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 84.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 93.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 69.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 58.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 88.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 87.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 75.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 93.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 99.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 73.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 85.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 94.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 78.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 84.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 74.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 95.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 96.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 60.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 60.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 86.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 50.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 55.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 73.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 50,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 29.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 32.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 32.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2008,
+      "SurveyId": "GH2008DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 23.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 76.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 75.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 76.8,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 71.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 72,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 67.9,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 95.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 92.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 95.1,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 70.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 66.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 71.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 68.9,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 67.2,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 67,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 89.2,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 86.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 90.9,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 79.6,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 79,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 81.7,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 53.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 50.2,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 54.2,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 38.2,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 36.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 38.9,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 69.8,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 63.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 72.7,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 89.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 84.6,
+      "IsPreferred": 0,
+      "ByVariableId": 14001
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 90.5,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 69.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 70.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 82.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 78.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 79.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 78.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 82.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 75.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 69,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 91.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 85,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 86.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 90.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 98.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 82.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 82.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 94.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 87.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 84.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 77.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 95.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 89.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 84.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 82,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 93.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 70.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 74.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 85,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 63.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 51.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 56.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 64.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2014,
+      "SurveyId": "GH2014DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 33.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 85.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Central",
+      "Value": 85.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 99.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 78.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 86.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 89.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 91.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 78.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 68.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 95.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 92.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 77,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Central",
+      "Value": 70.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 91.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 83.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 72.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 85.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 79.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 62.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 65.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 65.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2016,
+      "SurveyId": "GH2016MIS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 51.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 93.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Central",
+      "Value": 88.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 99.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 91.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 94.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 94.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 90.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 86.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 78.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 98.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 94.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 86.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Central",
+      "Value": 88.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 96.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 83.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 88,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 84.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 71.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 60.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 67.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 60.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2019,
+      "SurveyId": "GH2019MIS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 45.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 86.6,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 87.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Western (post 2022)",
+      "Value": 85.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Western (post 2022)",
+      "Value": 86.8,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Western North",
+      "Value": 89.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Western North",
+      "Value": 89.3,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 84,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 85,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 92.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 94,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 82.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 82.2,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Volta (post 2022)",
+      "Value": 93.8,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Volta (post 2022)",
+      "Value": 93.5,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Oti",
+      "Value": 69.5,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Oti",
+      "Value": 70.3,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 90.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 90.3,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 92.8,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 93.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 88.8,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 89.8,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Ahafo",
+      "Value": 93.9,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Ahafo",
+      "Value": 93.4,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Bono",
+      "Value": 91.2,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Bono",
+      "Value": 91.3,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Bono East",
+      "Value": 85.2,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Bono East",
+      "Value": 87.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 80.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 81.2,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 73.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 74.2,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Northern(post 2022)",
+      "Value": 70.9,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Northern(post 2022)",
+      "Value": 71.6,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Savannah",
+      "Value": 73.1,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Savannah",
+      "Value": 72,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Northeast",
+      "Value": 83.4,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Northeast",
+      "Value": 85.2,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 91.7,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 91.7,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 98.3,
+      "IsPreferred": 0,
+      "ByVariableId": 14000
+    },
+    {
+      "IndicatorId": "RH_DELA_C_SKP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 98,
+      "IsPreferred": 1,
+      "ByVariableId": 14002
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 70.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Western (post 2022)",
+      "Value": 62.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Western North",
+      "Value": 87.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 77.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 85.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 77.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Volta (post 2022)",
+      "Value": 79.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Oti",
+      "Value": 73.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 70.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 80.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 75.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Ahafo",
+      "Value": 70.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Bono",
+      "Value": 75.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Bono East",
+      "Value": 77.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 65.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 61.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Northern(post 2022)",
+      "Value": 55.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Savannah",
+      "Value": 67.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Northeast",
+      "Value": 78.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 74.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "CH_VACC_C_BAS",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 70.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 91.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Western (post 2022)",
+      "Value": 94.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Western North",
+      "Value": 83.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 91.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 98.5,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 81.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Volta (post 2022)",
+      "Value": 88.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Oti",
+      "Value": 66.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 88.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 96.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 87.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Ahafo",
+      "Value": 83.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Bono",
+      "Value": 92.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Bono East",
+      "Value": 86.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 79.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 67.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Northern(post 2022)",
+      "Value": 72,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Savannah",
+      "Value": 61.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Northeast",
+      "Value": 59.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 97.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "WS_SRCE_H_IMP",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 96.8,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Western (pre 2022)",
+      "Value": 87.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Western (post 2022)",
+      "Value": 90.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Western North",
+      "Value": 80.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Central",
+      "Value": 90.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Greater Accra",
+      "Value": 95.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Volta (pre 2022)",
+      "Value": 82.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Volta (post 2022)",
+      "Value": 87.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Oti",
+      "Value": 71.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Eastern",
+      "Value": 89.4,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Ashanti",
+      "Value": 87.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Brong-Ahafo",
+      "Value": 77.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Ahafo",
+      "Value": 64.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Bono",
+      "Value": 86.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Bono East",
+      "Value": 75.9,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "Northern, Upper West, Upper East",
+      "Value": 68.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Northern (pre 2022)",
+      "Value": 73.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Northern(post 2022)",
+      "Value": 77.1,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Savannah",
+      "Value": 66.2,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "....Northeast",
+      "Value": 66.7,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Upper West",
+      "Value": 65.3,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    },
+    {
+      "IndicatorId": "HC_ELEC_H_ELC",
+      "SurveyYear": 2022,
+      "SurveyId": "GH2022DHS",
+      "CharacteristicLabel": "..Upper East",
+      "Value": 57.6,
+      "IsPreferred": 1,
+      "ByVariableId": 0
+    }
+  ],
+  "RecordsReturned": 500,
+  "TotalPages": 1
+}

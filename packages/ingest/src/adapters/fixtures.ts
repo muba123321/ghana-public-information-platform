@@ -17,6 +17,7 @@ export function fixtureGetter(dir: string): GetJson {
   };
   return async (url) => {
     const u = new URL(url);
+    if (u.hostname === 'api.dhsprogram.com') return read('dhs/regional.json') ?? { Data: [] };
     if (u.hostname === 'api.worldbank.org') {
       const code = decodeURIComponent(u.pathname.split('/').at(-1) ?? '');
       const page = u.searchParams.get('page') ?? '1';
