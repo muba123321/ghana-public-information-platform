@@ -62,10 +62,11 @@ export interface ComparisonIndicatorInput {
 
 /** Everyone who could be chosen, for the picker: governments by term, or people. */
 export function compareChoices(terms: readonly NamedTerm[]) {
-  const people = new Map<string, { slug: string; name: string; starts: IsoDate[] }>();
+  // Each person once, in order of when they first led a government, with every period in full.
+  const people = new Map<string, { slug: string; name: string; periods: string[] }>();
   for (const s of leaderStretches(terms)) {
-    const p = people.get(s.personSlug) ?? { slug: s.personSlug, name: s.fullName, starts: [] };
-    p.starts.push(s.start);
+    const p = people.get(s.personSlug) ?? { slug: s.personSlug, name: s.fullName, periods: [] };
+    p.periods.push(yearRange(s.start, s.end));
     people.set(s.personSlug, p);
   }
   return {
@@ -73,7 +74,7 @@ export function compareChoices(terms: readonly NamedTerm[]) {
     persons: [...people.values()].map((p) => ({
       slug: p.slug,
       name: p.name,
-      years: p.starts.map((d) => d.slice(0, 4)).join(', '),
+      years: p.periods.join('; '),
     })),
   };
 }

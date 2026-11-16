@@ -1,6 +1,6 @@
 import { annualPeriod, type LeaderTerm, type ObservationPoint } from '@gpip/core';
 import { describe, expect, it } from 'vitest';
-import { buildComparison, type NamedTerm } from './comparison';
+import { buildComparison, compareChoices, type NamedTerm } from './comparison';
 
 const hos = (
   personSlug: string,
@@ -129,6 +129,17 @@ describe('buildComparison', () => {
   it('lists only events that fall inside a compared government', () => {
     expect(build('term', ['1981-pndc', '2001-kufuor-i']).events.map((e) => e.title)).toEqual([
       'Economic Recovery Programme',
+    ]);
+  });
+});
+
+describe('compareChoices', () => {
+  it('shows every period a leader was in office, in full, in date order', () => {
+    const { persons } = compareChoices(TERMS);
+    expect(persons.map((p) => [p.name, p.years])).toEqual([
+      ['Jerry John Rawlings', '1979; 1981–2001'],
+      ['Hilla Limann', '1979–1981'],
+      ['John Agyekum Kufuor', '2001–2005'],
     ]);
   });
 });
