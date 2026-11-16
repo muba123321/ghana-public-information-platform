@@ -13,6 +13,10 @@ import {
   PartySeedSchema,
   type PersonSeed,
   PersonSeedSchema,
+  type RegionLineageSeed,
+  RegionLineageSeedSchema,
+  type RegionSeed,
+  RegionSeedSchema,
   type SectorSeed,
   SectorSeedSchema,
   type SourceSeed,
@@ -28,6 +32,8 @@ import {
   institutionVersions,
   parties,
   persons,
+  regionLineage,
+  regions,
   sectors,
   sources,
 } from '../schema/index.ts';
@@ -38,6 +44,7 @@ import { institutionSeeds } from './data/institutions.ts';
 import { leaderSeeds } from './data/leaders.ts';
 import { partySeeds } from './data/parties.ts';
 import { personSeeds } from './data/persons.ts';
+import { regionLineageSeeds, regionSeeds } from './data/regions.ts';
 import { sectorSeeds } from './data/sectors.ts';
 import { sourceSeeds } from './data/sources.ts';
 import { type SyncResult, syncRows } from './sync.ts';
@@ -52,6 +59,8 @@ export interface SeedData {
   indicators: IndicatorSeed[];
   contextEvents: ContextEventSeed[];
   institutions: InstitutionSeed[];
+  regions: RegionSeed[];
+  regionLineage: RegionLineageSeed[];
 }
 
 export const defaultSeedData: SeedData = {
@@ -64,6 +73,8 @@ export const defaultSeedData: SeedData = {
   indicators: indicatorSeeds,
   contextEvents: contextEventSeeds,
   institutions: institutionSeeds,
+  regions: regionSeeds,
+  regionLineage: regionLineageSeeds,
 };
 
 /** Idempotently loads the verified reference data. Safe to run on every deploy. */
@@ -163,8 +174,9 @@ export async function seed(db: Db, data: SeedData = defaultSeedData): Promise<Sy
         ['code'],
         data.indicators
           .map((i) => IndicatorSeedSchema.parse(i))
-          .map(({ methodology, ...i }) => ({
+          .map(({ methodology, scope, ...i }) => ({
             ...i,
+            scope: scope ?? 'national',
             methodology: methodology ?? null,
             sourceId: sourceId(i.sourceKey),
             reviewStatus: 'published',
@@ -216,6 +228,34 @@ export async function seed(db: Db, data: SeedData = defaultSeedData): Promise<Sy
           reviewStatus: 'published',
           provenance: 'manual',
         })),
+      ),
+    );
+    add(
+      await syncRows(
+        tx,
+        regions,
+        'regions',
+        ['slug'],
+        data.regions
+          .map((r) => RegionSeedSchema.parse(r))
+          .map(({ sourceKey, ...r }) => ({
+            ...r,
+            sourceId: sourceId(sourceKey),
+            reviewStatus: 'published',
+            provenance: 'manual',
+          })),
+      ),
+    );
+    add(
+      await syncRows(
+        tx,
+        regionLineage,
+        'region_lineage',
+        ['fromSlug', 'toSlug'],
+        data.regionLineage
+          .map((l) => RegionLineageSeedSchema.parse(l))
+          .map(({ sourceKey, ...l }) => ({ ...l, sourceId: sourceId(sourceKey) })),
+        { prune: true },
       ),
     );
     return total;

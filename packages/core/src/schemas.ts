@@ -97,7 +97,34 @@ export const IndicatorSeedSchema = z.object({
   seriesCode: z.string().min(1),
   estimateType: EstimateTypeSchema,
   methodology: z.string().optional(),
+  /** national (default) or regional — regional indicators appear only on region pages and the map. */
+  scope: z.enum(['national', 'regional']).optional(),
 });
+export type IndicatorScope = 'national' | 'regional';
+
+const isoDateOrNull = z
+  .string()
+  .regex(/^\d{4}-\d{2}-\d{2}$/)
+  .nullable();
+
+export const RegionSeedSchema = z.object({
+  slug,
+  name: z.string().min(1),
+  capital: z.string().min(1).nullable(),
+  validFrom: isoDateOrNull,
+  validTo: isoDateOrNull,
+  displayOrder: z.number().int().positive(),
+  sourceKey: slug,
+});
+export type RegionSeed = z.infer<typeof RegionSeedSchema>;
+
+export const RegionLineageSeedSchema = z.object({
+  fromSlug: slug,
+  toSlug: slug,
+  effectiveOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  sourceKey: slug,
+});
+export type RegionLineageSeed = z.infer<typeof RegionLineageSeedSchema>;
 
 /** Words that judge rather than describe — not allowed in editorial titles. */
 const EVALUATIVE = /\b(success|fail|achiev|disaster|boom|triumph|crisis-hit|collapse)\w*/i;

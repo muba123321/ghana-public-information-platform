@@ -43,6 +43,13 @@
       "when": 1794639606586,
       "tag": "0005_commitments",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794796702663,
+      "tag": "0006_regions",
+      "breakpoints": true
     }
   ]
 }

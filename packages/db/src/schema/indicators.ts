@@ -20,6 +20,8 @@ import { sources } from './sources.ts';
 
 export const estimateType = pgEnum('estimate_type', ['reported', 'modelled', 'projected']);
 export const frequency = pgEnum('frequency', ['annual', 'quarterly', 'monthly']);
+/** national: Ghana as a whole (indicator pages, Compare); regional: by region (region pages, map). */
+export const indicatorScope = pgEnum('indicator_scope', ['national', 'regional']);
 export const contextEventKind = pgEnum('context_event_kind', [
   'international',
   'methodology',
@@ -34,6 +36,7 @@ export const indicators = pgTable('indicators', {
   definition: text('definition').notNull(),
   unit: text('unit').notNull(),
   frequency: frequency('frequency').notNull(),
+  scope: indicatorScope('scope').notNull().default('national'),
   sectorSlug: text('sector_slug')
     .notNull()
     .references(() => sectors.slug),

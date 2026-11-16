@@ -104,7 +104,7 @@ export async function listIndicators(db: Db): Promise<IndicatorSummary[]> {
     })
     .from(indicators)
     .innerJoin(sectors, eq(indicators.sectorSlug, sectors.slug))
-    .where(published)
+    .where(and(published, eq(indicators.scope, 'national')))
     .orderBy(asc(indicators.sectorSlug), asc(indicators.name));
   const cov = await coverage(db);
   return rows.map((r) => ({
