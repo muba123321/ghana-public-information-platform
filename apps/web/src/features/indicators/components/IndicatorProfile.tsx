@@ -72,7 +72,8 @@ export function IndicatorProfile({ s, model, events }: Props) {
               not the same as causing a change: some effects take years, and events outside Ghana
               matter too.
               {model.sparse && ' Values exist only for survey years, so points are not joined.'}
-              {model.hasProjection && ' The dashed line is an IMF forecast, not a measured value.'}
+              {model.hasProjection && ' The dashed line is an IMF forecast, not a measured value.'}{' '}
+              <Link href="/methodology">How periods and baselines work</Link>
             </p>
           </aside>
 

@@ -104,3 +104,19 @@ test('every government profile shows its indicators in the same form', async ({ 
     page.getByRole('region', { name: 'Indicators in this term' }).locator('tbody tr'),
   ).toHaveCount(count);
 });
+
+test('the methodology page explains every rule Compare uses', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('contentinfo').getByRole('link', { name: 'How we compare' }).click();
+  await expect(page).toHaveURL(/\/methodology$/);
+  await expect(page.getByRole('heading', { level: 2 })).toHaveText([
+    'Which government a year belongs to',
+    'The inherited starting point',
+    'Last figure, average and change',
+    'Years with figures',
+    'Modelled figures and projections',
+    'Comparing people, not just terms',
+    'Why there are no scores',
+    'Effects take time',
+  ]);
+});
