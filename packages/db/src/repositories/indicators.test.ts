@@ -76,6 +76,7 @@ describe('indicator repository', () => {
         firstYear: 2015,
         lastYear: 2017,
         sectorSlug: 'economy',
+        frequency: 'annual',
       }),
     ]);
   });

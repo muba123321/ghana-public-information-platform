@@ -1,4 +1,4 @@
-import type { EstimateType, IsoDate, ObservationPoint, Period } from '@gpip/core';
+import type { EstimateType, Frequency, IsoDate, ObservationPoint, Period } from '@gpip/core';
 import { and, asc, desc, eq, gte, lt, max, min, ne, sql } from 'drizzle-orm';
 import type { Db } from '../client.ts';
 import { contextEvents, indicators, observations, sectors, sources } from '../schema/index.ts';
@@ -11,6 +11,7 @@ export interface IndicatorSummary {
   sectorSlug: string;
   sectorName: string;
   estimateType: EstimateType;
+  frequency: Frequency;
   firstYear: number | null;
   lastYear: number | null;
 }
@@ -99,6 +100,7 @@ export async function listIndicators(db: Db): Promise<IndicatorSummary[]> {
       sectorSlug: indicators.sectorSlug,
       sectorName: sectors.name,
       estimateType: indicators.estimateType,
+      frequency: indicators.frequency,
     })
     .from(indicators)
     .innerJoin(sectors, eq(indicators.sectorSlug, sectors.slug))
@@ -126,6 +128,7 @@ export async function getIndicatorSeries(
       sectorSlug: indicators.sectorSlug,
       sectorName: sectors.name,
       estimateType: indicators.estimateType,
+      frequency: indicators.frequency,
       methodology: indicators.methodology,
       seriesCode: indicators.seriesCode,
       sourceKey: indicators.sourceKey,
