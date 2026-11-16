@@ -54,3 +54,24 @@ test('the page does not scroll sideways on a phone', async ({ page }) => {
   const width = await page.evaluate(() => document.documentElement.scrollWidth);
   expect(width).toBeLessThanOrEqual(390);
 });
+
+for (const colorScheme of ['light', 'dark'] as const) {
+  test(`dropdown text is readable in ${colorScheme} mode`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme });
+    await page.goto('/history/compare');
+    const ratio = await page.getByLabel('First government').evaluate((el) => {
+      const rgb = (c: string) => (c.match(/[\d.]+/g) ?? []).slice(0, 3).map(Number);
+      const lum = (c: string) => {
+        const [r = 0, g = 0, b = 0] = rgb(c).map((v) => {
+          const s = v / 255;
+          return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+        });
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      };
+      const cs = getComputedStyle(el);
+      const [a, b] = [lum(cs.color), lum(cs.backgroundColor)].sort((x, y) => y - x);
+      return ((a ?? 0) + 0.05) / ((b ?? 0) + 0.05);
+    });
+    expect(ratio).toBeGreaterThanOrEqual(4.5); // WCAG AA for normal text
+  });
+}

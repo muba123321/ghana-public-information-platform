@@ -56,13 +56,27 @@
   padding: 0 36px 0 12px;
   border: 1px solid var(--line);
   border-radius: 10px;
-  background: var(--paper, #fff)
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235d5650' stroke-width='2'/%3E%3C/svg%3E")
-    no-repeat right 12px center;
+  /* Theme colours (not a fixed white), so the text stays readable in dark mode too. */
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235d5650' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
   color: var(--text);
+  color-scheme: light dark;
   font: inherit;
   font-weight: 400;
   text-overflow: ellipsis;
+}
+
+.fields option {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+@media (prefers-color-scheme: dark) {
+  .fields select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23b5a998' stroke-width='2'/%3E%3C/svg%3E");
+  }
 }
 
 .fields select:focus-visible {
