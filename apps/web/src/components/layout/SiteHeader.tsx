@@ -22,6 +22,9 @@ export function SiteHeader() {
               <Link href="/history/indicators">Indicators</Link>
             </li>
             <li>
+              <Link href="/history/compare">Compare</Link>
+            </li>
+            <li>
               <Link href="/history">Explore</Link>
             </li>
             <li>

@@ -1,0 +1,71 @@
+.picker {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  margin: 24px 0 32px;
+}
+
+.mode {
+  display: flex;
+  gap: 8px;
+}
+
+.mode a {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.mode a[aria-current="page"] {
+  background: var(--text);
+  color: var(--bg, #fff);
+  border-color: var(--text);
+}
+
+.fields {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.fields label {
+  display: grid;
+  gap: 4px;
+  font-weight: 600;
+  min-width: 0;
+}
+
+.fields select {
+  width: 100%;
+  min-width: 0;
+}
+
+.optional {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.fields select {
+  appearance: none;
+  height: 42px;
+  padding: 0 36px 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper, #fff)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235d5650' stroke-width='2'/%3E%3C/svg%3E")
+    no-repeat right 12px center;
+  color: var(--text);
+  font: inherit;
+  font-weight: 400;
+  text-overflow: ellipsis;
+}
+
+.fields select:focus-visible {
+  outline: 3px solid var(--teal, #1f6f78);
+  outline-offset: 1px;
+}

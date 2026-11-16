@@ -44,7 +44,8 @@ test('history landing lists the nine areas', async ({ page }) => {
     'Government Performance & History',
   );
   await expect(page.getByRole('link', { name: 'Administration directory' })).toBeVisible();
-  await expect(page.getByText('Coming soon')).toHaveCount(3);
+  await expect(page.getByRole('link', { name: 'Compare administrations' })).toBeVisible();
+  await expect(page.getByText('Coming soon')).toHaveCount(2);
 });
 
 test('data notice covers every required section', async ({ page }) => {

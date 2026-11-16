@@ -1,0 +1,36 @@
+.wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 8px;
+  vertical-align: middle;
+  background: var(--tone-a);
+}
+
+.swatch[data-tone="b"] {
+  background: var(--tone-b);
+}
+
+.swatch[data-tone="c"] {
+  background: var(--tone-c);
+}
+
+.swatch[data-tone="d"] {
+  background: var(--tone-d);
+}
+
+/* Read by screen readers, not shown. */
+.caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
