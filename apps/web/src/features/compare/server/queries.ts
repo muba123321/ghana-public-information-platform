@@ -1,4 +1,5 @@
 import 'server-only';
+import { tenureSummary } from '@gpip/core';
 import {
   getIndicatorSeries,
   listAdministrations,
@@ -55,4 +56,27 @@ export const loadComparison = cache(async (selection: CompareSelection) => {
     events,
     today: todayIso(),
   });
+});
+
+/** Every indicator, in sector order, summarised for one government — the same set for every term. */
+export const loadTermIndicators = cache(async (slug: string) => {
+  const db = await getDb();
+  const [terms, indicators] = await Promise.all([loadTerms(), listIndicators(db)]);
+  const term = terms.find((t) => t.slug === slug);
+  if (!term) return [];
+  const all = terms.map((t) => ({ slug: t.slug, start: t.start, end: t.end }));
+  const series = await Promise.all(indicators.map((i) => getIndicatorSeries(db, i.code)));
+  const today = todayIso();
+  return indicators.map((i, k) => ({
+    code: i.code,
+    name: i.name,
+    unit: i.unit,
+    summary: tenureSummary(
+      series[k]?.points ?? [],
+      { slug: term.slug, start: term.start, end: term.end },
+      all,
+      i.frequency,
+      today,
+    ),
+  }));
 });

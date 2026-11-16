@@ -1,0 +1,29 @@
+.section {
+  margin-top: 40px;
+}
+
+.caveat {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.unit {
+  display: block;
+  font-weight: 400;
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

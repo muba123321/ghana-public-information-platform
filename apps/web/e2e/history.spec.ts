@@ -85,3 +85,22 @@ test('directory can be filtered to military governments', async ({ page }) => {
   await expect(page.locator('.spine > li')).toHaveCount(6);
   await expect(page.locator('.spine')).not.toContainText('Fourth Republic');
 });
+
+test('every government profile shows its indicators in the same form', async ({ page }) => {
+  await page.goto('/history/administrations/2017-akufo-addo-i');
+  const section = page.getByRole('region', { name: 'Indicators in this term' });
+  await expect(section).toBeVisible();
+  await expect(
+    section.getByText('Being in office is not the same as causing a change.'),
+  ).toBeVisible();
+  await expect(
+    section.getByRole('link', { name: 'Compare with another government' }),
+  ).toHaveAttribute('href', '/history/compare?a=2017-akufo-addo-i');
+  const rows = section.locator('tbody tr');
+  const count = await rows.count();
+  expect(count).toBeGreaterThan(10);
+  await page.goto('/history/administrations/1957-dominion');
+  await expect(
+    page.getByRole('region', { name: 'Indicators in this term' }).locator('tbody tr'),
+  ).toHaveCount(count);
+});
